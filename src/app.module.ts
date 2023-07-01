@@ -18,6 +18,7 @@ import { InterestsModule } from "./modules/interests/interest.module";
 import { MailModule } from './modules/mail/mail.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TariffsModule } from "./modules/tariffs/tariffs.module";
+import { PaymentModule } from "./modules/payment/payment.module";
 
 @Module({
   controllers: [AppController, SettingsController],
@@ -35,7 +36,8 @@ import { TariffsModule } from "./modules/tariffs/tariffs.module";
     PostsModule,
     InterestsModule,
     MailModule,
-    TariffsModule
+    TariffsModule,
+    PaymentModule
   ],
 })
 export class AppModule {

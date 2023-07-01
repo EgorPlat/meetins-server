@@ -1,12 +1,7 @@
 import { Controller, Get, Headers, Param, Post, Req, UseGuards } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { ApiTags } from '@nestjs/swagger';
 import { InterestsService } from './interest.service';
 import { Request } from 'express';
-import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
-import { InjectModel } from '@nestjs/mongoose';
-import { Interest, InterestDocument } from 'src/schemas/interests.schema';
-import { Model } from 'mongoose';
 
 @Controller('interests')
 @ApiTags('Интересы')

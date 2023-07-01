@@ -6,6 +6,7 @@ import { HelpJwtService } from './help/token.service';
 @Injectable()
 @WebSocketGateway({ cors: true })
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
+
   @WebSocketServer()
   server: Server;
 
@@ -31,10 +32,5 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
     };
     this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
     this.server.emit('updateUsers', { users: this.activeFullUsersList });
-  }
-
-  @SubscribeMessage('message')
-  handleMessage(client: any, payload: any) {
-    console.log(`${client.handshake.headers.authorization} отправил сообщение`);
   }
 }

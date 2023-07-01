@@ -9,5 +9,4 @@ export declare class AppGateway implements OnGatewayConnection, OnGatewayDisconn
     constructor(jwtHelpService: HelpJwtService);
     handleDisconnect(client: any): void;
     handleConnection(client: any, ...args: any[]): void;
-    handleMessage(client: any, payload: any): void;
 }

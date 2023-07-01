@@ -108,6 +108,7 @@ export class UserController {
         }
     )
     }))
+
     addUserPost(@UploadedFile() file, @Req() request: Request) {
         return this.userService.addUserPost(file, request);
     }

@@ -37,20 +37,11 @@ let AppGateway = class AppGateway {
         this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
         this.server.emit('updateUsers', { users: this.activeFullUsersList });
     }
-    handleMessage(client, payload) {
-        console.log(`${client.handshake.headers.authorization} отправил сообщение`);
-    }
 };
 __decorate([
     (0, websockets_1.WebSocketServer)(),
     __metadata("design:type", socket_io_1.Server)
 ], AppGateway.prototype, "server", void 0);
-__decorate([
-    (0, websockets_1.SubscribeMessage)('message'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", void 0)
-], AppGateway.prototype, "handleMessage", null);
 AppGateway = __decorate([
     (0, common_1.Injectable)(),
     (0, websockets_1.WebSocketGateway)({ cors: true }),
