@@ -23,6 +23,10 @@ let UserService = class UserService {
         this.userModel = userModel;
         this.helpJwtService = helpJwtService;
     }
+    async updateUsersData() {
+        await this.userModel.updateMany({}, { $set: { tag: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } } });
+        await this.userModel.updateMany({}, { $set: { purchasedOpportunities: [] } });
+    }
     async getUsers() {
         const users = await this.userModel.find({}, {
             password: false,

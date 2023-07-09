@@ -25,6 +25,9 @@ let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
+    updateUserData() {
+        return this.userService.updateUsersData();
+    }
     getUsers() {
         return this.userService.getUsers();
     }
@@ -62,6 +65,12 @@ let UserController = class UserController {
         return this.userService.addUserPost(file, request);
     }
 };
+__decorate([
+    (0, common_1.Get)('/newData'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "updateUserData", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Список пользователей' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: [user_schema_1.User] }),

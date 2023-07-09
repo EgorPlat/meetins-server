@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
+
     getUsers(): string {
         return `
             <p>Hello world from GET REQUEST</p>

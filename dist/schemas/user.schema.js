@@ -104,6 +104,19 @@ __decorate([
     (0, mongoose_1.Prop)({ default: [] }),
     __metadata("design:type", Array)
 ], User.prototype, "innerInvites", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [1, 2], description: 'Купленные возможности' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], User.prototype, "purchasedOpportunities", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: { color: "blue", title: "User" }, description: 'Тэг' }),
+    (0, mongoose_1.Prop)({
+        type: {},
+        default: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" }
+    }),
+    __metadata("design:type", Object)
+], User.prototype, "tag", void 0);
 User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

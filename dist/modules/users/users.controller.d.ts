@@ -1,11 +1,3 @@
-/// <reference types="mongoose/types/pipelinestage" />
-/// <reference types="mongoose/types/connection" />
-/// <reference types="mongoose/types/cursor" />
-/// <reference types="mongoose/types/document" />
-/// <reference types="mongoose/types/error" />
-/// <reference types="mongoose/types/mongooseoptions" />
-/// <reference types="mongoose/types/schemaoptions" />
-/// <reference types="mongoose" />
 import { CreateUserDto } from "src/dto/create-user.dto";
 import { ISortParams } from "src/interfaces/sort.params";
 import { User } from "src/schemas/user.schema";
@@ -14,6 +6,7 @@ import { Request } from "express";
 export declare class UserController {
     private userService;
     constructor(userService: UserService);
+    updateUserData(): Promise<void>;
     getUsers(): Promise<(User & import("mongoose").Document<any, any, any> & {
         _id: any;
     })[]>;

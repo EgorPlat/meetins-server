@@ -87,7 +87,10 @@ export class User {
     purchasedOpportunities: number[];
 
     @ApiProperty({example: { color: "blue", title: "User" }, description: 'Тэг'})
-    @Prop({ default: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } })
+    @Prop({
+        type: {},
+        default: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } 
+    })
     tag: IUserTag;
 };
 

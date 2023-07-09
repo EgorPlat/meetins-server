@@ -16,6 +16,10 @@ export class UserService {
 
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private helpJwtService: HelpJwtService){}
 
+    async updateUsersData() {
+        await this.userModel.updateMany({}, { $set: { tag: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } } });
+        await this.userModel.updateMany({}, { $set: { purchasedOpportunities: [] } });
+    }
     async getUsers() {
         const users = await this.userModel.find({}, {
             password: false,

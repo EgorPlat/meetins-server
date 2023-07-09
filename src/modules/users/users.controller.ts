@@ -16,6 +16,11 @@ export class UserController {
 
     constructor(private userService: UserService) {}
 
+    @Get('/newData')
+    updateUserData() {
+        return this.userService.updateUsersData(); 
+    }
+
     @ApiOperation({summary: 'Список пользователей'})
     @ApiResponse({status: 200, type: [User]})
     @UseGuards(JwtAuthGuard)
