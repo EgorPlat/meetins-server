@@ -4,6 +4,7 @@ import { Document } from 'mongoose';
 import { IInterests } from "src/interfaces/interests.interface";
 import { IPost } from "src/interfaces/post.interface";
 import { IOuterInvites, IInnerInvites } from "src/interfaces/sentInvites.interface";
+import { IUserTag } from "src/interfaces/tag.interface";
 export type UserDocument = User & Document;
 
 @Schema()
@@ -80,6 +81,14 @@ export class User {
     @ApiProperty({example: [], description: 'Входящие приглашения'})
     @Prop({ default: [] })
     innerInvites: IInnerInvites[];
+
+    @ApiProperty({example: [1, 2], description: 'Купленные возможности'})
+    @Prop({ default: [] })
+    purchasedOpportunities: number[];
+
+    @ApiProperty({example: { color: "blue", title: "User" }, description: 'Тэг'})
+    @Prop({ default: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } })
+    tag: IUserTag;
 };
 
 export const UserSchema = SchemaFactory.createForClass(User);
