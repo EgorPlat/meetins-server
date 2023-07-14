@@ -140,26 +140,43 @@ let UserService = class UserService {
         }
     }
     async updateUserAccount(decodedToken, accountData) {
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
-                email: accountData.email,
-                password: accountData.password,
-                login: accountData.login
-            } });
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
-        if (updatedUser) {
-            return updatedUser;
+        const users = await this.userModel.find({
+            $or: [
+                { email: accountData.email },
+                { login: accountData.login }
+            ]
+        });
+        if (users.length === 0) {
+            await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+                    email: accountData.email,
+                    password: accountData.password,
+                    login: accountData.login
+                } });
+            const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+            if (updatedUser) {
+                return updatedUser;
+            }
+        }
+        else {
+            throw new common_1.HttpException({ message: "Занят login или email" }, 400);
         }
     }
     async updateUserProfile(decodedToken, accountData) {
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
-                phoneNumber: accountData.phoneNumber,
-                name: accountData.name,
-                birthDate: accountData.birthDate
-            } });
-        await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
-        if (updatedUser) {
-            return updatedUser;
+        const users = await this.userModel.find({ email: accountData.phoneNumber });
+        if (users.length === 0) {
+            await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+                    phoneNumber: accountData.phoneNumber,
+                    name: accountData.name,
+                    birthDate: accountData.birthDate
+                } });
+            await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
+            const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+            if (updatedUser) {
+                return updatedUser;
+            }
+        }
+        else {
+            throw new common_1.HttpException({ message: "Занят login или email" }, 400);
         }
     }
     async updateUserAvatar(file, user) {
@@ -192,7 +209,7 @@ let UserService = class UserService {
             }
         }
         else {
-            throw new common_1.HttpException("Уже есть данное событие.", 400);
+            throw new common_1.HttpException({ message: "Данное событие уже добавлено" }, 400);
         }
     }
     async deleteUserEvent(request) {
@@ -251,7 +268,7 @@ let UserService = class UserService {
             throw new common_1.HttpException(updatedUser, 200);
         }
         else {
-            throw new common_1.HttpException('Попробуйте снова.', 500);
+            throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
         }
     }
 };

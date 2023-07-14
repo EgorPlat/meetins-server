@@ -142,30 +142,47 @@ export class UserService {
     }
     async updateUserAccount(decodedToken: any, accountData: IAccount) {
 
-        await this.userModel.updateOne({email : decodedToken.email}, {$set: {
-            email : accountData.email, 
-            password: accountData.password,
-            login: accountData.login
-        }});
+        const users = await this.userModel.find({
+            $or: [
+                { email: accountData.email },
+                { login: accountData.login }
+            ]
+        });
 
-        const updatedUser: User = await this.getUpdatedUserByEmail(decodedToken.email);
-        if(updatedUser) { 
-            return updatedUser;
+        if (users.length === 0) {
+            await this.userModel.updateOne({email : decodedToken.email}, {$set: {
+                email : accountData.email, 
+                password: accountData.password,
+                login: accountData.login
+            }});
+    
+            const updatedUser: User = await this.getUpdatedUserByEmail(decodedToken.email);
+            if(updatedUser) { 
+                return updatedUser;
+            }
+        } else {
+            throw new HttpException({ message: "Занят login или email"}, 400);
         }
     }
     async updateUserProfile(decodedToken: any, accountData: IProfile) {
 
-        await this.userModel.updateOne({email : decodedToken.email}, {$set: {
-            phoneNumber : accountData.phoneNumber, 
-            name: accountData.name,
-            birthDate: accountData.birthDate
-        }});
-        
-        await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
+        const users = await this.userModel.find({ email: accountData.phoneNumber });
 
-        const updatedUser: User = await this.getUpdatedUserByEmail(decodedToken.email);
-        if(updatedUser) { 
-            return updatedUser;
+        if (users.length === 0) {
+            await this.userModel.updateOne({email : decodedToken.email}, {$set: {
+                phoneNumber : accountData.phoneNumber, 
+                name: accountData.name,
+                birthDate: accountData.birthDate
+            }});
+            
+            await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
+    
+            const updatedUser: User = await this.getUpdatedUserByEmail(decodedToken.email);
+            if(updatedUser) { 
+                return updatedUser;
+            }
+        } else {
+            throw new HttpException({ message: "Занят login или email"}, 400);
         }
     }
     async updateUserAvatar(file: any, user: User) {
@@ -202,7 +219,7 @@ export class UserService {
                 return updatedUser;
             }
         } else {
-            throw new HttpException("Уже есть данное событие.", 400);
+            throw new HttpException({ message: "Данное событие уже добавлено" }, 400);
         }
     }
 
@@ -268,7 +285,7 @@ export class UserService {
         if (updatedUser) {
             throw new HttpException(updatedUser, 200);
         } else {
-            throw new HttpException('Попробуйте снова.', 500);
+            throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
         }
     }
 }
