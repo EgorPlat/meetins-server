@@ -42,7 +42,7 @@ export class EventService {
                     return null;
                 }
             })).then(results => {
-                userEventsInfo = results.filter(el => el !== null)
+                userEventsInfo = results.filter(el => el !== null);
             });
         }
         throw new HttpException(userEventsInfo, 200);
@@ -65,8 +65,8 @@ export class EventService {
                     return null;
                 }
             })).then(results => {
-                userEventsInfo = [...userEventsInfo, ...results.filter(el => el !== null)]
-            });
+                userEventsInfo = [...userEventsInfo, ...results.filter(el => el !== null)];
+            })
         }
         throw new HttpException(userEventsInfo, 200);
     }
@@ -89,7 +89,7 @@ export class EventService {
                     return null;
                 }
             })).then(results => {
-                userEventsInfo = results.filter(el => el !== null)
+                userEventsInfo = results.filter(el => el !== null);
             })
         }
         throw new HttpException(userEventsInfo, 200);

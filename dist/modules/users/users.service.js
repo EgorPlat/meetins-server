@@ -110,6 +110,14 @@ let UserService = class UserService {
         }
         throw new common_1.HttpException(peoples, 200);
     }
+    async getUpdatedUserByEmail(email) {
+        const user = await this.userModel.findOne({ email: email }, {
+            password: false,
+            _id: false,
+            __v: false
+        });
+        return user;
+    }
     async getUserByEmail(email) {
         const user = await this.userModel.findOne({ email: email }, {
             _id: false,
@@ -126,11 +134,7 @@ let UserService = class UserService {
     }
     async updateUserStatus(decodedToken, status) {
         await this.userModel.updateOne({ email: decodedToken.email }, { $set: { status: status } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email }, {
-            _id: false,
-            __v: false,
-            password: false
-        });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -141,11 +145,7 @@ let UserService = class UserService {
                 password: accountData.password,
                 login: accountData.login
             } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email }, {
-            _id: false,
-            __v: false,
-            password: false
-        });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -157,11 +157,7 @@ let UserService = class UserService {
                 birthDate: accountData.birthDate
             } });
         await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email }, {
-            _id: false,
-            __v: false,
-            password: false
-        });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -170,11 +166,7 @@ let UserService = class UserService {
         await this.userModel.updateOne({ email: user.email }, { $set: {
                 avatar: file.filename,
             } });
-        const updatedUser = await this.userModel.findOne({ email: user.email }, {
-            _id: false,
-            __v: false,
-            password: false
-        });
+        const updatedUser = await this.getUpdatedUserByEmail(user.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -194,7 +186,7 @@ let UserService = class UserService {
             await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
                     events: [...prevUserState.events, body.eventId],
                 } });
-            const updatedUser = await this.userModel.findOne({ email: decodedToken.email });
+            const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
             if (updatedUser) {
                 return updatedUser;
             }
@@ -210,7 +202,7 @@ let UserService = class UserService {
         await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
                 events: prevUserState.events.filter(el => el !== body.eventId),
             } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -222,7 +214,7 @@ let UserService = class UserService {
         await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
                 interests: body.interests,
             } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -234,7 +226,7 @@ let UserService = class UserService {
         await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
                 interests: prevUserState === null || prevUserState === void 0 ? void 0 : prevUserState.interests.filter(el => el !== body.interestId),
             } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             return updatedUser;
         }
@@ -254,11 +246,7 @@ let UserService = class UserService {
         await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
                 posts: [...user.posts, newPost]
             } });
-        const updatedUser = await this.userModel.findOne({ email: decodedToken.email }, {
-            _id: false,
-            password: false,
-            __v: false
-        });
+        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
         if (updatedUser) {
             throw new common_1.HttpException(updatedUser, 200);
         }

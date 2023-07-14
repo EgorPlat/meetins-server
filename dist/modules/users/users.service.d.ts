@@ -27,6 +27,9 @@ export declare class UserService {
         maxPage: number;
     }>;
     getSortedPeoples(sortParams: ISortParams): Promise<void>;
+    getUpdatedUserByEmail(email: string): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
     getUserByEmail(email: string): Promise<User & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
