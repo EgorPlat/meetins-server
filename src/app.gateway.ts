@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { HelpJwtService } from './help/token.service';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 @WebSocketGateway({ cors: true })
@@ -19,7 +20,6 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
     const decodeToken = this.jwtHelpService.decodeJwtFromString(client.handshake.headers.authorization);
     this.activeUsersList = this.activeUsersList.filter(el => el !== decodeToken?.email);
     this.activeFullUsersList = this.activeFullUsersList.filter(el => el.email !== decodeToken?.email);
-    this.server.emit('updateUsers', { users: this.activeFullUsersList });
   }
 
   handleConnection(client: any, ...args: any[]) {
@@ -31,6 +31,10 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
       userId: decodeToken?.userId
     };
     this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
+  }
+
+  @Cron('45 * * * * *')
+  handleUpdateUserList() {
     this.server.emit('updateUsers', { users: this.activeFullUsersList });
   }
 }

@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const websockets_1 = require("@nestjs/websockets");
 const socket_io_1 = require("socket.io");
 const token_service_1 = require("./help/token.service");
+const schedule_1 = require("@nestjs/schedule");
 let AppGateway = class AppGateway {
     constructor(jwtHelpService) {
         this.jwtHelpService = jwtHelpService;
@@ -24,7 +25,6 @@ let AppGateway = class AppGateway {
         const decodeToken = this.jwtHelpService.decodeJwtFromString(client.handshake.headers.authorization);
         this.activeUsersList = this.activeUsersList.filter(el => el !== (decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.email));
         this.activeFullUsersList = this.activeFullUsersList.filter(el => el.email !== (decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.email));
-        this.server.emit('updateUsers', { users: this.activeFullUsersList });
     }
     handleConnection(client, ...args) {
         const decodeToken = this.jwtHelpService.decodeJwtFromString(client.handshake.headers.authorization);
@@ -35,6 +35,8 @@ let AppGateway = class AppGateway {
             userId: decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.userId
         };
         this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
+    }
+    handleUpdateUserList() {
         this.server.emit('updateUsers', { users: this.activeFullUsersList });
     }
 };
@@ -42,6 +44,12 @@ __decorate([
     (0, websockets_1.WebSocketServer)(),
     __metadata("design:type", socket_io_1.Server)
 ], AppGateway.prototype, "server", void 0);
+__decorate([
+    (0, schedule_1.Cron)('45 * * * * *'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppGateway.prototype, "handleUpdateUserList", null);
 AppGateway = __decorate([
     (0, common_1.Injectable)(),
     (0, websockets_1.WebSocketGateway)({ cors: true }),
