@@ -28,7 +28,7 @@ export class AuthService {
             const passwordEquals = user.password === userDto.password;
             if(passwordEquals && user.password) {
                 const data = await this.generateToken(user);
-                response.cookie('access_token', data.auth.token, { httpOnly: true, secure: true, sameSite: false });
+                response.cookie('access_token', data.auth.token, { httpOnly: true, secure: true, sameSite: "none" });
                 response.status(200).send(data);
             } else {
                 throw new HttpException({message: 'Неккоректные данные. Пожалуйста попробуйте снова.'}, 400);
