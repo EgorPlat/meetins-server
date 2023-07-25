@@ -13,7 +13,7 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Post('/login')
-    login(@Body() userDto: UserDto, @Res({ passthrough: true }) res: Response) {
+    login(@Body() userDto: UserDto, @Res() res: Response) {
         return this.authService.login(userDto, res);
     }
     @Get('/logout')
@@ -29,7 +29,7 @@ export class AuthController {
         return this.authService.registrationWithConfirmation(userDto);
     }
     @Post('/acceptUserAccount')
-    acceptUserAccount(@Body() userDto: AcceptUserDto, @Res({ passthrough: true }) res: Response) {
+    acceptUserAccount(@Body() userDto: AcceptUserDto, @Res() res: Response) {
         return this.authService.acceptUserAccount(userDto, res);
     }
 }

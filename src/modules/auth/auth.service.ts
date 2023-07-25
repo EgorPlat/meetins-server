@@ -108,7 +108,7 @@ export class AuthService {
             if (user) {
                 const userWithTokens = await this.generateToken(user);
                 await this.unConfirmedUserModel.deleteOne({ email: acceptData.email });
-                response.cookie('access_token', userWithTokens.auth.token, { httpOnly: true, secure: false });
+                response.cookie('access_token', userWithTokens.auth.token, { httpOnly: true, secure: true, sameSite: "none" });
                 response.status(200).send(userWithTokens);
             }
         } else {
