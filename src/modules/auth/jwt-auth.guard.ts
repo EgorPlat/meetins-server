@@ -17,7 +17,7 @@ export class JwtAuthGuard implements CanActivate {
                 throw new UnauthorizedException('Невалидный токен. Обновите.')
             }
 
-            const user = this.jwtService.verify(/*token*/jwt);
+            const user = this.jwtService.verify(jwt);
             req.user = user;
             return true;
         }
