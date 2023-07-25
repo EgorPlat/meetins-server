@@ -23,8 +23,11 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    login(userDto) {
-        return this.authService.login(userDto);
+    login(userDto, res) {
+        return this.authService.login(userDto, res);
+    }
+    logout(res) {
+        return this.authService.logout(res);
     }
     registration(userDto) {
         return this.authService.registration(userDto);
@@ -32,17 +35,25 @@ let AuthController = class AuthController {
     registrationWithConfirmation(userDto) {
         return this.authService.registrationWithConfirmation(userDto);
     }
-    acceptUserAccount(userDto) {
-        return this.authService.acceptUserAccount(userDto);
+    acceptUserAccount(userDto, res) {
+        return this.authService.acceptUserAccount(userDto, res);
     }
 };
 __decorate([
     (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_dto_1.UserDto]),
+    __metadata("design:paramtypes", [user_dto_1.UserDto, Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_1.Get)('/logout'),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "logout", null);
 __decorate([
     (0, common_1.Post)('/registration'),
     __param(0, (0, common_1.Body)()),
@@ -60,8 +71,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)('/acceptUserAccount'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [accept_user_dto_1.AcceptUserDto]),
+    __metadata("design:paramtypes", [accept_user_dto_1.AcceptUserDto, Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "acceptUserAccount", null);
 AuthController = __decorate([

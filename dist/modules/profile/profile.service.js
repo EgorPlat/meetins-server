@@ -21,8 +21,7 @@ let ProfileService = class ProfileService {
         this.socketServer = socketServer;
     }
     async getMyProfile(request) {
-        const BearerToken = request.headers.authorization;
-        const token = BearerToken.split(' ')[1];
+        const token = request.cookies['access_token'];
         const decodedToken = this.jwtService.decode(token);
         const user = await this.userService.getUserByEmail(decodedToken.email);
         if (user) {

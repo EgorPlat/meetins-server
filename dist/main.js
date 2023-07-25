@@ -4,11 +4,13 @@ const core_1 = require("@nestjs/core");
 const swagger_1 = require("@nestjs/swagger");
 const path_1 = require("path");
 const app_module_1 = require("./app.module");
+const cookieParser = require("cookie-parser");
 const start = async () => {
     try {
         const PORT = process.env.PORT || 5000;
         const app = await core_1.NestFactory.create(app_module_1.AppModule);
         app.useStaticAssets((0, path_1.join)(__dirname, '../src/static'));
+        app.use(cookieParser());
         app.enableCors({
             origin: true,
             methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',

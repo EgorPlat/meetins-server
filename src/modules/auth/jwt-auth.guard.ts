@@ -8,20 +8,21 @@ export class JwtAuthGuard implements CanActivate {
 
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
         const req = context.switchToHttp().getRequest();
+        const res = context.switchToHttp().getResponse();
         try {
-            const header = req.headers.authorization;
-            const bearer = header.split(' ')[0];
-            const token = header.split(' ')[1];
+            const jwt = req.cookies['access_token'];
             
-            if(bearer !== 'Bearer' || !token) {
+            if(!jwt) {
+                res.clearCookie('access_token');
                 throw new UnauthorizedException('Невалидный токен. Обновите.')
             }
 
-            const user = this.jwtService.verify(token);
+            const user = this.jwtService.verify(/*token*/jwt);
             req.user = user;
             return true;
         }
         catch(e) {
+            res.clearCookie('access_token');
             throw new UnauthorizedException('Невалидный токен. Обновите.')
         }
     }

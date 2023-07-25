@@ -17,8 +17,7 @@ let HelpJwtService = class HelpJwtService {
         this.jwtService = jwtService;
     }
     decodeJwt(request) {
-        const BearerToken = request.headers.authorization;
-        const token = BearerToken.split(' ')[1];
+        const token = request.cookies['access_token'];
         const decodedToken = this.jwtService.decode(token);
         return decodedToken;
     }

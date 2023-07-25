@@ -18,18 +18,19 @@ let JwtAuthGuard = class JwtAuthGuard {
     }
     canActivate(context) {
         const req = context.switchToHttp().getRequest();
+        const res = context.switchToHttp().getResponse();
         try {
-            const header = req.headers.authorization;
-            const bearer = header.split(' ')[0];
-            const token = header.split(' ')[1];
-            if (bearer !== 'Bearer' || !token) {
+            const jwt = req.cookies['access_token'];
+            if (!jwt) {
+                res.clearCookie('access_token');
                 throw new common_1.UnauthorizedException('Невалидный токен. Обновите.');
             }
-            const user = this.jwtService.verify(token);
+            const user = this.jwtService.verify(jwt);
             req.user = user;
             return true;
         }
         catch (e) {
+            res.clearCookie('access_token');
             throw new common_1.UnauthorizedException('Невалидный токен. Обновите.');
         }
     }

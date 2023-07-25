@@ -27,13 +27,14 @@ let AuthService = class AuthService {
         this.mailService = mailService;
         this.unConfirmedUserModel = unConfirmedUserModel;
     }
-    async login(userDto) {
+    async login(userDto, response) {
         const user = await this.userService.getUserByEmail(userDto.email);
         if (user) {
             const passwordEquals = user.password === userDto.password;
             if (passwordEquals && user.password) {
                 const data = await this.generateToken(user);
-                throw new common_1.HttpException(data, 200);
+                response.cookie('access_token', data.auth.token, { httpOnly: true, secure: false });
+                response.status(200).send(data);
             }
             else {
                 throw new common_1.HttpException({ message: 'Неккоректные данные. Пожалуйста попробуйте снова.' }, 400);
@@ -41,6 +42,17 @@ let AuthService = class AuthService {
         }
         else {
             throw new common_1.HttpException({ message: 'Запрашиваемый пользователь не найден. Пожалуйста попробуйте снова.' }, 404);
+        }
+    }
+    async logout(response) {
+        try {
+            response.clearCookie('access_token');
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            response.status(200).send('Logged out');
         }
     }
     async generateToken(user) {
@@ -82,7 +94,7 @@ let AuthService = class AuthService {
             throw new common_1.HttpException('Server error', 500);
         }
     }
-    async acceptUserAccount(acceptData) {
+    async acceptUserAccount(acceptData, response) {
         const unConfirmedUser = await this.unConfirmedUserModel.findOne({ email: acceptData.email });
         if (unConfirmedUser.actualCodeForConfirmation === acceptData.code) {
             const user = await this.userService.addUser({
@@ -95,7 +107,8 @@ let AuthService = class AuthService {
             if (user) {
                 const userWithTokens = await this.generateToken(user);
                 await this.unConfirmedUserModel.deleteOne({ email: acceptData.email });
-                throw new common_1.HttpException(userWithTokens, 200);
+                response.cookie('access_token', userWithTokens.auth.token, { httpOnly: true, secure: false });
+                response.status(200).send(userWithTokens);
             }
         }
         else {

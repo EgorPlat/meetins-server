@@ -9,6 +9,7 @@ import { UserService } from 'src/modules/users/users.service';
 import { Model } from 'mongoose';
 import { MailService } from 'src/modules/mail/mail.service';
 import { AcceptUserDto } from 'src/dto/accept-user.dto';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -20,19 +21,31 @@ export class AuthService {
         @InjectModel(UnConfirmedUser.name) private unConfirmedUserModel: Model<UnConfirmedUserDocument>,
     ) {}
 
-    async login(userDto: UserDto) {
+    async login(userDto: UserDto, response: Response) {
         const user = await this.userService.getUserByEmail(userDto.email);
         
         if(user) {
             const passwordEquals = user.password === userDto.password;
             if(passwordEquals && user.password) {
                 const data = await this.generateToken(user);
-                throw new HttpException(data, 200)
+                response.cookie('access_token', data.auth.token, { httpOnly: true, secure: false });
+                response.status(200).send(data);
             } else {
                 throw new HttpException({message: 'Неккоректные данные. Пожалуйста попробуйте снова.'}, 400);
             }
         } else {
             throw new HttpException({message: 'Запрашиваемый пользователь не найден. Пожалуйста попробуйте снова.'}, 404);
+        }
+    }
+    async logout(response: Response) {
+        try {
+            response.clearCookie('access_token'); 
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            response.status(200).send('Logged out'); 
         }
     }
     private async generateToken(user: User) {
@@ -82,7 +95,7 @@ export class AuthService {
         }
     }
 
-    async acceptUserAccount(acceptData: AcceptUserDto) {
+    async acceptUserAccount(acceptData: AcceptUserDto, response: Response) {
         const unConfirmedUser = await this.unConfirmedUserModel.findOne({ email: acceptData.email });
         if (unConfirmedUser.actualCodeForConfirmation === acceptData.code) {
             const user = await this.userService.addUser({
@@ -95,7 +108,8 @@ export class AuthService {
             if (user) {
                 const userWithTokens = await this.generateToken(user);
                 await this.unConfirmedUserModel.deleteOne({ email: acceptData.email });
-                throw new HttpException(userWithTokens, 200)
+                response.cookie('access_token', userWithTokens.auth.token, { httpOnly: true, secure: false });
+                response.status(200).send(userWithTokens);
             }
         } else {
             throw new HttpException('Неверный код', 400)

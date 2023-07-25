@@ -28,6 +28,7 @@ const mail_module_1 = require("./modules/mail/mail.module");
 const schedule_1 = require("@nestjs/schedule");
 const tariffs_module_1 = require("./modules/tariffs/tariffs.module");
 const payment_module_1 = require("./modules/payment/payment.module");
+const meetings_module_1 = require("./modules/meetings/meetings.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -48,7 +49,8 @@ AppModule = __decorate([
             interest_module_1.InterestsModule,
             mail_module_1.MailModule,
             tariffs_module_1.TariffsModule,
-            payment_module_1.PaymentModule
+            payment_module_1.PaymentModule,
+            meetings_module_1.MeetingsModule
         ],
     })
 ], AppModule);

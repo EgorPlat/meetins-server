@@ -5,7 +5,7 @@ import { HelpJwtService } from './help/token.service';
 import { Cron } from '@nestjs/schedule';
 
 @Injectable()
-@WebSocketGateway({ cors: true })
+@WebSocketGateway({ cors: true, transports: ['websocket'] })
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @WebSocketServer()
@@ -15,15 +15,17 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   public activeFullUsersList: any[] = [];
 
   constructor(private jwtHelpService: HelpJwtService) { }
-
+  
   handleDisconnect(client: any) {
-    const decodeToken = this.jwtHelpService.decodeJwtFromString(client.handshake.headers.authorization);
+    const accessToken = client.handshake.headers.cookie?.split('; ').find((cookie: string) => cookie.startsWith('access')).split('=')[1];
+    const decodeToken = this.jwtHelpService.decodeJwtFromString(accessToken);
     this.activeUsersList = this.activeUsersList.filter(el => el !== decodeToken?.email);
     this.activeFullUsersList = this.activeFullUsersList.filter(el => el.email !== decodeToken?.email);
   }
 
   handleConnection(client: any, ...args: any[]) {
-    const decodeToken = this.jwtHelpService.decodeJwtFromString(client.handshake.headers.authorization);
+    const accessToken = client.handshake.headers.cookie?.split('; ').find((cookie: string) => cookie.startsWith('access')).split('=')[1];
+    const decodeToken = this.jwtHelpService.decodeJwtFromString(accessToken);
     this.activeUsersList = [...this.activeUsersList, decodeToken?.email];
     const fullClient = {
       email: decodeToken?.email,

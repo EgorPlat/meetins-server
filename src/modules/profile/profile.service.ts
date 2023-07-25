@@ -14,8 +14,9 @@ export class ProfileService {
     ) {}
     
     async getMyProfile(request: Request) {
-        const BearerToken: any = request.headers.authorization;
-        const token = BearerToken.split(' ')[1];
+        //const BearerToken: any = request.headers.authorization;
+        //const token = BearerToken.split(' ')[1];
+        const token = request.cookies['access_token'];
         const decodedToken: any = this.jwtService.decode(token);
         const user = await this.userService.getUserByEmail(decodedToken.email);
         
