@@ -33,7 +33,8 @@ export class AuthService {
                         httpOnly: true, 
                         secure: true, 
                         sameSite: "none", 
-                        maxAge: 60 * 60 * 1000
+                        maxAge: 60 * 60 * 1000,
+                        expires: new Date(Date.now() + (3600000))
                     }
                 );
                 response.status(200).send(data);
@@ -120,7 +121,8 @@ export class AuthService {
                         httpOnly: true, 
                         secure: true, 
                         sameSite: "none", 
-                        maxAge: 60 * 60 * 1000
+                        maxAge: 60 * 60 * 1000,
+                        expires: new Date(Date.now() + (3600000))
                     }
                 );
                 response.status(200).send(userWithTokens);

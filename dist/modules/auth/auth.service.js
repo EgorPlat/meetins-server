@@ -33,7 +33,13 @@ let AuthService = class AuthService {
             const passwordEquals = user.password === userDto.password;
             if (passwordEquals && user.password) {
                 const data = await this.generateToken(user);
-                response.cookie('access_token', data.auth.token, { httpOnly: true, secure: true, sameSite: "none" });
+                response.cookie('access_token', data.auth.token, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "none",
+                    maxAge: 60 * 60 * 1000,
+                    expires: new Date(Date.now() + (3600000))
+                });
                 response.status(200).send(data);
             }
             else {
@@ -107,7 +113,13 @@ let AuthService = class AuthService {
             if (user) {
                 const userWithTokens = await this.generateToken(user);
                 await this.unConfirmedUserModel.deleteOne({ email: acceptData.email });
-                response.cookie('access_token', userWithTokens.auth.token, { httpOnly: true, secure: true, sameSite: "none" });
+                response.cookie('access_token', userWithTokens.auth.token, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "none",
+                    maxAge: 60 * 60 * 1000,
+                    expires: new Date(Date.now() + (3600000))
+                });
                 response.status(200).send(userWithTokens);
             }
         }
