@@ -27,10 +27,9 @@ let ChatService = class ChatService {
         this.chatModel = chatModel;
         this.socketServer = socketServer;
     }
-    async getMyDialogs(inithiator) {
-        let myDialogs1 = await this.chatModel.find({ firstUserId: inithiator.userId });
-        let myDialogs2 = await this.chatModel.find({ secondUserId: inithiator.userId });
-        let finalDialogs = [...myDialogs1, ...myDialogs2];
+    async getMyDialogs(userId) {
+        let finalDialogs = await this.chatModel
+            .find({ $or: [{ firstUserId: userId }, { secondUserId: userId }] });
         finalDialogs.sort((prev, next) => {
             const prevLastMessageDate = new Date(prev.messages[prev.messages.length - 1].sendAt);
             const nextLastMessageDate = new Date(next.messages[next.messages.length - 1].sendAt);
@@ -43,43 +42,33 @@ let ChatService = class ChatService {
         });
         return finalDialogs;
     }
-    async addNewMessage(inithiator, dialogId, content, isFile) {
+    async addNewMessage(inithiatorJwtData, dialogId, content, isFile) {
         const message = {
             dialogId: dialogId,
             content: content,
             messageId: String(Math.floor(Math.random() * 5000000)),
             sendAt: String(new Date()),
-            senderId: inithiator.userId,
+            senderId: inithiatorJwtData.userId,
             isRead: false,
-            avatar: inithiator.avatar,
-            senderName: inithiator.name,
+            avatar: inithiatorJwtData.avatar,
+            senderName: inithiatorJwtData.name,
             status: false,
             isFile: isFile
         };
-        const prevChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
-        await this.chatModel.updateOne({ dialogId: message.dialogId }, {
-            $set: {
-                messages: [...prevChatState.messages, message]
-            }
-        });
+        await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } });
         const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
-        const userOne = await this.userService.getUserByUserId(currentChatState.firstUserId);
-        const userTwo = await this.userService.getUserByUserId(currentChatState.secondUserId);
-        const userOneSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userOne.email).map(el => el.socketId);
-        const userTwoSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userTwo.email).map(el => el.socketId);
-        if (userOneSocketData) {
-            this.socketServer.server.to([...userOneSocketData]).emit('message', { dialogId: message.dialogId });
+        const userSessionForSendingMessage = this.socketServer.activeFullUsersList
+            .filter(el => el.userId === currentChatState.firstUserId || el.userId === currentChatState.secondUserId)
+            .map(el => el.socketId);
+        if (userSessionForSendingMessage) {
+            this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
         }
-        if (userTwoSocketData) {
-            this.socketServer.server.to([...userTwoSocketData]).emit('message', { dialogId: message.dialogId });
-        }
-        return currentChatState.messages;
+        return currentChatState.messages[currentChatState.messages.length - 1];
     }
     async sendFileToChat(file, request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator = await this.userService.getUserByEmail(decodedJwt.email);
-        const updatedMessages = await this.addNewMessage(inithiator, request.body.dialogId, file.filename, true);
-        throw new common_1.HttpException(updatedMessages, 200);
+        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
+        throw new common_1.HttpException(addedMessages, 200);
     }
     async checkDialog(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
@@ -118,18 +107,16 @@ let ChatService = class ChatService {
     }
     async sendNewMessage(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator = await this.userService.getUserByEmail(decodedJwt.email);
-        const updatedMessages = await this.addNewMessage(inithiator, request.body.dialogId, request.body.content, false);
-        throw new common_1.HttpException(updatedMessages, 200);
+        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, request.body.content, false);
+        throw new common_1.HttpException(addedMessages, 200);
     }
     async getUserDialogs(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator = await this.userService.getUserByEmail(decodedJwt.email);
-        const findedDialogs = await this.getMyDialogs(inithiator);
+        const findedDialogs = await this.getMyDialogs(decodedJwt.userId);
         const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
             const firstUser = await this.userService.getUserByUserId(eachDialog.firstUserId);
             const secondUser = await this.userService.getUserByUserId(eachDialog.secondUserId);
-            if (inithiator.userId === eachDialog.firstUserId) {
+            if (decodedJwt.userId === eachDialog.firstUserId) {
                 return {
                     dialogId: eachDialog.dialogId,
                     userName: secondUser.name,
@@ -155,17 +142,16 @@ let ChatService = class ChatService {
     async startNewDialog(request) {
         const createChatDto = request.body;
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator = await this.userService.getUserByEmail(decodedJwt.email);
         const newDialogId = String(Math.floor(Math.random() * 1000000));
         await this.chatModel.create({
             dialogId: "dialog" + newDialogId,
             messages: [],
-            firstUserId: inithiator.userId,
+            firstUserId: decodedJwt.userId,
             secondUserId: createChatDto.userId
         });
         const createdChat = await this.chatModel.findOne({ dialogId: "dialog" + newDialogId });
-        const updatedMessages = await this.addNewMessage(inithiator, createdChat.dialogId, createChatDto.messageContent, false);
-        throw new common_1.HttpException(updatedMessages, 200);
+        const addedMessages = await this.addNewMessage(decodedJwt, createdChat.dialogId, createChatDto.messageContent, false);
+        throw new common_1.HttpException(addedMessages, 200);
     }
 };
 ChatService = __decorate([

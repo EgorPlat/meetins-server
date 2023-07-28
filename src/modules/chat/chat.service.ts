@@ -9,6 +9,7 @@ import { UserService } from 'src/modules/users/users.service';
 import { CreateChatDto } from 'src/dto/create-chat.dto';
 import { User } from 'src/schemas/user.schema';
 import { AppGateway } from 'src/app.gateway';
+import { DecodedJwt } from 'src/interfaces/decodedJwt';
 
 @Injectable()
 export class ChatService {
@@ -20,10 +21,9 @@ export class ChatService {
         private socketServer: AppGateway
     ) { }
 
-    async getMyDialogs(inithiator: User) {
-        let myDialogs1 = await this.chatModel.find({ firstUserId: inithiator.userId });
-        let myDialogs2 = await this.chatModel.find({ secondUserId: inithiator.userId });
-        let finalDialogs = [...myDialogs1, ...myDialogs2];
+    async getMyDialogs(userId: string) {
+        let finalDialogs = await this.chatModel
+        .find({ $or: [{firstUserId: userId}, { secondUserId: userId } ] });
 
         finalDialogs.sort((prev, next) => {
             const prevLastMessageDate = new Date (prev.messages[prev.messages.length - 1].sendAt);
@@ -37,47 +37,37 @@ export class ChatService {
         return finalDialogs;
     }
 
-    async addNewMessage(inithiator: User, dialogId: string, content: string, isFile: boolean) {
+    async addNewMessage(inithiatorJwtData: DecodedJwt, dialogId: string, content: string, isFile: boolean) {
         const message: IMessage = {
             dialogId: dialogId,
             content: content,
             messageId: String(Math.floor(Math.random() * 5000000)),
             sendAt: String(new Date()),
-            senderId: inithiator.userId,
+            senderId: inithiatorJwtData.userId,
             isRead: false,
-            avatar: inithiator.avatar,
-            senderName: inithiator.name,
+            avatar: inithiatorJwtData.avatar,
+            senderName: inithiatorJwtData.name,
             status: false,
             isFile: isFile
         }
-        const prevChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
-        await this.chatModel.updateOne({ dialogId: message.dialogId }, {
-            $set: {
-                messages: [...prevChatState.messages, message]
-            }
-        });
+        await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } } );
         const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
 
-        const userOne = await this.userService.getUserByUserId(currentChatState.firstUserId);
-        const userTwo = await this.userService.getUserByUserId(currentChatState.secondUserId);
-        const userOneSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userOne.email).map(el => el.socketId);
-        const userTwoSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userTwo.email).map(el => el.socketId);
-        
-        if (userOneSocketData) {
-            this.socketServer.server.to([...userOneSocketData]).emit('message', { dialogId: message.dialogId });
+        const userSessionForSendingMessage = this.socketServer.activeFullUsersList
+        .filter(el => el.userId === currentChatState.firstUserId || el.userId === currentChatState.secondUserId)
+        .map(el => el.socketId);
+
+        if (userSessionForSendingMessage) {
+            this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
         }
-        if (userTwoSocketData) {
-            this.socketServer.server.to([...userTwoSocketData]).emit('message', { dialogId: message.dialogId });
-        }
-        return currentChatState.messages;
+        return currentChatState.messages[currentChatState.messages.length - 1];
     }
     // Все обработчики роутов ниже, а вверху вспомогательные функции
     async sendFileToChat(file: any, request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
 
-        const updatedMessages = await this.addNewMessage(inithiator, request.body.dialogId, file.filename, true);
-        throw new HttpException(updatedMessages, 200);
+        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
+        throw new HttpException(addedMessages, 200);
     }
 
     async checkDialog(request: Request) {
@@ -126,20 +116,19 @@ export class ChatService {
 
     async sendNewMessage(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
-        const updatedMessages = await this.addNewMessage(inithiator, request.body.dialogId, request.body.content, false);
-        throw new HttpException(updatedMessages, 200);
+        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, request.body.content, false);
+        throw new HttpException(addedMessages, 200);
     }
     
     async getUserDialogs(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
-        const findedDialogs = await this.getMyDialogs(inithiator);
+        //const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
+        const findedDialogs = await this.getMyDialogs(decodedJwt.userId);
 
         const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
             const firstUser: User = await this.userService.getUserByUserId(eachDialog.firstUserId)
             const secondUser: User = await this.userService.getUserByUserId(eachDialog.secondUserId)
-            if (inithiator.userId === eachDialog.firstUserId) {
+            if (decodedJwt.userId === eachDialog.firstUserId) {
                 return {
                     dialogId: eachDialog.dialogId,
                     userName: secondUser.name,
@@ -166,19 +155,18 @@ export class ChatService {
     async startNewDialog(request: Request) {
         const createChatDto: CreateChatDto = request.body;
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
-
+        
         const newDialogId: string = String(Math.floor(Math.random() * 1000000));
         await this.chatModel.create({ 
             dialogId: "dialog" + newDialogId, 
             messages: [], 
-            firstUserId: inithiator.userId, 
+            firstUserId: decodedJwt.userId, 
             secondUserId: createChatDto.userId 
         });
 
         const createdChat = await this.chatModel.findOne({ dialogId: "dialog" + newDialogId });
-        const updatedMessages = await this.addNewMessage(inithiator, createdChat.dialogId, createChatDto.messageContent, false);
+        const addedMessages = await this.addNewMessage(decodedJwt, createdChat.dialogId, createChatDto.messageContent, false);
         
-        throw new HttpException(updatedMessages, 200);
+        throw new HttpException(addedMessages, 200);
     }
 }
