@@ -50,7 +50,7 @@ let AuthService = class AuthService {
             throw new common_1.HttpException({ message: 'Запрашиваемый пользователь не найден. Пожалуйста попробуйте снова.' }, 404);
         }
     }
-    async logout(response) {
+    async logout(response, request) {
         try {
             response.clearCookie('access_token');
         }

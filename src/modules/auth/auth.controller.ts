@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AcceptUserDto } from 'src/dto/accept-user.dto';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UserDto } from 'src/dto/user.dto';
 import { AuthService } from './auth.service';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 
 @ApiTags('Авторизация')
 @Controller('auth')
@@ -17,8 +17,8 @@ export class AuthController {
         return this.authService.login(userDto, res);
     }
     @Get('/logout')
-    logout(@Res() res: Response) {
-        return this.authService.logout(res);
+    logout(@Res() res: Response, @Req() req: Request) {
+        return this.authService.logout(res, req);
     }
     @Post('/registration')
     registration(@Body() userDto: CreateUserDto) {

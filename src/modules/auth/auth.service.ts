@@ -9,7 +9,7 @@ import { UserService } from 'src/modules/users/users.service';
 import { Model } from 'mongoose';
 import { MailService } from 'src/modules/mail/mail.service';
 import { AcceptUserDto } from 'src/dto/accept-user.dto';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -45,7 +45,7 @@ export class AuthService {
             throw new HttpException({message: 'Запрашиваемый пользователь не найден. Пожалуйста попробуйте снова.'}, 404);
         }
     }
-    async logout(response: Response) {
+    async logout(response: Response, request: Request) {
         try {
             response.clearCookie('access_token'); 
         }

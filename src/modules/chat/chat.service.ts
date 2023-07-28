@@ -60,14 +60,14 @@ export class ChatService {
 
         const userOne = await this.userService.getUserByUserId(currentChatState.firstUserId);
         const userTwo = await this.userService.getUserByUserId(currentChatState.secondUserId);
-        const userOneSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userOne.email)[0];
-        const userTwoSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userTwo.email)[0];
+        const userOneSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userOne.email).map(el => el.socketId);
+        const userTwoSocketData = this.socketServer.activeFullUsersList.filter(el => el.email === userTwo.email).map(el => el.socketId);
         
         if (userOneSocketData) {
-            this.socketServer.server.to(userOneSocketData.socketId).emit('message', { dialogId: message.dialogId });
+            this.socketServer.server.to([...userOneSocketData]).emit('message', { dialogId: message.dialogId });
         }
         if (userTwoSocketData) {
-            this.socketServer.server.to(userTwoSocketData.socketId).emit('message', { dialogId: message.dialogId });
+            this.socketServer.server.to([...userTwoSocketData]).emit('message', { dialogId: message.dialogId });
         }
         return currentChatState.messages;
     }

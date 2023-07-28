@@ -26,8 +26,8 @@ let AuthController = class AuthController {
     login(userDto, res) {
         return this.authService.login(userDto, res);
     }
-    logout(res) {
-        return this.authService.logout(res);
+    logout(res, req) {
+        return this.authService.logout(res, req);
     }
     registration(userDto) {
         return this.authService.registration(userDto);
@@ -50,8 +50,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)('/logout'),
     __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "logout", null);
 __decorate([
