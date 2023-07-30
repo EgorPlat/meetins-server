@@ -130,6 +130,17 @@ export class EventService {
         }
     }
 
+    async getCommentsForEventById(eventId: string | number) {
+        const {data} = await this.httpService.get(
+            `https://kudago.com/public-api/v1.2/events/${eventId}/comments/`
+        ).toPromise();
+        if(data) {
+            return data.results.slice(0, 30);
+        } else {
+            throw new HttpException('Ничего не найдено', 404);
+        }
+    }
+
     async sendInviteToUser(request: Request) {
         try {
             const decodedJwt = await this.jwtHelpService.decodeJwt(request);

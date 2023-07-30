@@ -116,6 +116,15 @@ let EventService = class EventService {
             throw new common_1.HttpException('Ничего не найдено', 404);
         }
     }
+    async getCommentsForEventById(eventId) {
+        const { data } = await this.httpService.get(`https://kudago.com/public-api/v1.2/events/${eventId}/comments/`).toPromise();
+        if (data) {
+            return data.results.slice(0, 30);
+        }
+        else {
+            throw new common_1.HttpException('Ничего не найдено', 404);
+        }
+    }
     async sendInviteToUser(request) {
         try {
             const decodedJwt = await this.jwtHelpService.decodeJwt(request);

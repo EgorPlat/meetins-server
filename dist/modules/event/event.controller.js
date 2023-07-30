@@ -26,6 +26,9 @@ let EventController = class EventController {
     getEventInfoById(request) {
         return this.eventService.getEventInfoById(request.body.eventId);
     }
+    getCommentsForEventById(request) {
+        return this.eventService.getCommentsForEventById(request.body.eventId);
+    }
     sendInviteToUser(request) {
         return this.eventService.sendInviteToUser(request);
     }
@@ -53,6 +56,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], EventController.prototype, "getEventInfoById", null);
+__decorate([
+    (0, common_1.Post)('/getCommentsForEventById'),
+    __param(0, (0, common_2.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], EventController.prototype, "getCommentsForEventById", null);
 __decorate([
     (0, common_1.Post)('/sendInviteToUser'),
     __param(0, (0, common_2.Request)()),

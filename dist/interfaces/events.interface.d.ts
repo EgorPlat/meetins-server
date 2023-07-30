@@ -10,3 +10,16 @@ export interface IShortEventInfo {
     price: string;
     images: any[];
 }
+export interface IEventComments {
+    id: number;
+    date_posted: number;
+    text: string;
+    user: {
+        name: string;
+        avatar: string;
+    };
+    is_deleted: boolean;
+    replies_count: number;
+    thread: any;
+    reply_to: any;
+}
