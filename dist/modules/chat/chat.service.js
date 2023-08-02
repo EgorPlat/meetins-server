@@ -67,8 +67,13 @@ let ChatService = class ChatService {
     }
     async sendFileToChat(file, request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
-        throw new common_1.HttpException(addedMessages, 200);
+        if (file.size > 200000) {
+            throw new common_1.HttpException({ message: "Слишком большой размер файла" }, 400);
+        }
+        else {
+            const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
+            throw new common_1.HttpException(addedMessages, 200);
+        }
     }
     async checkDialog(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);

@@ -65,9 +65,12 @@ export class ChatService {
     // Все обработчики роутов ниже, а вверху вспомогательные функции
     async sendFileToChat(file: any, request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-
-        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
-        throw new HttpException(addedMessages, 200);
+        if (file.size > 200000) {
+            throw new HttpException({ message: "Слишком большой размер файла"}, 400); 
+        } else {
+            const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
+            throw new HttpException(addedMessages, 200);
+        }
     }
 
     async checkDialog(request: Request) {
