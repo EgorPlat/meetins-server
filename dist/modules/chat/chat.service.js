@@ -29,17 +29,8 @@ let ChatService = class ChatService {
     }
     async getMyDialogs(userId) {
         let finalDialogs = await this.chatModel
-            .find({ $or: [{ firstUserId: userId }, { secondUserId: userId }] });
-        finalDialogs.sort((prev, next) => {
-            const prevLastMessageDate = new Date(prev.messages[prev.messages.length - 1].sendAt);
-            const nextLastMessageDate = new Date(next.messages[next.messages.length - 1].sendAt);
-            if (prevLastMessageDate < nextLastMessageDate) {
-                return 1;
-            }
-            else {
-                return -1;
-            }
-        });
+            .find({ $or: [{ firstUserId: userId }, { secondUserId: userId }] })
+            .sort({ "messages.sendAt": -1 });
         return finalDialogs;
     }
     async addNewMessage(inithiatorJwtData, dialogId, content, isFile) {
@@ -47,7 +38,7 @@ let ChatService = class ChatService {
             dialogId: dialogId,
             content: content,
             messageId: String(Math.floor(Math.random() * 5000000)),
-            sendAt: String(new Date()),
+            sendAt: new Date(),
             senderId: inithiatorJwtData.userId,
             isRead: false,
             avatar: inithiatorJwtData.avatar,
@@ -95,10 +86,9 @@ let ChatService = class ChatService {
     }
     async markDialogMessagesAsReaded(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator = await this.userService.getUserByEmail(decodedJwt.email);
         const dialog = await this.chatModel.findOne({ dialogId: request.body.dialogId });
         const updatedDialogMessages = dialog.messages.map((message) => {
-            if (message.senderId !== inithiator.userId) {
+            if (message.senderId !== decodedJwt.userId) {
                 return Object.assign(Object.assign({}, message), { isRead: true });
             }
             return message;
@@ -118,24 +108,25 @@ let ChatService = class ChatService {
     async getUserDialogs(request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
         const findedDialogs = await this.getMyDialogs(decodedJwt.userId);
+        const requestedUser = await this.userService.getUserByUserId(decodedJwt.userId);
         const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
-            const firstUser = await this.userService.getUserByUserId(eachDialog.firstUserId);
-            const secondUser = await this.userService.getUserByUserId(eachDialog.secondUserId);
-            if (decodedJwt.userId === eachDialog.firstUserId) {
+            if (requestedUser.userId === eachDialog.firstUserId) {
+                const userInDialog = await this.userService.getUserByUserId(eachDialog.secondUserId);
                 return {
                     dialogId: eachDialog.dialogId,
-                    userName: secondUser.name,
-                    userAvatar: secondUser.avatar,
+                    userName: userInDialog.name,
+                    userAvatar: userInDialog.avatar,
                     isRead: true,
                     content: eachDialog.messages[0].content,
                     messages: eachDialog.messages
                 };
             }
             else {
+                const userInDialog = await this.userService.getUserByUserId(eachDialog.firstUserId);
                 return {
                     dialogId: eachDialog.dialogId,
-                    userName: firstUser.name,
-                    userAvatar: firstUser.avatar,
+                    userName: userInDialog.name,
+                    userAvatar: userInDialog.avatar,
                     isRead: true,
                     content: eachDialog.messages[0].content,
                     messages: eachDialog.messages

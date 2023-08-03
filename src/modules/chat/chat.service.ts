@@ -23,17 +23,8 @@ export class ChatService {
 
     async getMyDialogs(userId: string) {
         let finalDialogs = await this.chatModel
-        .find({ $or: [{firstUserId: userId}, { secondUserId: userId } ] });
-
-        finalDialogs.sort((prev, next) => {
-            const prevLastMessageDate = new Date (prev.messages[prev.messages.length - 1].sendAt);
-            const nextLastMessageDate = new Date (next.messages[next.messages.length - 1].sendAt);
-            if (prevLastMessageDate < nextLastMessageDate) {
-                return 1;
-            } else {
-                return -1;
-            }
-        })
+        .find({ $or: [{firstUserId: userId}, { secondUserId: userId } ] })
+        .sort({ "messages.sendAt": -1 });
         return finalDialogs;
     }
 
@@ -42,7 +33,7 @@ export class ChatService {
             dialogId: dialogId,
             content: content,
             messageId: String(Math.floor(Math.random() * 5000000)),
-            sendAt: String(new Date()),
+            sendAt: new Date(),
             senderId: inithiatorJwtData.userId,
             isRead: false,
             avatar: inithiatorJwtData.avatar,
@@ -97,11 +88,10 @@ export class ChatService {
 
     async markDialogMessagesAsReaded(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
         const dialog: Chat = await this.chatModel.findOne({ dialogId: request.body.dialogId });
 
         const updatedDialogMessages = dialog.messages.map((message) => {
-            if (message.senderId !== inithiator.userId) {
+            if (message.senderId !== decodedJwt.userId) {
                 return {
                     ...message,
                     isRead: true,
@@ -125,26 +115,26 @@ export class ChatService {
     
     async getUserDialogs(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        //const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
         const findedDialogs = await this.getMyDialogs(decodedJwt.userId);
+        const requestedUser: User = await this.userService.getUserByUserId(decodedJwt.userId);
 
         const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
-            const firstUser: User = await this.userService.getUserByUserId(eachDialog.firstUserId)
-            const secondUser: User = await this.userService.getUserByUserId(eachDialog.secondUserId)
-            if (decodedJwt.userId === eachDialog.firstUserId) {
+            if (requestedUser.userId === eachDialog.firstUserId) {
+                const userInDialog: User = await this.userService.getUserByUserId(eachDialog.secondUserId)
                 return {
                     dialogId: eachDialog.dialogId,
-                    userName: secondUser.name,
-                    userAvatar: secondUser.avatar,
+                    userName: userInDialog.name,
+                    userAvatar: userInDialog.avatar,
                     isRead: true,
                     content: eachDialog.messages[0].content,
                     messages: eachDialog.messages
                 }
             } else {
+                const userInDialog: User = await this.userService.getUserByUserId(eachDialog.firstUserId)
                 return {
                     dialogId: eachDialog.dialogId,
-                    userName: firstUser.name,
-                    userAvatar: firstUser.avatar,
+                    userName: userInDialog.name,
+                    userAvatar: userInDialog.avatar,
                     isRead: true,
                     content: eachDialog.messages[0].content,
                     messages: eachDialog.messages
