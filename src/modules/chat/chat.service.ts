@@ -23,7 +23,7 @@ export class ChatService {
 
     async getMyDialogs(userId: string) {
         let finalDialogs = await this.chatModel
-        .find({ $or: [{firstUserId: userId}, { secondUserId: userId } ] })
+        .find({ $or: [{ firstUserId: userId }, { secondUserId: userId }] })
         .sort({ "messages.sendAt": -1 });
         return finalDialogs;
     }
