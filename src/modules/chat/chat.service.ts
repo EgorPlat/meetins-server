@@ -28,7 +28,12 @@ export class ChatService {
         return finalDialogs;
     }
 
-    async addNewMessage(inithiatorJwtData: DecodedJwt, dialogId: string, content: string, isFile: boolean) {
+    async addNewMessage(
+        inithiatorJwtData: DecodedJwt, 
+        dialogId: string, 
+        content: string, 
+        type: string
+    ) {
         const message: IMessage = {
             dialogId: dialogId,
             content: content,
@@ -39,7 +44,7 @@ export class ChatService {
             avatar: inithiatorJwtData.avatar,
             senderName: inithiatorJwtData.name,
             status: false,
-            isFile: isFile
+            type: type
         }
         await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } } );
         const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
@@ -56,10 +61,10 @@ export class ChatService {
     // Все обработчики роутов ниже, а вверху вспомогательные функции
     async sendFileToChat(file: any, request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        if (file.size > 200000) {
+        if (file.size > 5300000) {
             throw new HttpException({ message: "Слишком большой размер файла"}, 400); 
         } else {
-            const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, true);
+            const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, file.filename, file.mimetype);
             throw new HttpException(addedMessages, 200);
         }
     }
@@ -109,7 +114,7 @@ export class ChatService {
 
     async sendNewMessage(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, request.body.content, false);
+        const addedMessages = await this.addNewMessage(decodedJwt, request.body.dialogId, request.body.content, 'text');
         throw new HttpException(addedMessages, 200);
     }
     
@@ -158,7 +163,7 @@ export class ChatService {
         });
 
         const createdChat = await this.chatModel.findOne({ dialogId: "dialog" + newDialogId });
-        const addedMessages = await this.addNewMessage(decodedJwt, createdChat.dialogId, createChatDto.messageContent, false);
+        const addedMessages = await this.addNewMessage(decodedJwt, createdChat.dialogId, createChatDto.messageContent, 'text');
         
         throw new HttpException(addedMessages, 200);
     }
