@@ -22,7 +22,12 @@ let JwtAuthGuard = class JwtAuthGuard {
         try {
             const jwt = req.cookies['access_token'];
             if (!jwt) {
-                res.clearCookie('access_token');
+                res.cookie('access_token', '', {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "none",
+                    expires: new Date(Date.now())
+                });
                 throw new common_1.UnauthorizedException('Невалидный токен. Обновите.');
             }
             const user = this.jwtService.verify(jwt);

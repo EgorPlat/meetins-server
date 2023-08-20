@@ -13,7 +13,14 @@ export class JwtAuthGuard implements CanActivate {
             const jwt = req.cookies['access_token'];
             
             if(!jwt) {
-                res.clearCookie('access_token');
+                res.cookie('access_token', '', 
+                { 
+                    httpOnly: true, 
+                    secure: true, 
+                    sameSite: "none", 
+                    expires: new Date(Date.now())
+                }
+            )
                 throw new UnauthorizedException('Невалидный токен. Обновите.')
             }
 

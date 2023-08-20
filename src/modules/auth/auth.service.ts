@@ -47,9 +47,14 @@ export class AuthService {
     }
     async logout(response: Response, request: Request) {
         try {
-            //response.clearCookie('access_token');
-            //response.clearCookie('refresh_token');
-            response.cookie('access_token', '');
+            response.cookie('access_token', '', 
+                { 
+                    httpOnly: true, 
+                    secure: true, 
+                    sameSite: "none", 
+                    expires: new Date(Date.now())
+                }
+            )
             response.status(200).send('Logged out successfully');
         }
         catch (err) {
