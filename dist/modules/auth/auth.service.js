@@ -52,12 +52,12 @@ let AuthService = class AuthService {
     }
     async logout(response, request) {
         try {
-            response.clearCookie('access_token');
-            response.status(200).send('Logged out');
+            response.cookie('access_token', '');
+            response.status(200).send({ message: "Logged out successfully" });
         }
         catch (err) {
             console.log(err);
-            response.status(500).send('Failed');
+            response.status(500).send({ message: "Server Error" });
         }
     }
     async generateToken(user) {

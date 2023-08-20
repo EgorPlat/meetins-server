@@ -47,12 +47,14 @@ export class AuthService {
     }
     async logout(response: Response, request: Request) {
         try {
-            response.clearCookie('access_token');
-            response.status(200).send('Logged out');
+            //response.clearCookie('access_token');
+            //response.clearCookie('refresh_token');
+            response.cookie('access_token', '');
+            response.status(200).send('Logged out successfully');
         }
         catch (err) {
             console.log(err);
-            response.status(500).send('Failed');
+            response.status(500).send('Server Error');
         }
     }
     private async generateToken(user: User) {
