@@ -8,11 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MeetingsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const meetings_service_1 = require("./meetings.service");
 let MeetingsController = class MeetingsController {
     constructor(meetingsService) {
@@ -21,6 +23,9 @@ let MeetingsController = class MeetingsController {
     getAllMeetings() {
         return this.meetingsService.getAllMeetings();
     }
+    createNewMeeting(request) {
+        return this.meetingsService.createNewMeeting(request);
+    }
 };
 __decorate([
     (0, common_1.Get)('/get-all-meetings'),
@@ -28,10 +33,16 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], MeetingsController.prototype, "getAllMeetings", null);
+__decorate([
+    (0, common_1.Post)('/create-meeting'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], MeetingsController.prototype, "createNewMeeting", null);
 MeetingsController = __decorate([
     (0, common_1.Controller)('meetings'),
     (0, swagger_1.ApiTags)('Встречи'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [meetings_service_1.MeetingsService])
 ], MeetingsController);
 exports.MeetingsController = MeetingsController;

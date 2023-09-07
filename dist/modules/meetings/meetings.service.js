@@ -26,6 +26,22 @@ let MeetingsService = class MeetingsService {
     async getAllMeetings() {
         return 'Normal';
     }
+    async createNewMeeting(request) {
+        const { participants, date, description, goal } = request.body;
+        const newMeeting = {
+            participants,
+            date,
+            description,
+            goal
+        };
+        const createdMeeting = await this.meetingModel.create(newMeeting);
+        if (createdMeeting) {
+            return createdMeeting;
+        }
+        else {
+            throw new common_1.HttpException({ errorMessage: "Пожалуйста попробуйте снова" }, 500);
+        }
+    }
 };
 MeetingsService = __decorate([
     (0, common_1.Injectable)(),

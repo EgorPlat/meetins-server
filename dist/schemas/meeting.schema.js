@@ -16,7 +16,7 @@ let Meeting = class Meeting {
 };
 __decorate([
     (0, swagger_1.ApiProperty)({ example: '1', description: 'Уникальный ид' }),
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: "meeting" + `${Math.floor(Math.random() * 9999999)}` }),
     __metadata("design:type", String)
 ], Meeting.prototype, "meetingId", void 0);
 __decorate([

@@ -9,7 +9,7 @@ export type MeetingDocument = Meeting & Document;
 export class Meeting {     
 
     @ApiProperty({example: '1', description: 'Уникальный ид'})
-    @Prop()
+    @Prop({ default: "meeting" + `${Math.floor(Math.random()*9999999)}`})
     meetingId: string;
 
     @ApiProperty({example: [ 'userId1', 'userId2'], description: 'Айди пользователей'})

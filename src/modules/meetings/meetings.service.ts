@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Request } from 'express';
 import { HelpJwtService } from 'src/help/token.service';
@@ -15,5 +15,21 @@ export class MeetingsService {
   
   async getAllMeetings() {
     return 'Normal'
+  }
+
+  async createNewMeeting(request: Request) {
+    const { participants, date, description, goal } = request.body;
+    const newMeeting = {
+      participants,
+      date,
+      description,
+      goal
+    };
+    const createdMeeting = await this.meetingModel.create(newMeeting);
+    if (createdMeeting) {
+      return createdMeeting;
+    } else {
+      throw new HttpException({ errorMessage: "Пожалуйста попробуйте снова" }, 500);
+    }
   }
 }
