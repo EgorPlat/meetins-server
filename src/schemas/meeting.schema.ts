@@ -23,7 +23,7 @@ export class Meeting {
     @ApiProperty({example: 'Описание встречи', description: 'Описание встречи'})
     @Prop()
     description: string;
-
+    
     @ApiProperty({example: 'Цель встречи', description: 'Цель встречи'})
     @Prop()
     goal: string;
@@ -31,5 +31,17 @@ export class Meeting {
     @ApiProperty({example: { userId: "userId", text: "text", date: "2023-10-11" }, description: 'Комментарии'})
     @Prop({ default: [] })
     comments: MeetingComment[];
+
+    @ApiProperty({example: 'image1.png', description: 'Ссылка на картинку превью'})
+    @Prop({ default: "no-preview.png" })
+    preview: string;
+
+    @ApiProperty({example: 'Название', description: 'Название встречи'})
+    @Prop()
+    title: string;
+
+    @ApiProperty({example: 'Адрес', description: 'Адрес встречи'})
+    @Prop()
+    address: string;
 }
 export const MeetingSchema = SchemaFactory.createForClass(Meeting);

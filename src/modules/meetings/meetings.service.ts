@@ -18,12 +18,14 @@ export class MeetingsService {
   }
 
   async createNewMeeting(request: Request) {
-    const { participants, date, description, goal } = request.body;
+    const { participants, date, description, goal, title, address } = request.body;
     const newMeeting = {
       participants,
       date,
       description,
-      goal
+      goal,
+      title,
+      address
     };
     const createdMeeting = await this.meetingModel.create(newMeeting);
     if (createdMeeting) {
