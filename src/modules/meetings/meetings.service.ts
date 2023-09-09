@@ -14,7 +14,8 @@ export class MeetingsService {
   ) {}
   
   async getAllMeetings() {
-    return 'Normal'
+    const meetings = await this.meetingModel.find();
+    return meetings;
   }
 
   async createNewMeeting(request: Request) {
