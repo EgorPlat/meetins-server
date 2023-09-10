@@ -15,5 +15,8 @@ export declare class Meeting {
     description: string;
     goal: string;
     comments: MeetingComment[];
+    preview: string;
+    title: string;
+    address: string;
 }
 export declare const MeetingSchema: import("mongoose").Schema<Document<Meeting, any, any>, import("mongoose").Model<Document<Meeting, any, any>, any, any, any>, {}, {}>;

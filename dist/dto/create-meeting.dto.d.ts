@@ -3,4 +3,6 @@ export declare class CreateMeetingDto {
     readonly date: Date;
     readonly description: string;
     readonly goal: string;
+    readonly title: string;
+    readonly address: string;
 }

@@ -44,6 +44,21 @@ __decorate([
     (0, mongoose_1.Prop)({ default: [] }),
     __metadata("design:type", Array)
 ], Meeting.prototype, "comments", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'image1.png', description: 'Ссылка на картинку превью' }),
+    (0, mongoose_1.Prop)({ default: "no-preview.png" }),
+    __metadata("design:type", String)
+], Meeting.prototype, "preview", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Название', description: 'Название встречи' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Meeting.prototype, "title", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Адрес', description: 'Адрес встречи' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Meeting.prototype, "address", void 0);
 Meeting = __decorate([
     (0, mongoose_1.Schema)()
 ], Meeting);

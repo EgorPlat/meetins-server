@@ -24,15 +24,18 @@ let MeetingsService = class MeetingsService {
         this.meetingModel = meetingModel;
     }
     async getAllMeetings() {
-        return 'Normal';
+        const meetings = await this.meetingModel.find();
+        return meetings;
     }
     async createNewMeeting(request) {
-        const { participants, date, description, goal } = request.body;
+        const { participants, date, description, goal, title, address } = request.body;
         const newMeeting = {
             participants,
             date,
             description,
-            goal
+            goal,
+            title,
+            address
         };
         const createdMeeting = await this.meetingModel.create(newMeeting);
         if (createdMeeting) {

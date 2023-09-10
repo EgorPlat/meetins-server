@@ -6,7 +6,9 @@ export declare class MeetingsService {
     private jwtHelpService;
     private meetingModel;
     constructor(jwtHelpService: HelpJwtService, meetingModel: Model<MeetingDocument>);
-    getAllMeetings(): Promise<string>;
+    getAllMeetings(): Promise<(Meeting & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    })[]>;
     createNewMeeting(request: Request): Promise<Meeting & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
