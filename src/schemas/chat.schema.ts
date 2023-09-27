@@ -22,6 +22,6 @@ export class Chat {
     @ApiProperty({example: 'userId', description: 'Айди пользователя'})
     @Prop()
     secondUserId: string;
-
+    
 }
 export const ChatSchema = SchemaFactory.createForClass(Chat);

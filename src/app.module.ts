@@ -20,6 +20,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TariffsModule } from "./modules/tariffs/tariffs.module";
 import { PaymentModule } from "./modules/payment/payment.module";
 import { MeetingsModule } from "./modules/meetings/meetings.module";
+import { GroupsModule } from "./modules/groups/groupsPosts.module";
 
 @Module({
   controllers: [AppController, SettingsController],
@@ -39,7 +40,8 @@ import { MeetingsModule } from "./modules/meetings/meetings.module";
     MailModule,
     TariffsModule,
     PaymentModule,
-    MeetingsModule
+    MeetingsModule,
+    GroupsModule
   ],
 })
 export class AppModule {
