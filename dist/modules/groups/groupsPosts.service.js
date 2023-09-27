@@ -18,10 +18,12 @@ const mongoose_1 = require("@nestjs/mongoose");
 const token_service_1 = require("../../help/token.service");
 const mongoose_2 = require("mongoose");
 const groups_schema_1 = require("../../schemas/groups.schema");
+const user_schema_1 = require("../../schemas/user.schema");
 let GroupsService = class GroupsService {
-    constructor(jwtHelpService, groupsModel) {
+    constructor(jwtHelpService, groupsModel, usersModel) {
         this.jwtHelpService = jwtHelpService;
         this.groupsModel = groupsModel;
+        this.usersModel = usersModel;
     }
     async getAllGroups(request) {
         const allGroups = await this.groupsModel.find();
@@ -30,6 +32,21 @@ let GroupsService = class GroupsService {
     async getGroupById(request) {
         const groupInfo = await this.groupsModel.findOne({ groupId: request.body.id });
         return groupInfo;
+    }
+    async getGroupMembersInfo(request) {
+        const { membersId } = await this.groupsModel.findOne({ groupId: request.body.id });
+        if (membersId) {
+            const userData = await this.usersModel.find({ userId: { $in: membersId } }, {
+                name: true,
+                _id: false,
+                avatar: true,
+                login: true
+            });
+            throw new common_1.HttpException(userData, 200);
+        }
+        else {
+            throw new common_1.HttpException({ errorMessage: "Ничего не найдено." }, 500);
+        }
     }
     async createNewGroup(request) {
         const newGroup = request.body;
@@ -45,7 +62,9 @@ let GroupsService = class GroupsService {
 GroupsService = __decorate([
     (0, common_1.Injectable)(),
     __param(1, (0, mongoose_1.InjectModel)(groups_schema_1.Group.name)),
+    __param(2, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
     __metadata("design:paramtypes", [token_service_1.HelpJwtService,
+        mongoose_2.Model,
         mongoose_2.Model])
 ], GroupsService);
 exports.GroupsService = GroupsService;

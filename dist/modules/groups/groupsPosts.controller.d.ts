@@ -9,6 +9,7 @@ export declare class GroupsController {
     getGroupById(request: Request): Promise<import("../../schemas/groups.schema").Group & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
+    getGroupMembersInfo(request: Request): Promise<void>;
     createNewGroup(request: Request): Promise<import("../../schemas/groups.schema").Group & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;

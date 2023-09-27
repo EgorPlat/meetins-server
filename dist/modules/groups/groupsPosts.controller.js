@@ -26,6 +26,9 @@ let GroupsController = class GroupsController {
     getGroupById(request) {
         return this.groupsService.getGroupById(request);
     }
+    getGroupMembersInfo(request) {
+        return this.groupsService.getGroupMembersInfo(request);
+    }
     createNewGroup(request) {
         return this.groupsService.createNewGroup(request);
     }
@@ -44,6 +47,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], GroupsController.prototype, "getGroupById", null);
+__decorate([
+    (0, common_1.Post)('/get-group-members-info'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "getGroupMembersInfo", null);
 __decorate([
     (0, common_1.Post)('/create-new-group'),
     __param(0, (0, common_1.Req)()),

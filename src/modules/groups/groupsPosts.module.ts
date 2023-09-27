@@ -6,6 +6,7 @@ import { HelpJwtModule } from 'src/help/token.module';
 import { GroupsService } from './groupsPosts.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Group, GroupSchema } from 'src/schemas/groups.schema';
+import { User, UserSchema } from 'src/schemas/user.schema';
 
 @Module({
   providers: [GroupsService, AppGateway],
@@ -15,6 +16,7 @@ import { Group, GroupSchema } from 'src/schemas/groups.schema';
     HelpJwtModule,
     MongooseModule.forFeature([
       { name: Group.name, schema: GroupSchema },
+      { name: User.name, schema: UserSchema },
     ]),
   ],
 })

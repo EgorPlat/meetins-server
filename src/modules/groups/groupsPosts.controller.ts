@@ -20,6 +20,10 @@ export class GroupsController {
     getGroupById(@Req() request: Request) {
         return this.groupsService.getGroupById(request);
     }
+    @Post('/get-group-members-info')
+    getGroupMembersInfo(@Req() request: Request) {
+        return this.groupsService.getGroupMembersInfo(request);
+    }
 
     @Post('/create-new-group')
     createNewGroup(@Req() request: Request) {
