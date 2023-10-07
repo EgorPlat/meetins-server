@@ -5,6 +5,7 @@ import { HelpJwtService } from 'src/help/token.service';
 import { Model } from 'mongoose';
 import { Group, GroupsDocument } from 'src/schemas/groups.schema';
 import { User, UserDocument } from 'src/schemas/user.schema';
+import { IGroupPost } from 'src/interfaces/groupPost.interface';
 
 @Injectable()
 export class GroupsService {
@@ -41,10 +42,45 @@ export class GroupsService {
 
   async createNewGroup(request: Request) {
     const newGroup = request.body;
+    const { userId } = this.jwtHelpService.decodeJwt(request);
+    const groupCandidate = {
+      groupId: 1,
+      name: newGroup.name,
+      description: newGroup.description,
+      membersId: userId,
+      creatorId: userId
+    }
     const createdGroup = await this.groupsModel.create(newGroup);
 
     if (createdGroup) {
       return createdGroup;
+    } else {
+      throw new HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);
+    }
+  }
+
+  async createNewPostInGroup(files: any, request: Request) {
+    const filesForPost = files.map(el => {
+      return {
+        src: el.filename,
+        type: el.mimetype
+      }
+    });
+    const newPost: IGroupPost = {
+      id: Math.floor(Math.random()*100000),
+      title: request.body.name,
+      description: request.body.description,
+      date: Date.now(),
+      likes: 1,
+      views: 1,
+      comments: [],
+      files: filesForPost
+    }
+    const updatedGroup = await this.groupsModel.updateOne({ groupId: request.body.groupId }, {$push: {
+      posts: newPost
+    }});
+    if (newPost) {
+      return newPost;
     } else {
       throw new HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);
     }

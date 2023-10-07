@@ -50,9 +50,44 @@ let GroupsService = class GroupsService {
     }
     async createNewGroup(request) {
         const newGroup = request.body;
+        const { userId } = this.jwtHelpService.decodeJwt(request);
+        const groupCandidate = {
+            groupId: 1,
+            name: newGroup.name,
+            description: newGroup.description,
+            membersId: userId,
+            creatorId: userId
+        };
         const createdGroup = await this.groupsModel.create(newGroup);
         if (createdGroup) {
             return createdGroup;
+        }
+        else {
+            throw new common_1.HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);
+        }
+    }
+    async createNewPostInGroup(files, request) {
+        const filesForPost = files.map(el => {
+            return {
+                src: el.filename,
+                type: el.mimetype
+            };
+        });
+        const newPost = {
+            id: Math.floor(Math.random() * 100000),
+            title: request.body.name,
+            description: request.body.description,
+            date: Date.now(),
+            likes: 1,
+            views: 1,
+            comments: [],
+            files: filesForPost
+        };
+        const updatedGroup = await this.groupsModel.updateOne({ groupId: request.body.groupId }, { $push: {
+                posts: newPost
+            } });
+        if (newPost) {
+            return newPost;
         }
         else {
             throw new common_1.HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);

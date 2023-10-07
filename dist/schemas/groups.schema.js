@@ -49,6 +49,11 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Group.prototype, "creatorId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив публикаций' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Group.prototype, "posts", void 0);
 Group = __decorate([
     (0, mongoose_1.Schema)()
 ], Group);

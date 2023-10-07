@@ -16,6 +16,8 @@ exports.GroupsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const groupsPosts_service_1 = require("./groupsPosts.service");
+const platform_express_1 = require("@nestjs/platform-express");
+const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
 let GroupsController = class GroupsController {
     constructor(groupsService) {
         this.groupsService = groupsService;
@@ -31,6 +33,9 @@ let GroupsController = class GroupsController {
     }
     createNewGroup(request) {
         return this.groupsService.createNewGroup(request);
+    }
+    createNewPostInGroup(files, request) {
+        return this.groupsService.createNewPostInGroup(files, request);
     }
 };
 __decorate([
@@ -61,6 +66,15 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], GroupsController.prototype, "createNewGroup", null);
+__decorate([
+    (0, common_1.Post)('/create-new-post-in-group'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FilesInterceptor)('media', 5, fileSize_middleware_1.FinallMulterOptions)),
+    __param(0, (0, common_1.UploadedFiles)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "createNewPostInGroup", null);
 GroupsController = __decorate([
     (0, common_1.Controller)('groups'),
     (0, swagger_1.ApiTags)('Группы'),
