@@ -26,9 +26,9 @@ export class GroupsService {
   }
 
   async getGroupMembersInfo(request: Request) {
-    const { membersId } = await this.groupsModel.findOne({ groupId: request.body.id });
-    if (membersId) {
-      const userData = await this.usersModel.find({ userId: { $in: membersId } }, {
+    const groupId = await this.groupsModel.findOne({ groupId: request.body.id });
+    if (groupId?.membersId) {
+      const userData = await this.usersModel.find({ userId: { $in: groupId?.membersId } }, {
         name: true,
         _id: false,
         avatar: true,
