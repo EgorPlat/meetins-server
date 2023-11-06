@@ -93,6 +93,23 @@ let GroupsService = class GroupsService {
             throw new common_1.HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);
         }
     }
+    async createNewTalkInGroup(request) {
+        const { talkData } = request.body;
+        const updatedGroup = await this.groupsModel.updateOne({ groupId: talkData.groupId }, { $push: {
+                talks: {
+                    id: Math.floor(Math.random() * 1000000),
+                    title: talkData.title,
+                    dateOfCreation: new Date(),
+                    messages: []
+                }
+            } });
+        if (updatedGroup) {
+            return true;
+        }
+        else {
+            throw new common_1.HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
+        }
+    }
 };
 GroupsService = __decorate([
     (0, common_1.Injectable)(),

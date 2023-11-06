@@ -19,3 +19,16 @@ export interface IGroupFile {
     type: string
 }
 export type Post = IGroupPost;
+
+
+export interface IGroupTalkMessage {
+    userId: string,
+    date: Date,
+    text: string
+}
+export interface IGroupTalk {
+    id: number,
+    title: string,
+    dateOfCreation: Date,
+    messages: IGroupTalkMessage[]
+}

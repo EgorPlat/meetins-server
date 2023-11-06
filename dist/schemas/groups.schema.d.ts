@@ -6,7 +6,7 @@
 /// <reference types="mongoose/types/mongooseoptions" />
 /// <reference types="mongoose/types/schemaoptions" />
 import { Document } from 'mongoose';
-import { IGroupPost } from "src/interfaces/groupPost.interface";
+import { IGroupPost, IGroupTalk } from "src/interfaces/group.interface";
 export declare type GroupsDocument = Group & Document;
 export declare class Group {
     groupId: number;
@@ -17,5 +17,9 @@ export declare class Group {
     membersId: string[];
     creatorId: string;
     posts: IGroupPost[];
+    talks: IGroupTalk[];
+    photos: string[];
+    video: string[];
+    attachments: string[];
 }
 export declare const GroupSchema: import("mongoose").Schema<Document<Group, any, any>, import("mongoose").Model<Document<Group, any, any>, any, any, any>, {}, {}>;

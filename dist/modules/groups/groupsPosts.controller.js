@@ -37,6 +37,9 @@ let GroupsController = class GroupsController {
     createNewPostInGroup(files, request) {
         return this.groupsService.createNewPostInGroup(files, request);
     }
+    createNewTalkInGroup(request) {
+        return this.groupsService.createNewTalkInGroup(request);
+    }
 };
 __decorate([
     (0, common_1.Get)('/get-all-groups'),
@@ -75,6 +78,13 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], GroupsController.prototype, "createNewPostInGroup", null);
+__decorate([
+    (0, common_1.Post)('/create-new-talk-in-group'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "createNewTalkInGroup", null);
 GroupsController = __decorate([
     (0, common_1.Controller)('groups'),
     (0, swagger_1.ApiTags)('Группы'),

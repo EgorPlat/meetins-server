@@ -54,6 +54,26 @@ __decorate([
     (0, mongoose_1.Prop)({ default: [] }),
     __metadata("design:type", Array)
 ], Group.prototype, "posts", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив обсуждений' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Group.prototype, "talks", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив фото' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Group.prototype, "photos", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив видео' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Group.prototype, "video", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив вложений(файлов)' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Group.prototype, "attachments", void 0);
 Group = __decorate([
     (0, mongoose_1.Schema)()
 ], Group);

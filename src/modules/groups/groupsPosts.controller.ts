@@ -36,4 +36,9 @@ export class GroupsController {
     createNewPostInGroup(@UploadedFiles() files, @Req() request: Request) {
         return this.groupsService.createNewPostInGroup(files, request);
     }
+
+    @Post('/create-new-talk-in-group')
+    createNewTalkInGroup(@Req() request: Request) {
+        return this.groupsService.createNewTalkInGroup(request);
+    }
 }

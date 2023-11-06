@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ApiProperty } from "@nestjs/swagger";
 import { Document } from 'mongoose';
-import { IGroupPost } from "src/interfaces/groupPost.interface";
+import { IGroupPost, IGroupTalk } from "src/interfaces/group.interface";
 //import { IGroupPost, IGroupPostComment } from "src/interfaces/groupPost.interface";
 export type GroupsDocument = Group & Document;
 
@@ -40,5 +40,20 @@ export class Group {
     @Prop({ default: [] })
     posts: IGroupPost[];
 
+    @ApiProperty({example: [], description: 'Массив обсуждений'})
+    @Prop({ default: [] })
+    talks: IGroupTalk[];
+
+    @ApiProperty({example: [], description: 'Массив фото'})
+    @Prop({ default: [] })
+    photos: string[];
+
+    @ApiProperty({example: [], description: 'Массив видео'})
+    @Prop({ default: [] })
+    video: string[];
+
+    @ApiProperty({example: [], description: 'Массив вложений(файлов)'})
+    @Prop({ default: [] })
+    attachments: string[];
 }
 export const GroupSchema = SchemaFactory.createForClass(Group);

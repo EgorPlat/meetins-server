@@ -3,7 +3,7 @@ import { HelpJwtService } from 'src/help/token.service';
 import { Model } from 'mongoose';
 import { Group, GroupsDocument } from 'src/schemas/groups.schema';
 import { UserDocument } from 'src/schemas/user.schema';
-import { IGroupPost } from 'src/interfaces/groupPost.interface';
+import { IGroupPost } from 'src/interfaces/group.interface';
 export declare class GroupsService {
     private jwtHelpService;
     private groupsModel;
@@ -20,4 +20,5 @@ export declare class GroupsService {
         _id: any;
     }>;
     createNewPostInGroup(files: any, request: Request): Promise<IGroupPost>;
+    createNewTalkInGroup(request: Request): Promise<boolean>;
 }
