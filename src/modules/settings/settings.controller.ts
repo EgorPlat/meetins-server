@@ -1,10 +1,12 @@
-import { Body, Controller, Post, Req, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Post, Req, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { SettingsService } from './settings.service';
 import {Request} from 'express';
 import { diskStorage } from 'multer';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('settings')
+@UseGuards(JwtAuthGuard)
 export class SettingsController {
 
     constructor(private settingsService: SettingsService) {}
@@ -28,6 +30,10 @@ export class SettingsController {
     @Post('/update-status')
     updateUserStatus(@Req() request: Request) {
         return this.settingsService.updateUserStatus(request);
+    }
+    @Post('/update-filter-status')
+    updateFilterStatus(@Req() request: Request) {
+        return this.settingsService.updateFilterStatus(request);
     }
     @Post('/update-account')
     updateUserAccount(@Req() request: Request) {

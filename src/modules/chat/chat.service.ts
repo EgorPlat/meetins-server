@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Request } from 'express';
+import { Request, response } from 'express';
 import { HelpJwtService } from 'src/help/token.service';
 import { IMessage } from 'src/interfaces/chatMessage.interface';
 import { Chat, ChatDocument } from 'src/schemas/chat.schema';
@@ -23,7 +23,7 @@ export class ChatService {
 
     async getMyDialogs(userId: string) {
         let finalDialogs = await this.chatModel
-        .find({ $or: [{ firstUserId: userId }, { secondUserId: userId }] })
+        .find({ members: { $elemMatch: { $eq: userId } } })
         .sort({ "messages.sendAt": -1 });
         return finalDialogs;
     }
@@ -49,12 +49,14 @@ export class ChatService {
         await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } } );
         const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
 
-        const userSessionForSendingMessage = this.socketServer.activeFullUsersList
-        .filter(el => el.userId === currentChatState.firstUserId || el.userId === currentChatState.secondUserId)
-        .map(el => el.socketId);
+        if (currentChatState) {
+            const userSessionForSendingMessage = this.socketServer.activeFullUsersList
+            .filter(el => currentChatState.members.includes(el.userId))
+            .map(el => el.socketId);
 
-        if (userSessionForSendingMessage) {
-            this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
+            if (userSessionForSendingMessage) {
+                this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
+            }
         }
         return currentChatState.messages[currentChatState.messages.length - 1];
     }
@@ -73,16 +75,19 @@ export class ChatService {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
         const inithiator: User = await this.userService.getUserByEmail(decodedJwt.email);
 
-        const dialogTry1: Chat[] = await this.chatModel.find({ firstUserId: request.body.userId, secondUserId: inithiator.userId });
-        const dialogTry2: Chat[] = await this.chatModel.find({ secondUserId: request.body.userId, firstUserId: inithiator.userId });
-
-        if (dialogTry1.length !== 0) {
-            throw new HttpException(dialogTry1, 200);
+        let dialogInfo = await this.chatModel.aggregate([
+            { 
+                $match: {
+                    members: {
+                        $all: [inithiator.userId, request.body.userId],
+                        $size: 2
+                    }
+                }
+            }
+        ]);
+        if (dialogInfo) {
+            return dialogInfo;
         }
-        if (dialogTry2.length !== 0) {
-            throw new HttpException(dialogTry2, 200);
-        }
-        throw new HttpException('Ничего не найдено по данному запросу.', 404);
     }
 
     async getDialogMessages(request: Request) {
@@ -92,24 +97,13 @@ export class ChatService {
     }
 
     async markDialogMessagesAsReaded(request: Request) {
-        const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const dialog: Chat = await this.chatModel.findOne({ dialogId: request.body.dialogId });
-
-        const updatedDialogMessages = dialog.messages.map((message) => {
-            if (message.senderId !== decodedJwt.userId) {
-                return {
-                    ...message,
-                    isRead: true,
-                }
-            }
-            return message;
-        })
         await this.chatModel.updateOne({ dialogId: request.body.dialogId }, {
-            $set: {
-                messages: updatedDialogMessages
-            }
-        });
-        throw new HttpException('Success', 200);
+            $set: { "messages.$[].isRead": true }
+        }, { multi: true });
+        const updatedDialogs = await this.getUserDialogs(request);
+
+        if (updatedDialogs) return updatedDialogs;
+        throw new HttpException('Что-то пошло не так', 400);
     }
 
     async sendNewMessage(request: Request) {
@@ -120,34 +114,26 @@ export class ChatService {
     
     async getUserDialogs(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const findedDialogs = await this.getMyDialogs(decodedJwt.userId);
+        const findedDialogs = await this.getMyDialogs(decodedJwt?.userId);
         const requestedUser: User = await this.userService.getUserByUserId(decodedJwt.userId);
 
         const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
-            if (requestedUser.userId === eachDialog.firstUserId) {
-                const userInDialog: User = await this.userService.getUserByUserId(eachDialog.secondUserId)
-                return {
-                    dialogId: eachDialog.dialogId,
-                    userName: userInDialog.name,
-                    userAvatar: userInDialog.avatar,
-                    isRead: true,
-                    content: eachDialog.messages[0].content,
-                    messages: eachDialog.messages
-                }
-            } else {
-                const userInDialog: User = await this.userService.getUserByUserId(eachDialog.firstUserId)
-                return {
-                    dialogId: eachDialog.dialogId,
-                    userName: userInDialog.name,
-                    userAvatar: userInDialog.avatar,
-                    isRead: true,
-                    content: eachDialog.messages[0].content,
-                    messages: eachDialog.messages
-                }
+            const userChatId = eachDialog.members.filter(memberId => memberId !== requestedUser.userId);
+            const userChatIdInfo: User = await this.userService.getUserByUserId(userChatId[userChatId.length-1]);
+            return {
+                dialogId: eachDialog.dialogId,
+                userName: userChatIdInfo.name,
+                userAvatar: userChatIdInfo.avatar,
+                isRead: true,
+                content: eachDialog.messages[0].content,
+                messages: eachDialog.messages
             }
         }))
 
-        throw new HttpException(shortDialogsForUser, 200);
+        if (shortDialogsForUser) {
+            return shortDialogsForUser;
+        }
+        throw new HttpException("Что-то пошло не так.", 400);
     }
 
     async startNewDialog(request: Request) {
@@ -157,9 +143,8 @@ export class ChatService {
         const newDialogId: string = String(Math.floor(Math.random() * 1000000));
         await this.chatModel.create({ 
             dialogId: "dialog" + newDialogId, 
-            messages: [], 
-            firstUserId: decodedJwt.userId, 
-            secondUserId: createChatDto.userId 
+            messages: [],
+            members: [decodedJwt.userId, createChatDto.userId]
         });
 
         const createdChat = await this.chatModel.findOne({ dialogId: "dialog" + newDialogId });

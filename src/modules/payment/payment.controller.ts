@@ -6,7 +6,6 @@ import { PaymentService } from './payment.service';
 
 @Controller('payment')
 @ApiTags('Оплата')
-//@UseGuards(JwtAuthGuard)
 
 export class PaymentController {
 

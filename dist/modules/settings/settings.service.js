@@ -36,6 +36,11 @@ let SettingsService = class SettingsService {
         const updatedUser = await this.userService.updateUserAccount(decodedToken, request.body);
         throw new common_1.HttpException(updatedUser, 200);
     }
+    async updateFilterStatus(request) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+        const updatedUser = await this.userService.updateUserFilterStatus(decodedToken, request.body.isFilter);
+        throw new common_1.HttpException(updatedUser, 200);
+    }
     async updateUserProfile(request) {
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const updatedUser = await this.userService.updateUserProfile(decodedToken, request.body);

@@ -5,7 +5,7 @@ import { HelpJwtService } from 'src/help/token.service';
 import { Model } from 'mongoose';
 import { Group, GroupsDocument } from 'src/schemas/groups.schema';
 import { User, UserDocument } from 'src/schemas/user.schema';
-import { IGroupPost } from 'src/interfaces/group.interface';
+import { IGroup, IGroupPost } from 'src/interfaces/group.interface';
 
 @Injectable()
 export class GroupsService {
@@ -16,13 +16,37 @@ export class GroupsService {
   ) {}
     
   async getAllGroups(request: Request) {
-    const allGroups = await this.groupsModel.find();
-    return allGroups;
+    const { userId } = this.jwtHelpService.decodeJwt(request);
+    const inithiator = await this.usersModel.findOne({ userId: userId }, { isFilter: true, interests: true });
+    let groupList = [];
+    if (!inithiator.isFilter) {
+      groupList = await this.groupsModel.find();
+    } else {
+      groupList = await this.groupsModel.find({ interestsId: { $elemMatch: { $in: inithiator.interests } } });
+    }
+    return groupList;
   }
 
   async getGroupById(request: Request) {
     const groupInfo = await this.groupsModel.findOne({ groupId: request.body.id });
     return groupInfo;
+  }
+
+  async joinToGroup(request: Request) {
+    const { userId } = this.jwtHelpService.decodeJwt(request);
+    const groupInfo = await this.groupsModel.findOneAndUpdate({ groupId: request.body.groupId }, {
+      $push: { membersId: userId }
+    }, {returnDocument: 'after'});
+    return groupInfo;
+  }
+
+  async manageGroupByid(file: any, request: Request) {
+    const updatedGroup = await this.groupsModel.findOneAndUpdate({ groupId: request.body.groupId }, { $set: {
+      headAvatar: file.filename,
+      name: request.body.name,
+      description: request.body.description
+    }}, { returnDocument: 'after' });
+    return updatedGroup;
   }
 
   async getGroupMembersInfo(request: Request) {
@@ -44,14 +68,14 @@ export class GroupsService {
     const newGroup = request.body;
     const { userId } = this.jwtHelpService.decodeJwt(request);
     const groupCandidate = {
-      groupId: 1,
+      groupId: Math.floor(Math.random()*1000000),
       name: newGroup.name,
       description: newGroup.description,
-      membersId: userId,
-      creatorId: userId
+      membersId: [userId],
+      creatorId: userId,
+      interestsId: newGroup.interestsId
     }
-    const createdGroup = await this.groupsModel.create(newGroup);
-
+    const createdGroup = await this.groupsModel.create(groupCandidate);
     if (createdGroup) {
       return createdGroup;
     } else {
@@ -71,37 +95,142 @@ export class GroupsService {
       title: request.body.name,
       description: request.body.description,
       date: Date.now(),
-      likes: 1,
+      likes: [],
       views: 1,
       comments: [],
       files: filesForPost
     }
-    const updatedGroup = await this.groupsModel.updateOne({ groupId: request.body.groupId }, {$push: {
+    const updatedGroup = await this.groupsModel.findOneAndUpdate({ groupId: request.body.groupId }, {$push: {
       posts: newPost
-    }});
-    if (newPost) {
-      return newPost;
+    }}, { returnDocument: 'after' });
+
+    if (updatedGroup) {
+      return updatedGroup;
     } else {
       throw new HttpException({ errorMessage: "Пожалуйста попробуйте снова." }, 500);
     }
   }
 
   async createNewTalkInGroup(request: Request) {
-    const { talkData } = request.body;
+    const { title, groupId } = request.body;
 
-    const updatedGroup = await this.groupsModel.updateOne({ groupId: talkData.groupId }, {$push: {
-      talks: {
-        id: Math.floor(Math.random()*1000000),
-        title: talkData.title,
-        dateOfCreation: new Date(),
-        messages: []
-      }
-    }});
+    const newTalk = {
+      id: Math.floor(Math.random()*1000000),
+      title: title,
+      dateOfCreation: new Date(),
+      messages: []
+    };
+
+    const updatedGroup = await this.groupsModel.findOneAndUpdate({ groupId: groupId }, {$push: {
+      talks: newTalk
+    }}, {returnDocument: "after"});
 
     if (updatedGroup) {
-      return true;
+      return updatedGroup;
     } else {
       throw new HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
     }
   }
+
+  async addNewMessageInGroupTalk(request: Request) {
+    const { groupId, talkId, text, userId } = request.body;
+
+    const findedGroup = await this.groupsModel.find({ groupId: groupId });
+
+    if (findedGroup) {
+      return findedGroup[0].talks.filter(el => el.id === talkId)[0].messages;
+    } else {
+      throw new HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
+    }
+  }
+
+  async getGroupTalksList(request: Request) {
+    const { groupId } = request.body;
+
+    const findedTalks = await this.groupsModel.find({ groupId: groupId }, {
+      talks: true
+    })
+
+    if (findedTalks) {
+      return findedTalks[0]?.talks;
+    } else {
+      throw new HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
+    }
+  }
+
+  async createNewMessageInGroupTalk(request: Request) {
+    const { groupId, talkId, text } = request.body;
+    const { userId } = this.jwtHelpService.decodeJwt(request);
+
+    const message = { userId: userId, date: new Date(), text: text }
+
+    const findedGroup = await this.groupsModel.updateOne(
+      { "talks.id": talkId, groupId: groupId },
+      { 
+        $push: { 
+          "talks.$.messages": message 
+        } 
+      }
+    );
+
+    if (findedGroup) {
+      return message;
+    } else {
+      throw new HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
+    }
+  }
+
+  async getTalkMessagesInGroupById(request: Request) {
+    const { groupId, talkId } = request.body;
+
+    const findedGroup = await this.groupsModel.findOne(
+      { "talks.id": talkId, groupId: groupId },
+    );
+
+    if (findedGroup) {
+      return findedGroup.talks.filter(talk => talk.id === talkId)[0]?.messages;
+    } else {
+      throw new HttpException({ errorMessage: "Внутренняя ошибка сервера." }, 500);
+    }
+  }
+
+  async addNewCommentIntoPost(request: Request, groupId: number, postId: number) {
+    const { userId } = this.jwtHelpService.decodeJwt(request);
+    const inithiator = await this.usersModel.findOne({ userId: userId }, { avatar: true });
+    const date = new Date();
+
+    const newComment = {
+      userId: userId,
+      date: date,
+      avatar: inithiator.avatar,
+      text: request.body.text
+    }
+
+    const updatedGroup = await this.groupsModel.findOneAndUpdate({ groupId: +groupId, "posts.id": +postId }, {
+      $push: { "posts.$.comments": newComment }
+    }, {returnDocument: 'after'})
+
+    return updatedGroup;
+  }
+
+
+  async likePostInGroup(request: any, groupId: string, postId: string) {
+    const decodedToken = this.jwtHelpService.decodeJwt(request);
+    const updatedGroup = this.groupsModel.findOneAndUpdate({ groupId: +groupId, "posts.id": +postId }, {
+        $addToSet: { "posts.$.likes": decodedToken.userId }
+    }, { returnDocument: "after" });
+
+    if (updatedGroup) return updatedGroup;
+    throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
+  } 
+
+  async unlikePostInGroup(request: any, groupId: string, postId: string) {
+    const decodedToken = this.jwtHelpService.decodeJwt(request);
+    const updatedUser = this.groupsModel.findOneAndUpdate({ groupId: +groupId, "posts.id": +postId }, {
+        $pull: { "posts.$.likes": decodedToken.userId }
+    }, { returnDocument: "after" });
+
+    if (updatedUser) return updatedUser;
+    throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
+  } 
 }

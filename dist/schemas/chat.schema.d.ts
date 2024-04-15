@@ -11,7 +11,6 @@ export declare type ChatDocument = Chat & Document;
 export declare class Chat {
     dialogId: string;
     messages: IMessage[];
-    firstUserId: string;
-    secondUserId: string;
+    members: string[];
 }
 export declare const ChatSchema: import("mongoose").Schema<Document<Chat, any, any>, import("mongoose").Model<Document<Chat, any, any>, any, any, any>, {}, {}>;

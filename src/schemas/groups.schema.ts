@@ -6,7 +6,6 @@ import { IGroupPost, IGroupTalk } from "src/interfaces/group.interface";
 export type GroupsDocument = Group & Document;
 
 @Schema()
-
 export class Group {
     @ApiProperty({example: 1, description: 'Уникальный ид'})
     @Prop()
@@ -19,6 +18,10 @@ export class Group {
     @ApiProperty({example: 'Описание', description: 'Описание сообщества'})
     @Prop()
     description: string;
+
+    @ApiProperty({example: 'Массив интересов', description: 'Массив интересов сообщества'})
+    @Prop()
+    interestsId: string[];
 
     @ApiProperty({example: 'mainAvatar1.png', description: 'Путь к файлу аватара для группы'})
     @Prop({ default: "no-avatar.jpg" })

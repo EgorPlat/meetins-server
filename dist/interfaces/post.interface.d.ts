@@ -1,9 +1,12 @@
 export interface IPost {
     id: string;
     title: string;
-    images: string[];
+    files: {
+        src: string;
+        type: string;
+    }[];
     date: string;
     description: string;
-    likes: number;
+    likes: string[];
 }
 export declare type Post = IPost;

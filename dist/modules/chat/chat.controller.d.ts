@@ -7,7 +7,21 @@ export declare class ChatController {
     sendNewMessage(request: Request): Promise<void>;
     getDialogMessages(request: Request): Promise<void>;
     startNewDialog(request: Request): Promise<void>;
-    getUserDialogs(request: Request): Promise<void>;
-    checkDialog(request: Request): Promise<void>;
-    markDialogMessagesAsReaded(request: Request): Promise<void>;
+    getUserDialogs(request: Request): Promise<{
+        dialogId: string;
+        userName: string;
+        userAvatar: string;
+        isRead: boolean;
+        content: string;
+        messages: import("../../interfaces/chatMessage.interface").IMessage[];
+    }[]>;
+    checkDialog(request: Request): Promise<any[]>;
+    markDialogMessagesAsReaded(request: Request): Promise<{
+        dialogId: string;
+        userName: string;
+        userAvatar: string;
+        isRead: boolean;
+        content: string;
+        messages: import("../../interfaces/chatMessage.interface").IMessage[];
+    }[]>;
 }

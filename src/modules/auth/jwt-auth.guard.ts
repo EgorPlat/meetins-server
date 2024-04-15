@@ -21,7 +21,7 @@ export class JwtAuthGuard implements CanActivate {
                     expires: new Date(Date.now())
                 }
             )
-                throw new UnauthorizedException('Невалидный токен. Обновите.')
+                throw new UnauthorizedException('Время сессии истекло.')
             }
 
             const user = this.jwtService.verify(jwt);
@@ -30,7 +30,7 @@ export class JwtAuthGuard implements CanActivate {
         }
         catch(e) {
             res.clearCookie('access_token');
-            throw new UnauthorizedException('Невалидный токен. Обновите.')
+            throw new UnauthorizedException('Время сессии истекло.')
         }
     }
 }

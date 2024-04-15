@@ -23,12 +23,12 @@ GroupsModule = __decorate([
         providers: [groupsPosts_service_1.GroupsService, app_gateway_1.AppGateway],
         controllers: [groupsPosts_controller_1.GroupsController],
         imports: [
-            auth_module_1.AuthModule,
             token_module_1.HelpJwtModule,
             mongoose_1.MongooseModule.forFeature([
                 { name: groups_schema_1.Group.name, schema: groups_schema_1.GroupSchema },
                 { name: user_schema_1.User.name, schema: user_schema_1.UserSchema },
             ]),
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
     })
 ], GroupsModule);

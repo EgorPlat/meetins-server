@@ -23,12 +23,12 @@ InterestsModule = __decorate([
         providers: [interest_service_1.InterestsService, app_gateway_1.AppGateway],
         controllers: [interest_controller_1.InterestsController],
         imports: [
-            auth_module_1.AuthModule,
             users_module_1.UsersModule,
             token_module_1.HelpJwtModule,
             mongoose_1.MongooseModule.forFeature([
                 { name: interests_schema_1.Interest.name, schema: interests_schema_1.InterestSchema },
             ]),
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
     })
 ], InterestsModule);

@@ -50,6 +50,19 @@ let UserService = class UserService {
         });
         return user;
     }
+    async getUserByLoginMainInfoOnly(login) {
+        const user = await this.userModel.findOne({ login: login }, {
+            password: false,
+            _id: false,
+            __v: false,
+            innerInvites: false,
+            outerInvites: false,
+            isFilter: false,
+            markedUsers: false,
+            purchasedOpportunities: false
+        });
+        return user;
+    }
     async getUserList() {
         const user = await this.userModel.find({}, {
             password: false,
@@ -70,13 +83,107 @@ let UserService = class UserService {
         });
         return peoples;
     }
+    async addUserIntoMarkedList(request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const { neededUserId } = request.body;
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId }, { $push: {
+                markedUsers: neededUserId
+            } }, { returnDocument: 'after' });
+        if (updatedUser)
+            return updatedUser;
+        throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
+    }
+    async formMarkedUsersInfoByIds(userId) {
+        const usersInfo = await this.userModel.aggregate([
+            {
+                $match: { userId: userId }
+            },
+            {
+                $unwind: "$markedUsers"
+            },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "markedUsers",
+                    foreignField: "userId",
+                    as: "markedUserInfo"
+                }
+            },
+            {
+                $unwind: "$markedUserInfo"
+            },
+            {
+                $project: {
+                    _id: false,
+                    "markedUserInfo.name": true,
+                    "markedUserInfo.avatar": true,
+                    "markedUserInfo.login": true,
+                    "markedUserInfo.userId": true
+                }
+            }
+        ]);
+        if (usersInfo)
+            return usersInfo.map(el => { return el.markedUserInfo; });
+    }
+    async updateUserTag(request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const { title, color } = request.body;
+        const updatedUser = await this.userModel.findOneAndUpdate({ userId: userId }, {
+            $set: { tag: { title, color } }
+        }, { returnDocument: 'after' });
+        if (updatedUser)
+            return updatedUser;
+        throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
+    }
+    async getMarkedUsersInfo(request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const markedUsersInfo = await this.formMarkedUsersInfoByIds(userId);
+        if (markedUsersInfo) {
+            return markedUsersInfo;
+        }
+        throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
+    }
+    async removeUserFromMarkedList(request, removedUserId) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        await this.userModel.updateOne({ userId: userId }, { $pull: {
+                markedUsers: removedUserId
+            } });
+        const markedUsersInfo = await this.formMarkedUsersInfoByIds(userId);
+        if (markedUsersInfo) {
+            return markedUsersInfo;
+        }
+        throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
+    }
     async getUserListByPageNumber(request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const inithiator = await this.userModel.findOne({ userId: userId });
         const { pageNumber, pageSize, filters } = request.body;
-        const users = await this.userModel.find({}, {
-            password: false,
-            _id: false,
-            __v: false
-        });
+        let users = [];
+        if (inithiator.isFilter) {
+            users = await this.userModel.find({ interests: { $elemMatch: { $in: inithiator.interests } } }, {
+                password: false,
+                _id: false,
+                __v: false
+            });
+        }
+        else {
+            if (filters.event) {
+                users = await this.userModel.find({
+                    events: { $elemMatch: { $eq: String(filters.event) } }
+                }, {
+                    password: false,
+                    _id: false,
+                    __v: false
+                });
+            }
+            else {
+                users = await this.userModel.find({}, {
+                    password: false,
+                    _id: false,
+                    __v: false
+                });
+            }
+        }
         let peoples = users.map((user, index) => {
             return {
                 email: user.email,
@@ -139,6 +246,10 @@ let UserService = class UserService {
             return updatedUser;
         }
     }
+    async updateUserFilterStatus(decodedToken, filterStatus) {
+        const updatedUser = await this.userModel.findOneAndUpdate({ userId: decodedToken.userId }, { $set: { isFilter: filterStatus } }, { returnDocument: 'after' });
+        return updatedUser;
+    }
     async updateUserAccount(decodedToken, accountData) {
         const users = await this.userModel.find({
             $or: [
@@ -180,10 +291,9 @@ let UserService = class UserService {
         }
     }
     async updateUserAvatar(file, user) {
-        await this.userModel.updateOne({ email: user.email }, { $set: {
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: user.email }, { $set: {
                 avatar: file.filename,
-            } });
-        const updatedUser = await this.getUpdatedUserByEmail(user.email);
+            } }, { returnDocument: "after" });
         if (updatedUser) {
             return updatedUser;
         }
@@ -248,22 +358,25 @@ let UserService = class UserService {
             return updatedUser;
         }
     }
-    async addUserPost(file, request) {
+    async addUserPost(files, request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
-        const user = await this.userModel.findOne({ email: decodedToken.email });
         const newPost = {
             id: String(Math.floor(Math.random() * 150000)),
             title: body.title,
             description: body.description,
-            images: [file.filename],
+            files: files.map(el => {
+                return {
+                    src: el.filename,
+                    type: el.mimetype
+                };
+            }),
             date: String(new Date()),
-            likes: 0,
+            likes: [],
         };
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
-                posts: [...user.posts, newPost]
-            } });
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: decodedToken.email }, { $push: {
+                posts: newPost
+            } }, { returnDocument: "after" });
         if (updatedUser) {
             throw new common_1.HttpException(updatedUser, 200);
         }
@@ -271,11 +384,30 @@ let UserService = class UserService {
             throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
         }
     }
+    async addLikeToUserPost(request, postId, userId) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
+            $addToSet: { "posts.$.likes": decodedToken.userId }
+        }, { returnDocument: "after" });
+        if (updatedUser)
+            return updatedUser;
+        throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
+    }
+    async removeLikeFromUserPost(request, postId, userId) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
+            $pull: { "posts.$.likes": decodedToken.userId }
+        }, { returnDocument: "after" });
+        if (updatedUser)
+            return updatedUser;
+        throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
+    }
 };
 UserService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model, token_service_1.HelpJwtService])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        token_service_1.HelpJwtService])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=users.service.js.map

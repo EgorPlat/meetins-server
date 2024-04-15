@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
 const settings_service_1 = require("./settings.service");
 const multer_1 = require("multer");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let SettingsController = class SettingsController {
     constructor(settingsService) {
         this.settingsService = settingsService;
@@ -26,6 +27,9 @@ let SettingsController = class SettingsController {
     }
     updateUserStatus(request) {
         return this.settingsService.updateUserStatus(request);
+    }
+    updateFilterStatus(request) {
+        return this.settingsService.updateFilterStatus(request);
     }
     updateUserAccount(request) {
         return this.settingsService.updateUserAccount(request);
@@ -60,6 +64,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SettingsController.prototype, "updateUserStatus", null);
 __decorate([
+    (0, common_1.Post)('/update-filter-status'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], SettingsController.prototype, "updateFilterStatus", null);
+__decorate([
     (0, common_1.Post)('/update-account'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
@@ -75,6 +86,7 @@ __decorate([
 ], SettingsController.prototype, "updateUserProfile", null);
 SettingsController = __decorate([
     (0, common_1.Controller)('settings'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [settings_service_1.SettingsService])
 ], SettingsController);
 exports.SettingsController = SettingsController;

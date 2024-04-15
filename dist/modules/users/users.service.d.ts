@@ -21,7 +21,19 @@ export declare class UserService {
     getUserByLogin(login: string): Promise<User & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
+    getUserByLoginMainInfoOnly(login: string): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
     getUserList(): Promise<IPeople[]>;
+    addUserIntoMarkedList(request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    formMarkedUsersInfoByIds(userId: string): Promise<any[]>;
+    updateUserTag(request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    getMarkedUsersInfo(request: Request): Promise<any[]>;
+    removeUserFromMarkedList(request: Request, removedUserId: string): Promise<any[]>;
     getUserListByPageNumber(request: Request): Promise<{
         peoples: IPeople[];
         maxPage: number;
@@ -37,6 +49,9 @@ export declare class UserService {
         _id: any;
     }>;
     updateUserStatus(decodedToken: any, status: string): Promise<User>;
+    updateUserFilterStatus(decodedToken: any, filterStatus: string): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
     updateUserAccount(decodedToken: any, accountData: IAccount): Promise<User>;
     updateUserProfile(decodedToken: any, accountData: IProfile): Promise<User>;
     updateUserAvatar(file: any, user: User): Promise<User>;
@@ -44,6 +59,12 @@ export declare class UserService {
     addUserEvent(request: Request): Promise<User>;
     deleteUserEvent(request: Request): Promise<User>;
     updateUserInterest(request: Request): Promise<User>;
-    removeUserInterest(request: any): Promise<User>;
-    addUserPost(file: any, request: Request): Promise<void>;
+    removeUserInterest(request: Request): Promise<User>;
+    addUserPost(files: any, request: Request): Promise<void>;
+    addLikeToUserPost(request: Request, postId: string, userId: string): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    removeLikeFromUserPost(request: Request, postId: string, userId: string): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
 }

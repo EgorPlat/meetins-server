@@ -30,6 +30,11 @@ __decorate([
     __metadata("design:type", String)
 ], Group.prototype, "description", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Массив интересов', description: 'Массив интересов сообщества' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Array)
+], Group.prototype, "interestsId", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: 'mainAvatar1.png', description: 'Путь к файлу аватара для группы' }),
     (0, mongoose_1.Prop)({ default: "no-avatar.jpg" }),
     __metadata("design:type", String)

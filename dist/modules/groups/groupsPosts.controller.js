@@ -18,6 +18,7 @@ const swagger_1 = require("@nestjs/swagger");
 const groupsPosts_service_1 = require("./groupsPosts.service");
 const platform_express_1 = require("@nestjs/platform-express");
 const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let GroupsController = class GroupsController {
     constructor(groupsService) {
         this.groupsService = groupsService;
@@ -27,6 +28,12 @@ let GroupsController = class GroupsController {
     }
     getGroupById(request) {
         return this.groupsService.getGroupById(request);
+    }
+    joinToGroup(request) {
+        return this.groupsService.joinToGroup(request);
+    }
+    manageGroupByid(file, request) {
+        return this.groupsService.manageGroupByid(file, request);
     }
     getGroupMembersInfo(request) {
         return this.groupsService.getGroupMembersInfo(request);
@@ -39,6 +46,24 @@ let GroupsController = class GroupsController {
     }
     createNewTalkInGroup(request) {
         return this.groupsService.createNewTalkInGroup(request);
+    }
+    createNewMessageInGroupTalk(request) {
+        return this.groupsService.createNewMessageInGroupTalk(request);
+    }
+    getGroupTalksList(request) {
+        return this.groupsService.getGroupTalksList(request);
+    }
+    getTalkMessagesInGroupById(request) {
+        return this.groupsService.getTalkMessagesInGroupById(request);
+    }
+    addNewCommentIntoPost(params, request) {
+        return this.groupsService.addNewCommentIntoPost(request, params.groupId, params.postId);
+    }
+    likePostInGroup(params, request) {
+        return this.groupsService.likePostInGroup(request, params.groupId, params.postId);
+    }
+    unlikePostInGroup(params, request) {
+        return this.groupsService.unlikePostInGroup(request, params.groupId, params.postId);
     }
 };
 __decorate([
@@ -55,6 +80,22 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], GroupsController.prototype, "getGroupById", null);
+__decorate([
+    (0, common_1.Post)('/join-to-group'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "joinToGroup", null);
+__decorate([
+    (0, common_1.Post)('/manage-group-by-id'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('headImage', fileSize_middleware_1.FinallMulterOptions)),
+    __param(0, (0, common_1.UploadedFile)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "manageGroupByid", null);
 __decorate([
     (0, common_1.Post)('/get-group-members-info'),
     __param(0, (0, common_1.Req)()),
@@ -85,9 +126,55 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], GroupsController.prototype, "createNewTalkInGroup", null);
+__decorate([
+    (0, common_1.Post)('/create-new-message-in-group-talk'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "createNewMessageInGroupTalk", null);
+__decorate([
+    (0, common_1.Post)('/get-group-talks-by-id'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "getGroupTalksList", null);
+__decorate([
+    (0, common_1.Post)('/get-group-talk-messages-by-id'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "getTalkMessagesInGroupById", null);
+__decorate([
+    (0, common_1.Post)('/add-new-comment-into-post/:groupId/:postId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "addNewCommentIntoPost", null);
+__decorate([
+    (0, common_1.Put)('/like/:groupId/:postId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "likePostInGroup", null);
+__decorate([
+    (0, common_1.Put)('/unlike/:groupId/:postId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], GroupsController.prototype, "unlikePostInGroup", null);
 GroupsController = __decorate([
     (0, common_1.Controller)('groups'),
     (0, swagger_1.ApiTags)('Группы'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [groupsPosts_service_1.GroupsService])
 ], GroupsController);
 exports.GroupsController = GroupsController;

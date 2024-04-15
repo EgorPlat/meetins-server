@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { ProfileController } from './profile.controller';
 import { AuthModule } from 'src/modules/auth/auth.module';
@@ -9,6 +9,6 @@ import { HelpJwtModule } from 'src/help/token.module';
 @Module({
   providers: [ProfileService, AppGateway],
   controllers: [ProfileController],
-  imports: [AuthModule, UsersModule, HelpJwtModule]
+  imports: [UsersModule, HelpJwtModule, forwardRef(() => AuthModule)]
 })
 export class ProfileModule {}

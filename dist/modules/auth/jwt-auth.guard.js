@@ -28,7 +28,7 @@ let JwtAuthGuard = class JwtAuthGuard {
                     sameSite: "none",
                     expires: new Date(Date.now())
                 });
-                throw new common_1.UnauthorizedException('Невалидный токен. Обновите.');
+                throw new common_1.UnauthorizedException('Время сессии истекло.');
             }
             const user = this.jwtService.verify(jwt);
             req.user = user;
@@ -36,7 +36,7 @@ let JwtAuthGuard = class JwtAuthGuard {
         }
         catch (e) {
             res.clearCookie('access_token');
-            throw new common_1.UnauthorizedException('Невалидный токен. Обновите.');
+            throw new common_1.UnauthorizedException('Время сессии истекло.');
         }
     }
 };

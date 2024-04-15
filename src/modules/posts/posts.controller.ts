@@ -25,4 +25,5 @@ export class PostsController {
     getAllPostCommentsByPostIdPagination(@Req() request: Request) {
         return this.postsService.getAllPostCommentsByPostIdPagination(request);
     }
+    
 }

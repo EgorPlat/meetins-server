@@ -40,6 +40,11 @@ __decorate([
     __metadata("design:type", String)
 ], Meeting.prototype, "goal", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Максимальное количество участников', description: '25' }),
+    (0, mongoose_1.Prop)({ default: 25 }),
+    __metadata("design:type", String)
+], Meeting.prototype, "maxParticipants", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: { userId: "userId", text: "text", date: "2023-10-11" }, description: 'Комментарии' }),
     (0, mongoose_1.Prop)({ default: [] }),
     __metadata("design:type", Array)
@@ -59,6 +64,16 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Meeting.prototype, "address", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Создатель', description: 'Айди создателя' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Meeting.prototype, "creatorId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Фотографии или видео', description: 'Массив строк(адресов файла)' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Meeting.prototype, "files", void 0);
 Meeting = __decorate([
     (0, mongoose_1.Schema)()
 ], Meeting);

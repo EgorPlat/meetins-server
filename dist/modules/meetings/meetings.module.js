@@ -16,6 +16,7 @@ const meetings_service_1 = require("./meetings.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const meetings_controller_1 = require("./meetings.controller");
 const meeting_schema_1 = require("../../schemas/meeting.schema");
+const user_schema_1 = require("../../schemas/user.schema");
 let MeetingsModule = class MeetingsModule {
 };
 MeetingsModule = __decorate([
@@ -23,10 +24,11 @@ MeetingsModule = __decorate([
         providers: [meetings_service_1.MeetingsService, app_gateway_1.AppGateway],
         controllers: [meetings_controller_1.MeetingsController],
         imports: [
-            auth_module_1.AuthModule,
             users_module_1.UsersModule,
             token_module_1.HelpJwtModule,
             mongoose_1.MongooseModule.forFeature([{ name: meeting_schema_1.Meeting.name, schema: meeting_schema_1.MeetingSchema }]),
+            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
     })
 ], MeetingsModule);

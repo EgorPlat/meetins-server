@@ -26,8 +26,22 @@ export declare class UserController {
         peoples: import("src/interfaces/people.interface").IPeople[];
         maxPage: number;
     }>;
+    addUserIntoMarkedList(request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    removeUserFromMarkedList(params: any, request: Request): Promise<any[]>;
+    getMarkedUsersInfo(request: Request): Promise<any[]>;
     getSortedPeoples(sortParams: ISortParams): Promise<void>;
     addUserEvent(request: Request): Promise<User>;
     deleteUserEvent(request: Request): Promise<User>;
-    addUserPost(file: any, request: Request): Promise<void>;
+    updateUserTag(request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    addUserPost(files: any, request: Request): Promise<void>;
+    addLikeToUserPost(params: any, request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    removeLikeFromUserPost(params: any, request: Request): Promise<User & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
 }

@@ -33,6 +33,12 @@ export class SettingsService {
         const updatedUser = await this.userService.updateUserAccount(decodedToken, request.body);
         throw new HttpException(updatedUser, 200);
     }
+    async updateFilterStatus(request: Request) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+
+        const updatedUser = await this.userService.updateUserFilterStatus(decodedToken, request.body.isFilter);
+        throw new HttpException(updatedUser, 200);
+    }
     async updateUserProfile(request: Request) {
         const decodedToken = this.helpJwtService.decodeJwt(request);
 

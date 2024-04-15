@@ -5,8 +5,11 @@ export declare class EventController {
     getEventsByCategory(request: any): Promise<any>;
     getEventInfoById(request: any): Promise<any>;
     getCommentsForEventById(request: any): Promise<any>;
-    sendInviteToUser(request: any): Promise<void>;
+    sendInviteToUser(request: any): Promise<{
+        message: string;
+    }>;
     getUserEventsInfo(request: any): Promise<void>;
     getUserInnerInvitesEventInfo(request: any): Promise<void>;
     getUserOuterInvitesEventInfo(request: any): Promise<void>;
+    declineInnerInvite(request: any): Promise<any>;
 }

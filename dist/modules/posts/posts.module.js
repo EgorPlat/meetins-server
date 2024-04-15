@@ -24,13 +24,13 @@ PostsModule = __decorate([
         providers: [posts_service_1.PostsService, app_gateway_1.AppGateway],
         controllers: [posts_controller_1.PostsController],
         imports: [
-            auth_module_1.AuthModule,
             users_module_1.UsersModule,
             token_module_1.HelpJwtModule,
             mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
             mongoose_1.MongooseModule.forFeature([
                 { name: postComment_schema_1.PostComment.name, schema: postComment_schema_1.PostCommentSchema },
             ]),
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
     })
 ], PostsModule);

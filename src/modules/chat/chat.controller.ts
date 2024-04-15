@@ -3,8 +3,10 @@ import { ChatService } from './chat.service';
 import { Request } from 'express';
 import { FinallMulterOptions } from 'src/middlewares/fileSize.middleware';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('chat')
+@UseGuards(JwtAuthGuard)
 export class ChatController {
 
     constructor(private chatService: ChatService) {}

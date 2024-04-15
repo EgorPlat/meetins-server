@@ -19,8 +19,8 @@ const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const create_user_dto_1 = require("../../dto/create-user.dto");
 const user_schema_1 = require("../../schemas/user.schema");
 const users_service_1 = require("./users.service");
-const multer_1 = require("multer");
 const platform_express_1 = require("@nestjs/platform-express");
+const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -52,6 +52,15 @@ let UserController = class UserController {
     getUserListByPageNumber(request) {
         return this.userService.getUserListByPageNumber(request);
     }
+    addUserIntoMarkedList(request) {
+        return this.userService.addUserIntoMarkedList(request);
+    }
+    removeUserFromMarkedList(params, request) {
+        return this.userService.removeUserFromMarkedList(request, params.userId);
+    }
+    getMarkedUsersInfo(request) {
+        return this.userService.getMarkedUsersInfo(request);
+    }
     getSortedPeoples(sortParams) {
         return this.userService.getSortedPeoples(sortParams);
     }
@@ -61,8 +70,17 @@ let UserController = class UserController {
     deleteUserEvent(request) {
         return this.userService.deleteUserEvent(request);
     }
-    addUserPost(file, request) {
-        return this.userService.addUserPost(file, request);
+    updateUserTag(request) {
+        return this.userService.updateUserTag(request);
+    }
+    addUserPost(files, request) {
+        return this.userService.addUserPost(files, request);
+    }
+    addLikeToUserPost(params, request) {
+        return this.userService.addLikeToUserPost(request, params.postId, params.userId);
+    }
+    removeLikeFromUserPost(params, request) {
+        return this.userService.removeLikeFromUserPost(request, params.postId, params.userId);
     }
 };
 __decorate([
@@ -74,7 +92,6 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Список пользователей' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: [user_schema_1.User] }),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -143,6 +160,34 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "getUserListByPageNumber", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Добавить пользователя в список закладок' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Post)('/addUserIntoMarkedList'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "addUserIntoMarkedList", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Удалить пользователя из списка закладок' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Delete)('/removeUserFromMarkedList/:userId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "removeUserFromMarkedList", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Получить список пользователей в закладках' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Get)('/getMarkedUsersInfo'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "getMarkedUsersInfo", null);
+__decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Получить список сортированных пользователей' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
     (0, common_1.Post)('/getSortedUsers'),
@@ -170,26 +215,47 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "deleteUserEvent", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Обновить тег пользователя' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Put)('/updateUserTag'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "updateUserTag", null);
+__decorate([
     (0, common_1.Post)('/addUserPost'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('uploadedFile', {
-        storage: (0, multer_1.diskStorage)({
-            destination: './src/static',
-            filename: (req, file, cb) => {
-                const fileNameSplit = file.originalname.split('.');
-                const fileExt = fileNameSplit[fileNameSplit.length - 1];
-                cb(null, `${Date.now()}.${fileExt}`);
-            }
-        })
-    })),
-    __param(0, (0, common_1.UploadedFile)()),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FilesInterceptor)('media', 5, fileSize_middleware_1.FinallMulterOptions)),
+    __param(0, (0, common_1.UploadedFiles)()),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "addUserPost", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Лайкнуть пост' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Put)('/like/:userId/:postId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "addLikeToUserPost", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Удалить лайк на посте' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: user_schema_1.User }),
+    (0, common_1.Put)('/remove-like/:userId/:postId'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "removeLikeFromUserPost", null);
 UserController = __decorate([
     (0, swagger_1.ApiTags)('Пользователи'),
     (0, common_1.Controller)('/users'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [users_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;

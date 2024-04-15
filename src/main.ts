@@ -7,7 +7,7 @@ import * as cookieParser from 'cookie-parser';
 
 
 const start = async () => {
-    try {// статика
+    try {
         const PORT = process.env.PORT || 5000;
         const app = await NestFactory.create<NestExpressApplication>(AppModule);
         app.useStaticAssets(join(__dirname, '../src/static')); 

@@ -13,5 +13,5 @@ export const FinallMulterOptions: MulterOptions = {
             }
         }
     ),
-    limits: { fileSize: 360000 }
+    limits: { fileSize: 36000000 }
 };

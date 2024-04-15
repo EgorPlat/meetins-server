@@ -20,6 +20,16 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "userId", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: false, description: 'Включены ли фильтры по интересам' }),
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isFilter", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: '[userId3534534]', description: 'Массив пользователей в закладках' }),
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
+], User.prototype, "markedUsers", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: 'Имя', description: 'Имя пользователя' }),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)

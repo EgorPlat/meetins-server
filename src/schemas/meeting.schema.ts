@@ -5,7 +5,6 @@ import { MeetingComment } from "src/interfaces/meetingComment.interface";
 export type MeetingDocument = Meeting & Document;
 
 @Schema()
-
 export class Meeting {     
 
     @ApiProperty({example: '1', description: 'Уникальный ид'})
@@ -28,6 +27,10 @@ export class Meeting {
     @Prop()
     goal: string;
 
+    @ApiProperty({example: 'Максимальное количество участников', description: '25'})
+    @Prop({ default: 25 })
+    maxParticipants: string;
+
     @ApiProperty({example: { userId: "userId", text: "text", date: "2023-10-11" }, description: 'Комментарии'})
     @Prop({ default: [] })
     comments: MeetingComment[];
@@ -43,5 +46,16 @@ export class Meeting {
     @ApiProperty({example: 'Адрес', description: 'Адрес встречи'})
     @Prop()
     address: string;
+
+    @ApiProperty({example: 'Создатель', description: 'Айди создателя'})
+    @Prop()
+    creatorId: string;
+
+    @ApiProperty({example: 'Фотографии или видео', description: 'Массив строк(адресов файла)'})
+    @Prop({ default: [] })
+    files: {
+        src: string,
+        type: string
+    }[];
 }
 export const MeetingSchema = SchemaFactory.createForClass(Meeting);

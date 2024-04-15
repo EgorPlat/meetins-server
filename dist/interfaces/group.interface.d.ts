@@ -1,6 +1,17 @@
+export interface IGroup {
+    groupId: number;
+    name: string;
+    description: string;
+    mainAvatar: string;
+    headAvatar: string | null;
+    membersId: string[];
+    creatorId: string;
+    posts: IGroupPost[];
+    talks: IGroupTalk[];
+}
 export interface IGroupPostComment {
     userId: string;
-    userAvatar: string;
+    avatar: string;
     text: string;
     date: Date;
 }
@@ -10,7 +21,7 @@ export interface IGroupPost {
     files: IGroupFile[];
     date: number;
     description: string;
-    likes: number;
+    likes: string[];
     views: number;
     comments: IGroupPostComment[];
 }

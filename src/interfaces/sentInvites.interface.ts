@@ -7,8 +7,6 @@ export interface IInvitedUsers {
     userId: string,
     status: boolean,
     dateOfSending: string,
-    avatar: string,
-    name: string
 }
 
 export interface IInnerInvites {
@@ -16,6 +14,4 @@ export interface IInnerInvites {
     eventId: string,
     dateOfSending: string,
     status: boolean,
-    avatar: string,
-    name: string
 }

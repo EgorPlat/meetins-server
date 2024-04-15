@@ -21,6 +21,8 @@ import { TariffsModule } from "./modules/tariffs/tariffs.module";
 import { PaymentModule } from "./modules/payment/payment.module";
 import { MeetingsModule } from "./modules/meetings/meetings.module";
 import { GroupsModule } from "./modules/groups/groupsPosts.module";
+import { MusicModule } from "./modules/music/music.module";
+import { WallModule } from "./modules/wall/wall.module";
 
 @Module({
   controllers: [AppController, SettingsController],
@@ -41,7 +43,9 @@ import { GroupsModule } from "./modules/groups/groupsPosts.module";
     TariffsModule,
     PaymentModule,
     MeetingsModule,
-    GroupsModule
+    GroupsModule,
+    MusicModule,
+    WallModule
   ],
 })
 export class AppModule {

@@ -1,7 +1,10 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { EventService } from './event.service';
 import { Request } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+
 @Controller('event')
+@UseGuards(JwtAuthGuard)
 export class EventController {
 
     constructor(private eventService: EventService) {}
@@ -33,5 +36,9 @@ export class EventController {
     @Get('/getUserOuterInvitesEventInfo')
     getUserOuterInvitesEventInfo(@Request() request) {
         return this.eventService.getUserOuterInvitesEventInfo(request)
+    }
+    @Put('/declineInnerInvite')
+    declineInnerInvite(@Request() request) {
+        return this.eventService.declineInnerInvite(request)
     }
 }

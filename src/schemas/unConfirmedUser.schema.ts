@@ -4,7 +4,6 @@ import { Document } from 'mongoose';
 export type UnConfirmedUserDocument = UnConfirmedUser & Document;
 
 @Schema()
-
 export class UnConfirmedUser {                  
 
     @ApiProperty({example: 'Имя', description: 'Имя пользователя'})

@@ -30,6 +30,8 @@ const tariffs_module_1 = require("./modules/tariffs/tariffs.module");
 const payment_module_1 = require("./modules/payment/payment.module");
 const meetings_module_1 = require("./modules/meetings/meetings.module");
 const groupsPosts_module_1 = require("./modules/groups/groupsPosts.module");
+const music_module_1 = require("./modules/music/music.module");
+const wall_module_1 = require("./modules/wall/wall.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -52,7 +54,9 @@ AppModule = __decorate([
             tariffs_module_1.TariffsModule,
             payment_module_1.PaymentModule,
             meetings_module_1.MeetingsModule,
-            groupsPosts_module_1.GroupsModule
+            groupsPosts_module_1.GroupsModule,
+            music_module_1.MusicModule,
+            wall_module_1.WallModule
         ],
     })
 ], AppModule);

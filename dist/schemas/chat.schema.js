@@ -25,15 +25,10 @@ __decorate([
     __metadata("design:type", Array)
 ], Chat.prototype, "messages", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'userId', description: 'Айди пользователя' }),
+    (0, swagger_1.ApiProperty)({ example: [], description: 'Массив пользователей userId' }),
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Chat.prototype, "firstUserId", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'userId', description: 'Айди пользователя' }),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Chat.prototype, "secondUserId", void 0);
+    __metadata("design:type", Array)
+], Chat.prototype, "members", void 0);
 Chat = __decorate([
     (0, mongoose_1.Schema)()
 ], Chat);

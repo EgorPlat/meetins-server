@@ -5,6 +5,7 @@ export declare class SettingsController {
     constructor(settingsService: SettingsService);
     updateUserAvatar(file: any, request: Request): Promise<void>;
     updateUserStatus(request: Request): Promise<void>;
+    updateFilterStatus(request: Request): Promise<void>;
     updateUserAccount(request: Request): Promise<void>;
     updateUserProfile(request: Request): Promise<void>;
 }

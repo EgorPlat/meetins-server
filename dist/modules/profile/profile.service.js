@@ -32,7 +32,7 @@ let ProfileService = class ProfileService {
         }
     }
     async getProfileByLogin(login) {
-        const user = await this.userService.getUserByLogin(login);
+        const user = await this.userService.getUserByLoginMainInfoOnly(login);
         if (user) {
             throw new common_1.HttpException(user, 200);
         }

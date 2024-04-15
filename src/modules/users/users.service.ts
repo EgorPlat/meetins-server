@@ -14,7 +14,10 @@ import { Post } from "src/interfaces/post.interface";
 @Injectable()
 export class UserService {
 
-    constructor(@InjectModel(User.name) private userModel: Model<UserDocument>, private helpJwtService: HelpJwtService){}
+    constructor(
+        @InjectModel(User.name) private userModel: Model<UserDocument>, 
+        private helpJwtService: HelpJwtService
+    ){}
 
     async updateUsersData() {
         await this.userModel.updateMany({}, { $set: { tag: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } } });
@@ -48,6 +51,21 @@ export class UserService {
         })
         return user;
     }
+
+    async getUserByLoginMainInfoOnly(login: string) {
+        const user = await this.userModel.findOne({login: login}, {
+            password: false,
+            _id: false,
+            __v: false,
+            innerInvites: false,
+            outerInvites: false,
+            isFilter: false,
+            markedUsers: false,
+            purchasedOpportunities: false
+        })
+        return user;
+    }
+
     async getUserList() {
         const user = await this.userModel.find({}, {
             password: false,
@@ -68,14 +86,116 @@ export class UserService {
         })
         return peoples;
     }
+
+    async addUserIntoMarkedList(request: Request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const { neededUserId } = request.body;
+
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId }, { $push: {
+            markedUsers: neededUserId
+        }}, { returnDocument: 'after' });
+
+        if (updatedUser) return updatedUser;
+        throw new HttpException({ errorMessage: "Что-то пошло не так."}, 400);
+    }
+
+    async formMarkedUsersInfoByIds(userId: string) {
+        const usersInfo = await this.userModel.aggregate([
+            {
+                $match: { userId: userId }
+            },
+            {
+                $unwind: "$markedUsers"
+            },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "markedUsers",
+                    foreignField: "userId",
+                    as: "markedUserInfo"
+                }
+            },
+            {
+                $unwind: "$markedUserInfo"
+            },
+            {
+                $project: {
+                    _id: false,
+                    "markedUserInfo.name": true,
+                    "markedUserInfo.avatar": true,
+                    "markedUserInfo.login": true,
+                    "markedUserInfo.userId": true
+                }
+            }
+        ]);
+        if (usersInfo) return usersInfo.map(el => { return el.markedUserInfo });
+    }
+
+    async updateUserTag(request: Request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const { title, color } = request.body;
+
+        const updatedUser = await this.userModel.findOneAndUpdate({ userId: userId }, {
+            $set: { tag: { title, color } }
+        }, { returnDocument: 'after' });
+
+        if (updatedUser) return updatedUser;    
+        throw new HttpException({ errorMessage: "Что-то пошло не так."}, 400);
+    }
+
+
+    async getMarkedUsersInfo(request: Request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+
+        const markedUsersInfo = await this.formMarkedUsersInfoByIds(userId);
+        if (markedUsersInfo) {
+            return markedUsersInfo;
+        }
+        throw new HttpException({ errorMessage: "Что-то пошло не так."}, 400);
+    }
+
+    async removeUserFromMarkedList(request: Request, removedUserId: string) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+
+        await this.userModel.updateOne({ userId: userId }, { $pull: {
+            markedUsers: removedUserId
+        }});
+        const markedUsersInfo = await this.formMarkedUsersInfoByIds(userId);
+        if (markedUsersInfo) {
+            return markedUsersInfo;
+        }
+        throw new HttpException({ errorMessage: "Что-то пошло не так."}, 400);
+    }
+
     async getUserListByPageNumber(request: Request) {
+        const { userId } = this.helpJwtService.decodeJwt(request);
+        const inithiator = await this.userModel.findOne({ userId: userId });
         const { pageNumber, pageSize, filters } = request.body;
 
-        const users = await this.userModel.find({}, {
-            password: false,
-            _id: false,
-            __v: false
-        });
+        let users = [];
+        if (inithiator.isFilter) {
+            users = await this.userModel.find({ interests: { $elemMatch: { $in: inithiator.interests } } }, {
+                password: false,
+                _id: false,
+                __v: false
+            });
+        } else {
+            if (filters.event) {
+                users = await this.userModel.find({ 
+                    events: { $elemMatch: { $eq: String(filters.event) } }
+                }, {
+                    password: false,
+                    _id: false,
+                    __v: false
+                });
+            } else {
+                users = await this.userModel.find({}, {
+                    password: false,
+                    _id: false,
+                    __v: false
+                });
+            }
+        }
         let peoples: IPeople[] = users.map((user, index) => {
             return {
                 email: user.email,
@@ -140,6 +260,12 @@ export class UserService {
             return updatedUser;
         }
     }
+    async updateUserFilterStatus(decodedToken: any, filterStatus: string) {
+        const updatedUser = await this.userModel.findOneAndUpdate(
+            {userId : decodedToken.userId}, {$set: {isFilter : filterStatus}}, { returnDocument: 'after' }
+        );
+        return updatedUser;
+    }
     async updateUserAccount(decodedToken: any, accountData: IAccount) {
 
         const users = await this.userModel.find({
@@ -187,11 +313,10 @@ export class UserService {
     }
     async updateUserAvatar(file: any, user: User) {
 
-        await this.userModel.updateOne({email : user.email}, {$set: {
+        const updatedUser: User = await this.userModel.findOneAndUpdate({email : user.email}, {$set: {
             avatar : file.filename, 
-        }});
+        }}, { returnDocument: "after" });
 
-        const updatedUser: User = await this.getUpdatedUserByEmail(user.email);
         if(updatedUser) { 
             return updatedUser;
         } 
@@ -250,7 +375,7 @@ export class UserService {
             return updatedUser;
         }
     }
-    async removeUserInterest(request: any) {
+    async removeUserInterest(request: Request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const prevUserState = await this.userModel.findOne({email : decodedToken.email});
@@ -264,28 +389,52 @@ export class UserService {
         }
     }
 
-    async addUserPost(file: any, request: Request) {
+    async addUserPost(files: any, request: Request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
-        const user = await this.userModel.findOne({email : decodedToken.email});
 
         const newPost: Post = {
             id: String(Math.floor(Math.random()*150000)),
             title: body.title,
             description: body.description,
-            images: [file.filename],
+            files: files.map(el => {
+                return {
+                  src: el.filename,
+                  type: el.mimetype
+                }
+            }),
             date: String(new Date()),
-            likes: 0,
-        }
-        await this.userModel.updateOne({email : decodedToken.email}, {$set: {
-            posts: [...user.posts, newPost]
-        }});
-        const updatedUser: User = await this.getUpdatedUserByEmail(decodedToken.email);
+            likes: [],
+        };
+        
+        const updatedUser = await this.userModel.findOneAndUpdate({email : decodedToken.email}, {$push: {
+            posts: newPost
+        }}, {returnDocument: "after"});
 
         if (updatedUser) {
             throw new HttpException(updatedUser, 200);
         } else {
             throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
         }
+    }
+
+    async addLikeToUserPost(request: Request, postId: string, userId: string) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
+            $addToSet: { "posts.$.likes": decodedToken.userId }
+        }, { returnDocument: "after" });
+
+        if (updatedUser) return updatedUser;
+        throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
+    }
+
+    async removeLikeFromUserPost(request: Request, postId: string, userId: string) {
+        const decodedToken = this.helpJwtService.decodeJwt(request);
+        const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
+            $pull: { "posts.$.likes": decodedToken.userId }
+        }, { returnDocument: "after" });
+
+        if (updatedUser) return updatedUser;
+        throw new HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка"}, 400);
     }
 }

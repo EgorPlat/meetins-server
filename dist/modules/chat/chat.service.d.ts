@@ -17,10 +17,24 @@ export declare class ChatService {
     })[]>;
     addNewMessage(inithiatorJwtData: DecodedJwt, dialogId: string, content: string, type: string): Promise<IMessage>;
     sendFileToChat(file: any, request: Request): Promise<void>;
-    checkDialog(request: Request): Promise<void>;
+    checkDialog(request: Request): Promise<any[]>;
     getDialogMessages(request: Request): Promise<void>;
-    markDialogMessagesAsReaded(request: Request): Promise<void>;
+    markDialogMessagesAsReaded(request: Request): Promise<{
+        dialogId: string;
+        userName: string;
+        userAvatar: string;
+        isRead: boolean;
+        content: string;
+        messages: IMessage[];
+    }[]>;
     sendNewMessage(request: Request): Promise<void>;
-    getUserDialogs(request: Request): Promise<void>;
+    getUserDialogs(request: Request): Promise<{
+        dialogId: string;
+        userName: string;
+        userAvatar: string;
+        isRead: boolean;
+        content: string;
+        messages: IMessage[];
+    }[]>;
     startNewDialog(request: Request): Promise<void>;
 }

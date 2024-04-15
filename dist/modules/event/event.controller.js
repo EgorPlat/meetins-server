@@ -16,6 +16,7 @@ exports.EventController = void 0;
 const common_1 = require("@nestjs/common");
 const event_service_1 = require("./event.service");
 const common_2 = require("@nestjs/common");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let EventController = class EventController {
     constructor(eventService) {
         this.eventService = eventService;
@@ -40,6 +41,9 @@ let EventController = class EventController {
     }
     getUserOuterInvitesEventInfo(request) {
         return this.eventService.getUserOuterInvitesEventInfo(request);
+    }
+    declineInnerInvite(request) {
+        return this.eventService.declineInnerInvite(request);
     }
 };
 __decorate([
@@ -91,8 +95,16 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], EventController.prototype, "getUserOuterInvitesEventInfo", null);
+__decorate([
+    (0, common_1.Put)('/declineInnerInvite'),
+    __param(0, (0, common_2.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], EventController.prototype, "declineInnerInvite", null);
 EventController = __decorate([
     (0, common_1.Controller)('event'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [event_service_1.EventService])
 ], EventController);
 exports.EventController = EventController;

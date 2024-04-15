@@ -19,7 +19,7 @@ SettingsModule = __decorate([
     (0, common_1.Module)({
         controllers: [settings_controller_1.SettingsController],
         providers: [settings_service_1.SettingsService],
-        imports: [users_module_1.UsersModule, auth_module_1.AuthModule, token_module_1.HelpJwtModule]
+        imports: [users_module_1.UsersModule, token_module_1.HelpJwtModule, (0, common_1.forwardRef)(() => auth_module_1.AuthModule)]
     })
 ], SettingsModule);
 exports.SettingsModule = SettingsModule;

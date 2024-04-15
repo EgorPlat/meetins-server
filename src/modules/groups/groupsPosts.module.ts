@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { GroupsController } from './groupsPosts.controller';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { AppGateway } from 'src/app.gateway';
@@ -12,12 +12,12 @@ import { User, UserSchema } from 'src/schemas/user.schema';
   providers: [GroupsService, AppGateway],
   controllers: [GroupsController],
   imports: [
-    AuthModule,
     HelpJwtModule,
     MongooseModule.forFeature([
       { name: Group.name, schema: GroupSchema },
       { name: User.name, schema: UserSchema },
     ]),
+    forwardRef(() => AuthModule)
   ],
 })
 export class GroupsModule {}

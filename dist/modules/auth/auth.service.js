@@ -106,7 +106,7 @@ let AuthService = class AuthService {
     }
     async acceptUserAccount(acceptData, response) {
         const unConfirmedUser = await this.unConfirmedUserModel.findOne({ email: acceptData.email });
-        if (unConfirmedUser.actualCodeForConfirmation === acceptData.code) {
+        if ((unConfirmedUser === null || unConfirmedUser === void 0 ? void 0 : unConfirmedUser.actualCodeForConfirmation) === acceptData.code) {
             const user = await this.userService.addUser({
                 email: unConfirmedUser.email,
                 name: unConfirmedUser.name,

@@ -16,6 +16,7 @@ exports.InterestsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const interest_service_1 = require("./interest.service");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let InterestsController = class InterestsController {
     constructor(interestsService) {
         this.interestsService = interestsService;
@@ -45,7 +46,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], InterestsController.prototype, "getInterests", null);
 __decorate([
-    (0, common_1.Post)('/add-interests'),
+    (0, common_1.Post)('/add-interest'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -54,6 +55,7 @@ __decorate([
 InterestsController = __decorate([
     (0, common_1.Controller)('interests'),
     (0, swagger_1.ApiTags)('Интересы'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [interest_service_1.InterestsService])
 ], InterestsController);
 exports.InterestsController = InterestsController;

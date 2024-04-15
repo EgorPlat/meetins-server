@@ -26,18 +26,26 @@ export class EventService {
 
     async getUserOuterInvitesEventInfo(request: Request) {
         const decodedJwt = this.jwtHelpService.decodeJwt(request);
-        const user = await this.userModel.findOne({email: decodedJwt.email}, {
-            _id: false,
-            __v: false
-        });
+        const user = await this.userService.getUserByEmail(decodedJwt.email);
         let userEventsInfo = [];
         if (user) {
             await Promise.all(user.outerInvites.map(async (inviteInfo) => {
                 const {data} = await this.httpService.get(
                     `https://kudago.com/public-api/v1.4/events/${inviteInfo.eventId}`
                 ).toPromise();
+                const neededUsersId = inviteInfo.invitedUsers.map(el => el.userId);
+                const invitedUsers = await this.userModel.find({userId: { $in: neededUsersId}}, { name: 1, avatar: 1, login: 1});
                 if (data) {
-                    return { ...data, isInnerInvite: false, inviteInfo };
+                    return { 
+                        ...data, 
+                        isInnerInvite: false, 
+                        inviteInfo: {
+                            ...inviteInfo,
+                            invitedUsers: invitedUsers.map(el => {
+                                return { avatar: el.avatar, name: el.name, login: el.login }
+                            })
+                        } 
+                    };
                 } else {
                     return null;
                 }
@@ -59,8 +67,18 @@ export class EventService {
                 const {data} = await this.httpService.get(
                     `https://kudago.com/public-api/v1.4/events/${inviteInfo.eventId}`
                 ).toPromise();
+                const inviteUser = await this.userModel.findOne({userId: inviteInfo.fromUserId}, { avatar: 1, login: 1, name: 1});
                 if (data) {
-                    return { ...data, isInnerInvite: true, inviteInfo };
+                    return { 
+                        ...data, 
+                        isInnerInvite: true, 
+                        inviteInfo: { 
+                            ...inviteInfo,
+                            avatar: inviteUser.avatar,
+                            login: inviteUser.login,
+                            name: inviteUser.name
+                        } 
+                    };
                 } else {
                     return null;
                 }
@@ -159,7 +177,7 @@ export class EventService {
                     eventSearched =  true;
                     const userAlreadyInList = el.invitedUsers.filter(user => user.userId === userIdTo).length !== 0;
                     if (userAlreadyInList) {
-                        throw new HttpException('User is already in invited list', 200)
+                        throw new HttpException('User is already in invited list', 500)
                     } else {
                         return {
                             eventId: eventId,
@@ -168,8 +186,9 @@ export class EventService {
                                     userId: userIdTo, 
                                     status: false, 
                                     dateOfSending: dateOfSending,
-                                    avatar: userToData.avatar,
-                                    name: userToData.name
+                                    //avatar: userToData.avatar,
+                                    //name: userToData.name,
+                                    //login: userToData.login
                                 }
                             ]
                         }
@@ -185,8 +204,9 @@ export class EventService {
                             userId: userIdTo, 
                             status: false, 
                             dateOfSending: dateOfSending,
-                            avatar: userToData.avatar,
-                            name: userToData.name
+                            //avatar: userToData.avatar,
+                            //name: userToData.name,
+                            //login: userToData.login
                         }
                     ],
                     eventId: eventId
@@ -204,18 +224,32 @@ export class EventService {
                 eventId: eventId,
                 dateOfSending: dateOfSending,
                 status: false,
-                name: userFromData.name,
-                avatar: userFromData.avatar
+                //name: userFromData.name,
+                //avatar: userFromData.avatar,
+                //login: userFromData.login
             }
             await this.userModel.updateOne({ userId: userIdTo }, { 
                 $set: {
                     innerInvites: [...userToData.innerInvites, innerInvite]
                 }
             })
-
-            throw new HttpException('Success', 200)
+            return { message: 'Success' };
         } catch(error) {
             throw new HttpException(error, 500)
         }
+    }
+
+    async declineInnerInvite(request: Request) {
+        const { userId } = this.jwtHelpService.decodeJwt(request);
+        const { senderId, eventId } = request.body;
+
+        const updatedUser = await this.userModel.findOneAndUpdate({ userId: userId }, { 
+            $pull: {
+                innerInvites: { fromUserId: senderId, eventId: eventId }
+            }
+        })
+
+        if(updatedUser) return eventId;
+        throw new HttpException({ errorMessage: "Что-то пошло не так" }, 500)
     }
 }

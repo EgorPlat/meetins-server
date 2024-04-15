@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { InterestsService } from './interest.service';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { UsersModule } from 'src/modules/users/users.module';
@@ -12,12 +12,12 @@ import { Interest, InterestSchema } from 'src/schemas/interests.schema';
   providers: [InterestsService, AppGateway],
   controllers: [InterestsController],
   imports: [
-    AuthModule,
     UsersModule,
     HelpJwtModule,
     MongooseModule.forFeature([
       { name: Interest.name, schema: InterestSchema },
     ]),
+    forwardRef(() => AuthModule)
   ],
 })
 export class InterestsModule {}

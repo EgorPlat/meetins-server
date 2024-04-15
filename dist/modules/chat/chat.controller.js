@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const chat_service_1 = require("./chat.service");
 const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
 const platform_express_1 = require("@nestjs/platform-express");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let ChatController = class ChatController {
     constructor(chatService) {
         this.chatService = chatService;
@@ -96,6 +97,7 @@ __decorate([
 ], ChatController.prototype, "markDialogMessagesAsReaded", null);
 ChatController = __decorate([
     (0, common_1.Controller)('chat'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [chat_service_1.ChatService])
 ], ChatController);
 exports.ChatController = ChatController;

@@ -21,5 +21,8 @@ export declare class EventService {
     getEventsByCategory(eventsInfo: IEventsInfo): Promise<any>;
     getEventInfoById(eventId: string | number): Promise<any>;
     getCommentsForEventById(eventId: string | number): Promise<any>;
-    sendInviteToUser(request: Request): Promise<void>;
+    sendInviteToUser(request: Request): Promise<{
+        message: string;
+    }>;
+    declineInnerInvite(request: Request): Promise<any>;
 }

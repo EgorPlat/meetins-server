@@ -12,6 +12,7 @@ export declare class Group {
     groupId: number;
     name: string;
     description: string;
+    interestsId: string[];
     mainAvatar: string;
     headAvatar: string;
     membersId: string[];

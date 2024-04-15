@@ -20,7 +20,7 @@ ProfileModule = __decorate([
     (0, common_1.Module)({
         providers: [profile_service_1.ProfileService, app_gateway_1.AppGateway],
         controllers: [profile_controller_1.ProfileController],
-        imports: [auth_module_1.AuthModule, users_module_1.UsersModule, token_module_1.HelpJwtModule]
+        imports: [users_module_1.UsersModule, token_module_1.HelpJwtModule, (0, common_1.forwardRef)(() => auth_module_1.AuthModule)]
     })
 ], ProfileModule);
 exports.ProfileModule = ProfileModule;

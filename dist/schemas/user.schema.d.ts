@@ -13,6 +13,8 @@ import { IUserTag } from "src/interfaces/tag.interface";
 export declare type UserDocument = User & Document;
 export declare class User {
     userId: string;
+    isFilter: boolean;
+    markedUsers: string[];
     name: string;
     status: string;
     phoneNumber: string;

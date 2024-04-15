@@ -14,6 +14,14 @@ export class User {
     @Prop()
     userId: string;
 
+    @ApiProperty({example: false, description: 'Включены ли фильтры по интересам'})
+    @Prop({default: false})
+    isFilter: boolean;
+
+    @ApiProperty({example: '[userId3534534]', description: 'Массив пользователей в закладках'})
+    @Prop({default: []})
+    markedUsers: string[];
+
     @ApiProperty({example: 'Имя', description: 'Имя пользователя'})
     @Prop()
     name: string;

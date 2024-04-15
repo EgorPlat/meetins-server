@@ -27,7 +27,7 @@ export class ProfileService {
         }
     }
     async getProfileByLogin(login) {
-        const user = await this.userService.getUserByLogin(login);
+        const user = await this.userService.getUserByLoginMainInfoOnly(login);
         if(user) {
             throw new HttpException(user, 200)
         } else {

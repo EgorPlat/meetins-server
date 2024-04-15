@@ -2,10 +2,12 @@ import { Controller, Get, Headers, Param, Post, Req, UseGuards } from '@nestjs/c
 import { ApiTags } from '@nestjs/swagger';
 import { InterestsService } from './interest.service';
 import { Request } from 'express';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('interests')
 @ApiTags('Интересы')
-/*@UseGuards(JwtAuthGuard)*/
+@UseGuards(JwtAuthGuard)
+
 export class InterestsController {
 
     constructor(private interestsService: InterestsService) {}
@@ -18,7 +20,7 @@ export class InterestsController {
     getInterests(@Req() request: Request) {
         return this.interestsService.getInterests(request);
     }
-    @Post('/add-interests')
+    @Post('/add-interest')
     addInterests(@Req() request: Request) {
         return this.interestsService.addInterests(request);
     }

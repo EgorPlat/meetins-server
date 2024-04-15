@@ -18,7 +18,10 @@ let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]), (0, common_1.forwardRef)(() => auth_module_1.AuthModule), token_module_1.HelpJwtModule],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule), token_module_1.HelpJwtModule
+        ],
         controllers: [users_controller_1.UserController],
         providers: [users_service_1.UserService],
         exports: [users_service_1.UserService]
