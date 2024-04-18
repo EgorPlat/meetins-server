@@ -14,6 +14,7 @@ export declare class ChatController {
         isRead: boolean;
         content: string;
         messages: import("../../interfaces/chatMessage.interface").IMessage[];
+        userLogin: number;
     }[]>;
     checkDialog(request: Request): Promise<any[]>;
     markDialogMessagesAsReaded(request: Request): Promise<{
@@ -23,5 +24,6 @@ export declare class ChatController {
         isRead: boolean;
         content: string;
         messages: import("../../interfaces/chatMessage.interface").IMessage[];
+        userLogin: number;
     }[]>;
 }

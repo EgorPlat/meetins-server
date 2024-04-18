@@ -26,6 +26,7 @@ export declare class ChatService {
         isRead: boolean;
         content: string;
         messages: IMessage[];
+        userLogin: number;
     }[]>;
     sendNewMessage(request: Request): Promise<void>;
     getUserDialogs(request: Request): Promise<{
@@ -35,6 +36,7 @@ export declare class ChatService {
         isRead: boolean;
         content: string;
         messages: IMessage[];
+        userLogin: number;
     }[]>;
     startNewDialog(request: Request): Promise<void>;
 }

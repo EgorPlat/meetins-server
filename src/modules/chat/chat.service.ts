@@ -126,7 +126,8 @@ export class ChatService {
                 userAvatar: userChatIdInfo.avatar,
                 isRead: true,
                 content: eachDialog.messages[0].content,
-                messages: eachDialog.messages
+                messages: eachDialog.messages,
+                userLogin: userChatIdInfo.login
             }
         }))
 
