@@ -1,1 +1,0 @@
-export const dbUrl: string = 'mongodb+srv://Egor:123321@cluster0.jp0xq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';

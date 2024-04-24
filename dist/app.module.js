@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const data_1 = require("./global/data");
 const users_module_1 = require("./modules/users/users.module");
 const auth_module_1 = require("./modules/auth/auth.module");
 const profile_module_1 = require("./modules/profile/profile.module");
@@ -32,6 +31,7 @@ const meetings_module_1 = require("./modules/meetings/meetings.module");
 const groupsPosts_module_1 = require("./modules/groups/groupsPosts.module");
 const music_module_1 = require("./modules/music/music.module");
 const wall_module_1 = require("./modules/wall/wall.module");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -41,7 +41,8 @@ AppModule = __decorate([
         imports: [
             token_module_1.HelpJwtModule,
             users_module_1.UsersModule,
-            mongoose_1.MongooseModule.forRoot(data_1.dbUrl),
+            config_1.ConfigModule.forRoot(),
+            mongoose_1.MongooseModule.forRoot(process.env.dbUrl),
             schedule_1.ScheduleModule.forRoot(),
             auth_module_1.AuthModule,
             profile_module_1.ProfileModule,

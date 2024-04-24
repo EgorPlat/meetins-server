@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { dbUrl } from "./global/data";
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ProfileModule } from './modules/profile/profile.module';
@@ -23,6 +22,7 @@ import { MeetingsModule } from "./modules/meetings/meetings.module";
 import { GroupsModule } from "./modules/groups/groupsPosts.module";
 import { MusicModule } from "./modules/music/music.module";
 import { WallModule } from "./modules/wall/wall.module";
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   controllers: [AppController, SettingsController],
@@ -30,7 +30,9 @@ import { WallModule } from "./modules/wall/wall.module";
   imports: [
     HelpJwtModule,
     UsersModule,
-    MongooseModule.forRoot(dbUrl),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.dbUrl),
+    //MongooseModule.forRoot(dbUrl),
     ScheduleModule.forRoot(),
     AuthModule,
     ProfileModule,
