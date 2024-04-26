@@ -2,7 +2,6 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ApiProperty } from "@nestjs/swagger";
 import { Document } from 'mongoose';
 import { IGroupPost, IGroupTalk } from "src/interfaces/group.interface";
-//import { IGroupPost, IGroupPostComment } from "src/interfaces/groupPost.interface";
 export type GroupsDocument = Group & Document;
 
 @Schema()
