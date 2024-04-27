@@ -5,6 +5,7 @@ import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
 import { MeetingsService } from './meetings.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
+import { FinallMulterOptions } from 'src/middlewares/fileSize.middleware';
 
 @Controller('meetings')
 @ApiTags('Встречи')
@@ -25,18 +26,7 @@ export class MeetingsController {
     }
 
     @Post('/upload-media')
-    @UseInterceptors(FileInterceptor('uploadedFile', {     
-        storage: diskStorage(
-            {
-                destination: './src/static',
-                filename: (req, file, cb) => {
-                    const fileNameSplit = file.originalname.split('.');
-                    const fileExt = fileNameSplit[fileNameSplit.length - 1];
-                    cb(null, `${Date.now()}.${fileExt}`);
-                }
-            }
-        )
-        }))
+    @UseInterceptors(FileInterceptor('uploadedFile', FinallMulterOptions))
     uploadMedia(@Req() request: Request, @UploadedFile() file: Express.Multer.File) {
         return this.meetingsService.uploadMedia(request, file);
     }

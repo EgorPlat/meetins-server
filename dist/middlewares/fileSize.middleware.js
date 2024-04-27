@@ -11,6 +11,6 @@ exports.FinallMulterOptions = {
             cb(null, `${Date.now()}.${fileExt}`);
         }
     }),
-    limits: { fileSize: 36000000 }
+    limits: { fileSize: 5000000 }
 };
 //# sourceMappingURL=fileSize.middleware.js.map

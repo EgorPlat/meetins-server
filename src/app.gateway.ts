@@ -35,7 +35,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
   }
 
-  @Cron('45 * * * * *')
+  @Cron('5 * * * * *')
   handleUpdateUserList() {
     this.server.emit('updateUsers', { users: this.activeFullUsersList });
   }

@@ -49,7 +49,7 @@ __decorate([
     __metadata("design:type", socket_io_1.Server)
 ], AppGateway.prototype, "server", void 0);
 __decorate([
-    (0, schedule_1.Cron)('45 * * * * *'),
+    (0, schedule_1.Cron)('5 * * * * *'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)

@@ -1,4 +1,3 @@
-import { BadRequestException } from '@nestjs/common';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 import { diskStorage } from 'multer';
 
@@ -13,5 +12,5 @@ export const FinallMulterOptions: MulterOptions = {
             }
         }
     ),
-    limits: { fileSize: 36000000 }
+    limits: { fileSize: 5000000 }
 };

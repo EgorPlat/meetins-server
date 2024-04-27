@@ -16,8 +16,8 @@ exports.SettingsController = void 0;
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
 const settings_service_1 = require("./settings.service");
-const multer_1 = require("multer");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
 let SettingsController = class SettingsController {
     constructor(settingsService) {
         this.settingsService = settingsService;
@@ -40,16 +40,7 @@ let SettingsController = class SettingsController {
 };
 __decorate([
     (0, common_1.Post)('/update-avatar'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('uploadedFile', {
-        storage: (0, multer_1.diskStorage)({
-            destination: './src/static',
-            filename: (req, file, cb) => {
-                const fileNameSplit = file.originalname.split('.');
-                const fileExt = fileNameSplit[fileNameSplit.length - 1];
-                cb(null, `${Date.now()}.${fileExt}`);
-            }
-        })
-    })),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('uploadedFile', fileSize_middleware_1.FinallMulterOptions)),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),

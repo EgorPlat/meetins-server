@@ -18,7 +18,7 @@ const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const meetings_service_1 = require("./meetings.service");
 const platform_express_1 = require("@nestjs/platform-express");
-const multer_1 = require("multer");
+const fileSize_middleware_1 = require("../../middlewares/fileSize.middleware");
 let MeetingsController = class MeetingsController {
     constructor(meetingsService) {
         this.meetingsService = meetingsService;
@@ -57,16 +57,7 @@ __decorate([
 ], MeetingsController.prototype, "createNewMeeting", null);
 __decorate([
     (0, common_1.Post)('/upload-media'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('uploadedFile', {
-        storage: (0, multer_1.diskStorage)({
-            destination: './src/static',
-            filename: (req, file, cb) => {
-                const fileNameSplit = file.originalname.split('.');
-                const fileExt = fileNameSplit[fileNameSplit.length - 1];
-                cb(null, `${Date.now()}.${fileExt}`);
-            }
-        })
-    })),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('uploadedFile', fileSize_middleware_1.FinallMulterOptions)),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),

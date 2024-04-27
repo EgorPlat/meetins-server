@@ -4,6 +4,7 @@ import { SettingsService } from './settings.service';
 import {Request} from 'express';
 import { diskStorage } from 'multer';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { FinallMulterOptions } from 'src/middlewares/fileSize.middleware';
 
 @Controller('settings')
 @UseGuards(JwtAuthGuard)
@@ -11,18 +12,7 @@ export class SettingsController {
 
     constructor(private settingsService: SettingsService) {}
     @Post('/update-avatar')
-    @UseInterceptors(FileInterceptor('uploadedFile',{     
-    storage: diskStorage(
-        {
-            destination: './src/static',
-            filename: (req, file, cb) => {
-                const fileNameSplit = file.originalname.split('.');
-                const fileExt = fileNameSplit[fileNameSplit.length - 1];
-                cb(null, `${Date.now()}.${fileExt}`);
-            }
-        }
-    )
-    }))
+    @UseInterceptors(FileInterceptor('uploadedFile', FinallMulterOptions))
     updateUserAvatar(@UploadedFile() file, @Req() request: Request) {
         return this.settingsService.updateUserAvatar(file, request);
     }
