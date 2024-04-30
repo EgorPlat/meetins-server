@@ -1,9 +1,10 @@
+---
 meta:
   environment: node
   toolchain:
     name: npm
     version: 18
-
+build: {}
 run:
   command: npm run start:prod
   containerPort: 5000
