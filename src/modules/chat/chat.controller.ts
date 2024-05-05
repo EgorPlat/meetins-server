@@ -1,4 +1,4 @@
-import { BadRequestException, Controller, Get, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ChatService } from './chat.service';
 import { Request } from 'express';
 import { FinallMulterOptions } from 'src/middlewares/fileSize.middleware';
@@ -7,6 +7,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('chat')
 @UseGuards(JwtAuthGuard)
+
 export class ChatController {
 
     constructor(private chatService: ChatService) {}

@@ -15,6 +15,7 @@ const websockets_1 = require("@nestjs/websockets");
 const socket_io_1 = require("socket.io");
 const token_service_1 = require("./help/token.service");
 const schedule_1 = require("@nestjs/schedule");
+const jwt_auth_guard_1 = require("./modules/auth/jwt-auth.guard");
 let AppGateway = class AppGateway {
     constructor(jwtHelpService) {
         this.jwtHelpService = jwtHelpService;
@@ -48,6 +49,12 @@ __decorate([
     (0, websockets_1.WebSocketServer)(),
     __metadata("design:type", socket_io_1.Server)
 ], AppGateway.prototype, "server", void 0);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], AppGateway.prototype, "handleConnection", null);
 __decorate([
     (0, schedule_1.Cron)('5 * * * * *'),
     __metadata("design:type", Function),

@@ -4,12 +4,13 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { join } from "path";
 import { AppModule } from "./app.module";
 import * as cookieParser from 'cookie-parser';
+import { MyLogger } from "./help/logger.service";
 
 
 const start = async () => {
     try {
         const PORT = process.env.PORT || 5000;
-        const app = await NestFactory.create<NestExpressApplication>(AppModule);
+        const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger: new MyLogger() });
         app.useStaticAssets(join(__dirname, '../src/static')); 
         app.use(cookieParser());
         app.enableCors({
@@ -26,7 +27,7 @@ const start = async () => {
         .build()
         const swagger = SwaggerModule.createDocument(app, config)
         SwaggerModule.setup('/api/docs', app, swagger);
-        
+
         await app.listen(PORT, () => {
             console.log('Server started');
         })

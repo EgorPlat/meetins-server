@@ -44,6 +44,7 @@
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.8",
     "nest": "^0.1.6",
+    "nestjs": "0.0.1",
     "pug": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

@@ -8,6 +8,7 @@ import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
 @Controller('profile')
 @ApiTags('Профиль')
 @UseGuards(JwtAuthGuard)
+
 export class ProfileController {
 
     constructor(private profileService: ProfileService) {}

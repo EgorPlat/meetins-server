@@ -5,10 +5,11 @@ const swagger_1 = require("@nestjs/swagger");
 const path_1 = require("path");
 const app_module_1 = require("./app.module");
 const cookieParser = require("cookie-parser");
+const logger_service_1 = require("./help/logger.service");
 const start = async () => {
     try {
         const PORT = process.env.PORT || 5000;
-        const app = await core_1.NestFactory.create(app_module_1.AppModule);
+        const app = await core_1.NestFactory.create(app_module_1.AppModule, { logger: new logger_service_1.MyLogger() });
         app.useStaticAssets((0, path_1.join)(__dirname, '../src/static'));
         app.use(cookieParser());
         app.enableCors({
