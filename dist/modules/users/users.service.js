@@ -78,7 +78,8 @@ let UserService = class UserService {
                 status: user.status,
                 age: user.age,
                 city: user.city,
-                gender: user.gender
+                gender: user.gender,
+                tag: user.tag
             };
         });
         return peoples;
@@ -193,7 +194,8 @@ let UserService = class UserService {
                 status: user.status,
                 age: user.age,
                 city: user.city,
-                gender: user.gender
+                gender: user.gender,
+                tag: user.tag
             };
         });
         if (filters.age !== 0) {

@@ -101,7 +101,7 @@ let EventService = class EventService {
     }
     async getEventsByCategory(eventsInfo) {
         const dateInTimestamp = Math.floor(Date.now() / 1000);
-        const { data } = await this.httpService.get(`https://kudago.com/public-api/v1.4/events/?page=${eventsInfo.page}&page_size=70&categories=${eventsInfo.nameCategory}&fields=id,title,description,price,images,age_restriction&actual_since=${dateInTimestamp - 50000}&actual_until=${dateInTimestamp}`).toPromise();
+        const { data } = await this.httpService.get(`https://kudago.com/public-api/v1.4/events/?page=${eventsInfo.page}&page_size=70&categories=${eventsInfo.nameCategory}&fields=id,title,description,price,images,location,dates,age_restriction&actual_since=${dateInTimestamp - 50000}`).toPromise();
         if (data) {
             return data.results;
         }

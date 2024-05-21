@@ -1,3 +1,5 @@
+import { IUserTag } from "./tag.interface";
+
 export interface IPeople {
     login: number,
     userName: string,
@@ -7,5 +9,6 @@ export interface IPeople {
     city: string,
     gender: string,
     email: string,
+    tag: IUserTag
 }
 export type People = IPeople;
