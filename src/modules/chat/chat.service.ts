@@ -97,9 +97,15 @@ export class ChatService {
     }
 
     async markDialogMessagesAsReaded(request: Request) {
-        await this.chatModel.updateOne({ dialogId: request.body.dialogId }, {
-            $set: { "messages.$[].isRead": true }
-        }, { multi: true });
+        const inithiator = this.helpJwtService.decodeJwt(request);
+
+        await this.chatModel.updateOne(
+            { dialogId: request.body.dialogId, "messages.$[].senderId": { $ne: inithiator.userId } }, 
+            {
+                $set: { "messages.$[].isRead": true }
+            }, 
+            { multi: true }
+        );
         const updatedDialogs = await this.getUserDialogs(request);
 
         if (updatedDialogs) return updatedDialogs;

@@ -91,7 +91,8 @@ let ChatService = class ChatService {
         throw new common_1.HttpException(messages, 200);
     }
     async markDialogMessagesAsReaded(request) {
-        await this.chatModel.updateOne({ dialogId: request.body.dialogId }, {
+        const inithiator = this.helpJwtService.decodeJwt(request);
+        await this.chatModel.updateOne({ dialogId: request.body.dialogId, "messages.$[].senderId": { $ne: inithiator.userId } }, {
             $set: { "messages.$[].isRead": true }
         }, { multi: true });
         const updatedDialogs = await this.getUserDialogs(request);
