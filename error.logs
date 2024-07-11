@@ -325,3 +325,12 @@
           Context = ExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 6 / 4 
+
+          Errors = Error: listen EADDRINUSE: address already in use :::5000 
+
+          Stack = NestApplication 
+
+          Context = undefined
+          --------------------------------------------------------
+      
