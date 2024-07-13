@@ -89,8 +89,11 @@ let AuthService = class AuthService {
     }
     async registrationWithConfirmation(userDto) {
         const findedUser = await this.userService.getUserByEmail(userDto.email);
-        const createdUser = await this.unConfirmedUserModel.findOne({ email: userDto.email });
-        if (findedUser || createdUser) {
+        const uncofirmedUser = await this.unConfirmedUserModel.findOne({ email: userDto.email });
+        if (uncofirmedUser) {
+            throw new common_1.HttpException('Success', 201);
+        }
+        if (findedUser) {
             throw new common_1.HttpException('Пользователь с таким email уже есть.', common_1.HttpStatus.BAD_REQUEST);
         }
         const code = Math.floor(Math.random() * 900000);
