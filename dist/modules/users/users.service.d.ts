@@ -35,7 +35,7 @@ export declare class UserService {
     getMarkedUsersInfo(request: Request): Promise<any[]>;
     removeUserFromMarkedList(request: Request, removedUserId: string): Promise<any[]>;
     getUserListByPageNumber(request: Request): Promise<{
-        peoples: IPeople[];
+        data: IPeople[];
         maxPage: number;
     }>;
     getSortedPeoples(sortParams: ISortParams): Promise<void>;

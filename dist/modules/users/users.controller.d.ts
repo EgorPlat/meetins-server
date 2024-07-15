@@ -23,7 +23,7 @@ export declare class UserController {
     updateUserInterest(req: Request): Promise<User>;
     getUserList(): Promise<import("src/interfaces/people.interface").IPeople[]>;
     getUserListByPageNumber(request: Request): Promise<{
-        peoples: import("src/interfaces/people.interface").IPeople[];
+        data: import("src/interfaces/people.interface").IPeople[];
         maxPage: number;
     }>;
     addUserIntoMarkedList(request: Request): Promise<User & import("mongoose").Document<any, any, any> & {

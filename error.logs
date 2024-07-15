@@ -562,3 +562,17 @@
           Context = ExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 6 / 1 
+
+          Errors = Cannot destructure property 'userId' of 'this.jwtHelpService.decodeJwt(...)' as it is null. 
+
+          Stack = TypeError: Cannot destructure property 'userId' of 'this.jwtHelpService.decodeJwt(...)' as it is null.
+    at WallService.getCurrentWall (C:\Users\egorp\projects\meetins-server\server\src\modules\wall\wall.service.ts:19:13)
+    at WallController.getAllMusic (C:\Users\egorp\projects\meetins-server\server\src\modules\wall\wall.controller.ts:16:33)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\router\router-execution-context.js:38:29
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\router\router-proxy.js:9:17 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      

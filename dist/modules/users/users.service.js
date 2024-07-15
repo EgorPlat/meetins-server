@@ -206,7 +206,7 @@ let UserService = class UserService {
         }
         const maxPage = Math.ceil(peoples.length / pageSize);
         peoples = peoples.slice(pageNumber * pageSize - pageSize, pageNumber * pageSize);
-        return { peoples: peoples, maxPage: maxPage };
+        return { data: peoples, maxPage: maxPage };
     }
     async getSortedPeoples(sortParams) {
         let peoples = await this.getUserList();
