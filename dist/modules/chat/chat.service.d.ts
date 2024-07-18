@@ -19,24 +19,8 @@ export declare class ChatService {
     sendFileToChat(file: any, request: Request): Promise<void>;
     checkDialog(request: Request): Promise<any[]>;
     getDialogMessages(request: Request): Promise<void>;
-    markDialogMessagesAsReaded(request: Request): Promise<{
-        dialogId: string;
-        userName: string;
-        userAvatar: string;
-        isRead: boolean;
-        content: string;
-        messages: IMessage[];
-        userLogin: number;
-    }[]>;
+    markDialogMessagesAsReaded(request: Request): Promise<any[]>;
     sendNewMessage(request: Request): Promise<void>;
-    getUserDialogs(request: Request): Promise<{
-        dialogId: string;
-        userName: string;
-        userAvatar: string;
-        isRead: boolean;
-        content: string;
-        messages: IMessage[];
-        userLogin: number;
-    }[]>;
+    getUserDialogs(request: Request): Promise<any[]>;
     startNewDialog(request: Request): Promise<void>;
 }

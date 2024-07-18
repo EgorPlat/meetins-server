@@ -576,3 +576,79 @@
           Context = ExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 6 / 4 
+
+          Errors = FieldPath field names may not start with '$'. Consider using $getField or $setField. 
+
+          Stack = MongoServerError: FieldPath field names may not start with '$'. Consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 4 
+
+          Errors = Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField. 
+
+          Stack = MongoServerError: Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 4 
+
+          Errors = Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField. 
+
+          Stack = MongoServerError: Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 4 
+
+          Errors = Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField. 
+
+          Stack = MongoServerError: Invalid $addFields :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      

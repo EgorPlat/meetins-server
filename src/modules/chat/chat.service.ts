@@ -120,25 +120,46 @@ export class ChatService {
     
     async getUserDialogs(request: Request) {
         const decodedJwt = await this.helpJwtService.decodeJwt(request);
-        const findedDialogs = await this.getMyDialogs(decodedJwt?.userId);
-        const requestedUser: User = await this.userService.getUserByUserId(decodedJwt.userId);
 
-        const shortDialogsForUser = await Promise.all(findedDialogs.map(async (eachDialog) => {
-            const userChatId = eachDialog.members.filter(memberId => memberId !== requestedUser.userId);
-            const userChatIdInfo: User = await this.userService.getUserByUserId(userChatId[userChatId.length-1]);
-            return {
-                dialogId: eachDialog.dialogId,
-                userName: userChatIdInfo.name,
-                userAvatar: userChatIdInfo.avatar,
-                isRead: true,
-                content: eachDialog.messages[0].content,
-                messages: eachDialog.messages,
-                userLogin: userChatIdInfo.login
+        const dialogsData = this.chatModel.aggregate([
+            {
+                $match: { members: { $elemMatch: { $eq: decodedJwt?.userId } } }
+            },
+            {
+                $sort: { "messages.sendAt": -1 }
+            },
+            {
+                $unwind: "$members"
+            },
+            {
+                $match: { members: { $ne: decodedJwt?.userId } }
+            },
+            {
+                $lookup: {
+                  from: "users",
+                  localField: "members",
+                  foreignField: "userId",
+                  as: "members"
+                }
+            },
+            {
+                $unwind: "$members"
+            },
+            {
+                $project: {
+                    _id: 0,
+                    dialogId: 1,
+                    userName: "$members.name",
+                    userAvatar: "$members.avatar",
+                    isRead: true,
+                    content: { $arrayElemAt: [ "$messages.content", -1 ] },
+                    messages: 1,
+                    userLogin: "$members.login"
+                }
             }
-        }))
-
-        if (shortDialogsForUser) {
-            return shortDialogsForUser;
+        ]);
+        if (dialogsData) {
+            return dialogsData;
         }
         throw new HttpException("Что-то пошло не так.", 400);
     }
