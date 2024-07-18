@@ -46,8 +46,7 @@ let ChatService = class ChatService {
             status: false,
             type: type
         };
-        await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } });
-        const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
+        const currentChatState = await this.chatModel.findOneAndUpdate({ dialogId: message.dialogId }, { $push: { messages: message } }, { returnDocument: "after" });
         if (currentChatState) {
             const userSessionForSendingMessage = this.socketServer.activeFullUsersList
                 .filter(el => currentChatState.members.includes(el.userId))

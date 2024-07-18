@@ -46,8 +46,11 @@ export class ChatService {
             status: false,
             type: type
         }
-        await this.chatModel.updateOne({ dialogId: message.dialogId }, { $push: { messages: message } } );
-        const currentChatState = await this.chatModel.findOne({ dialogId: message.dialogId });
+        const currentChatState = await this.chatModel.findOneAndUpdate(
+            { dialogId: message.dialogId }, 
+            { $push: { messages: message } },
+            { returnDocument: "after" }
+        );
 
         if (currentChatState) {
             const userSessionForSendingMessage = this.socketServer.activeFullUsersList
@@ -174,7 +177,6 @@ export class ChatService {
             messages: [],
             members: [decodedJwt.userId, createChatDto.userId]
         });
-
         const createdChat = await this.chatModel.findOne({ dialogId: "dialog" + newDialogId });
         const addedMessages = await this.addNewMessage(decodedJwt, createdChat.dialogId, createChatDto.messageContent, 'text');
         
