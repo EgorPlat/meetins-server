@@ -8,7 +8,7 @@ export declare class EventController {
     sendInviteToUser(request: any): Promise<{
         message: string;
     }>;
-    getUserEventsInfo(request: any): Promise<void>;
+    getUserEventsInfo(request: any): Promise<any[]>;
     getUserInnerInvitesEventInfo(request: any): Promise<void>;
     getUserOuterInvitesEventInfo(request: any): Promise<void>;
     declineInnerInvite(request: any): Promise<any>;

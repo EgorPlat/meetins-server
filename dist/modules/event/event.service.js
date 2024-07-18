@@ -84,18 +84,17 @@ let EventService = class EventService {
             __v: false
         });
         let userEventsInfo = [];
-        if (user) {
-            await Promise.all(user.events.map(async (eventId) => {
-                const { data } = await this.httpService.get(`https://kudago.com/public-api/v1.4/events/${eventId}`).toPromise();
-                if (data) {
-                    return data;
-                }
-                else {
-                    return null;
-                }
-            })).then(results => {
-                userEventsInfo = results.filter(el => el !== null);
-            });
+        if (user.events.length !== 0) {
+            const { data } = await this.httpService.get(`https://kudago.com/public-api/v1.4/events/?ids=${user.events.join(',')}&fields=id,title,description,price,images,location,dates,age_restriction`).toPromise();
+            if (data) {
+                userEventsInfo = data.results;
+            }
+            else {
+                throw new common_1.HttpException({ errorMessage: "Не удалось получить информацию" }, 404);
+            }
+        }
+        else {
+            return [];
         }
         throw new common_1.HttpException(userEventsInfo, 200);
     }
