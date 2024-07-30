@@ -27,6 +27,7 @@ let UserService = class UserService {
         await this.userModel.updateMany({}, { $set: { tag: { color: "rgba(42, 132, 251, 0.878)", title: "Гость" } } });
         await this.userModel.updateMany({}, { $set: { purchasedOpportunities: [] } });
     }
+    ;
     async getUsers() {
         const users = await this.userModel.find({}, {
             password: false,
@@ -35,6 +36,7 @@ let UserService = class UserService {
         });
         return users;
     }
+    ;
     async addUser(dto) {
         let candidate = Object.assign(Object.assign({}, dto), { login: Math.floor(Math.random() * 20000), userId: "id" + String(Math.floor(Math.random() * 100000)) });
         const user = await this.userModel.create(candidate);
@@ -42,6 +44,7 @@ let UserService = class UserService {
             return user;
         }
     }
+    ;
     async getUserByLogin(login) {
         const user = await this.userModel.findOne({ login: login }, {
             password: false,
@@ -50,6 +53,7 @@ let UserService = class UserService {
         });
         return user;
     }
+    ;
     async getUserByLoginMainInfoOnly(login) {
         const user = await this.userModel.findOne({ login: login }, {
             password: false,
@@ -63,6 +67,7 @@ let UserService = class UserService {
         });
         return user;
     }
+    ;
     async getUserList() {
         const user = await this.userModel.find({}, {
             password: false,
@@ -84,6 +89,7 @@ let UserService = class UserService {
         });
         return peoples;
     }
+    ;
     async addUserIntoMarkedList(request) {
         const { userId } = this.helpJwtService.decodeJwt(request);
         const { neededUserId } = request.body;
@@ -94,6 +100,7 @@ let UserService = class UserService {
             return updatedUser;
         throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
     }
+    ;
     async formMarkedUsersInfoByIds(userId) {
         const usersInfo = await this.userModel.aggregate([
             {
@@ -126,6 +133,7 @@ let UserService = class UserService {
         if (usersInfo)
             return usersInfo.map(el => { return el.markedUserInfo; });
     }
+    ;
     async updateUserTag(request) {
         const { userId } = this.helpJwtService.decodeJwt(request);
         const { title, color } = request.body;
@@ -136,6 +144,7 @@ let UserService = class UserService {
             return updatedUser;
         throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
     }
+    ;
     async getMarkedUsersInfo(request) {
         const { userId } = this.helpJwtService.decodeJwt(request);
         const markedUsersInfo = await this.formMarkedUsersInfoByIds(userId);
@@ -144,6 +153,7 @@ let UserService = class UserService {
         }
         throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
     }
+    ;
     async removeUserFromMarkedList(request, removedUserId) {
         const { userId } = this.helpJwtService.decodeJwt(request);
         await this.userModel.updateOne({ userId: userId }, { $pull: {
@@ -155,6 +165,7 @@ let UserService = class UserService {
         }
         throw new common_1.HttpException({ errorMessage: "Что-то пошло не так." }, 400);
     }
+    ;
     async getUserListByPageNumber(request) {
         const { userId } = this.helpJwtService.decodeJwt(request);
         const inithiator = await this.userModel.findOne({ userId: userId });
@@ -208,6 +219,7 @@ let UserService = class UserService {
         peoples = peoples.slice(pageNumber * pageSize - pageSize, pageNumber * pageSize);
         return { data: peoples, maxPage: maxPage };
     }
+    ;
     async getSortedPeoples(sortParams) {
         let peoples = await this.getUserList();
         if (sortParams.age !== 50) {
@@ -219,6 +231,7 @@ let UserService = class UserService {
         }
         throw new common_1.HttpException(peoples, 200);
     }
+    ;
     async getUpdatedUserByEmail(email) {
         const user = await this.userModel.findOne({ email: email }, {
             password: false,
@@ -227,6 +240,7 @@ let UserService = class UserService {
         });
         return user;
     }
+    ;
     async getUserByEmail(email) {
         const user = await this.userModel.findOne({ email: email }, {
             _id: false,
@@ -234,6 +248,7 @@ let UserService = class UserService {
         });
         return user;
     }
+    ;
     async getUserByUserId(userId) {
         const user = await this.userModel.findOne({ userId: userId }, {
             _id: false,
@@ -241,17 +256,19 @@ let UserService = class UserService {
         });
         return user;
     }
+    ;
     async updateUserStatus(decodedToken, status) {
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: { status: status } });
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: decodedToken.email }, { $set: { status: status } }, { returnDocument: 'after' });
         if (updatedUser) {
             return updatedUser;
         }
     }
+    ;
     async updateUserFilterStatus(decodedToken, filterStatus) {
         const updatedUser = await this.userModel.findOneAndUpdate({ userId: decodedToken.userId }, { $set: { isFilter: filterStatus } }, { returnDocument: 'after' });
         return updatedUser;
     }
+    ;
     async updateUserAccount(decodedToken, accountData) {
         const users = await this.userModel.find({
             $or: [
@@ -274,16 +291,16 @@ let UserService = class UserService {
             throw new common_1.HttpException({ message: "Занят login или email" }, 400);
         }
     }
+    ;
     async updateUserProfile(decodedToken, accountData) {
         const users = await this.userModel.find({ email: accountData.phoneNumber });
         if (users.length === 0) {
-            await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+            await this.userModel.findOneAndUpdate({ email: decodedToken.email }, { $set: {
                     phoneNumber: accountData.phoneNumber,
                     name: accountData.name,
-                    birthDate: accountData.birthDate
+                    birthDate: accountData.birthDate,
                 } });
-            await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
-            const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+            const updatedUser = await this.updateUserBirthDate(decodedToken.email, new Date(accountData.birthDate));
             if (updatedUser) {
                 return updatedUser;
             }
@@ -292,6 +309,7 @@ let UserService = class UserService {
             throw new common_1.HttpException({ message: "Занят login или email" }, 400);
         }
     }
+    ;
     async updateUserAvatar(file, user) {
         const updatedUser = await this.userModel.findOneAndUpdate({ email: user.email }, { $set: {
                 avatar: file.filename,
@@ -300,22 +318,24 @@ let UserService = class UserService {
             return updatedUser;
         }
     }
+    ;
     async updateUserBirthDate(userEmail, date) {
         const actualYear = new Date().getFullYear();
         const userBirthDateYear = date.getFullYear();
-        await this.userModel.updateOne({ email: userEmail }, { $set: {
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: userEmail }, { $set: {
                 age: actualYear - userBirthDateYear,
-            } });
+            } }, { returnDocument: "after" });
+        return updatedUser;
     }
+    ;
     async addUserEvent(request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const prevUserState = await this.userModel.findOne({ email: decodedToken.email });
         if (!prevUserState.events.includes(body.eventId)) {
-            await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+            const updatedUser = await this.userModel.findOneAndUpdate({ email: decodedToken.email }, { $set: {
                     events: [...prevUserState.events, body.eventId],
-                } });
-            const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+                } }, { returnDocument: "after" });
             if (updatedUser) {
                 return updatedUser;
             }
@@ -324,30 +344,34 @@ let UserService = class UserService {
             throw new common_1.HttpException({ message: "Данное событие уже добавлено" }, 400);
         }
     }
+    ;
     async deleteUserEvent(request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const prevUserState = await this.userModel.findOne({ email: decodedToken.email });
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: decodedToken.email }, {
+            $set: {
                 events: prevUserState.events.filter(el => el !== body.eventId),
-            } });
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+            }
+        }, { returnDocument: "after" });
         if (updatedUser) {
             return updatedUser;
         }
     }
+    ;
     async updateUserInterest(request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
-        const prevUserState = await this.userModel.findOne({ email: decodedToken.email });
-        await this.userModel.updateOne({ email: decodedToken.email }, { $set: {
+        const updatedUser = await this.userModel.findOneAndUpdate({ email: decodedToken.email }, {
+            $set: {
                 interests: body.interests,
-            } });
-        const updatedUser = await this.getUpdatedUserByEmail(decodedToken.email);
+            }
+        }, { returnDocument: "after" });
         if (updatedUser) {
             return updatedUser;
         }
     }
+    ;
     async removeUserInterest(request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
@@ -360,6 +384,7 @@ let UserService = class UserService {
             return updatedUser;
         }
     }
+    ;
     async addUserPost(files, request) {
         const { body } = request;
         const decodedToken = this.helpJwtService.decodeJwt(request);
@@ -386,6 +411,7 @@ let UserService = class UserService {
             throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
         }
     }
+    ;
     async addLikeToUserPost(request, postId, userId) {
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
@@ -395,6 +421,7 @@ let UserService = class UserService {
             return updatedUser;
         throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
     }
+    ;
     async removeLikeFromUserPost(request, postId, userId) {
         const decodedToken = this.helpJwtService.decodeJwt(request);
         const updatedUser = this.userModel.findOneAndUpdate({ userId: userId, "posts.id": postId }, {
@@ -404,6 +431,7 @@ let UserService = class UserService {
             return updatedUser;
         throw new common_1.HttpException({ message: "Попробуйте снова, произошла неизвестная ошибка" }, 400);
     }
+    ;
 };
 UserService = __decorate([
     (0, common_1.Injectable)(),

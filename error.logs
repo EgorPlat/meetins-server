@@ -652,3 +652,302 @@
           Context = ExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 6 / 5 
+
+          Errors = Cannot create field '[]' in element {messages: [ { dialogId: "dialog188392", content: "111111", messageId: "4429643", sendAt: new Date(1721370048526), senderId: "id34823", isRead: false, avatar: "1714197279618.png", senderName: "ЕгорП", status: false, type: "text" }, { dialogId: "dialog188392", content: "11111111", messageId: "3303462", sendAt: new Date(1721370526048), senderId: "id47717", isRead: false, avatar: "no-avatar.jpg", senderName: "leonhard", status: false, type: "text" } ]} 
+
+          Stack = MongoServerError: Cannot create field '[]' in element {messages: [ { dialogId: "dialog188392", content: "111111", messageId: "4429643", sendAt: new Date(1721370048526), senderId: "id34823", isRead: false, avatar: "1714197279618.png", senderName: "ЕгорП", status: false, type: "text" }, { dialogId: "dialog188392", content: "11111111", messageId: "3303462", sendAt: new Date(1721370526048), senderId: "id47717", isRead: false, avatar: "no-avatar.jpg", senderName: "leonhard", status: false, type: "text" } ]}
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:164:44
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 5 
+
+          Errors = Cannot create field '[]' in element {messages: [ { dialogId: "dialog188392", content: "111111", messageId: "4429643", sendAt: new Date(1721370048526), senderId: "id34823", isRead: false, avatar: "1714197279618.png", senderName: "ЕгорП", status: false, type: "text" }, { dialogId: "dialog188392", content: "11111111", messageId: "3303462", sendAt: new Date(1721370526048), senderId: "id47717", isRead: false, avatar: "no-avatar.jpg", senderName: "leonhard", status: false, type: "text" } ]} 
+
+          Stack = MongoServerError: Cannot create field '[]' in element {messages: [ { dialogId: "dialog188392", content: "111111", messageId: "4429643", sendAt: new Date(1721370048526), senderId: "id34823", isRead: false, avatar: "1714197279618.png", senderName: "ЕгорП", status: false, type: "text" }, { dialogId: "dialog188392", content: "11111111", messageId: "3303462", sendAt: new Date(1721370526048), senderId: "id47717", isRead: false, avatar: "no-avatar.jpg", senderName: "leonhard", status: false, type: "text" } ]}
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:164:44
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 5 
+
+          Errors = Could not find path "messages.0.senderId" in schema 
+
+          Stack = Error: Could not find path "messages.0.senderId" in schema
+    at _castArrayFilters (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:71:15)
+    at castArrayFilters (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:25:3)
+    at _castArrayFilters (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:2156:5)
+    at model.Query._updateThunk (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4012:3)
+    at model.Query.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4125:23)
+    at model.Query._wrappedThunk [as _updateMany] (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\query\wrapThunk.js:27:8)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\kareem\index.js:372:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (2)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (3)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (4)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (5)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (6)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (7)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (8)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (9)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = querySrv ETIMEOUT _mongodb._tcp.cluster0.jp0xq.mongodb.net 
+
+          Stack = Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jp0xq.mongodb.net
+    at QueryReqWrap.onresolve [as oncomplete] (dns.js:203:19) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net 
+
+          Stack = MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net
+    at Function.Model.$wrapCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\model.js:5012:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4658:21
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4657:10)
+    at model.Query.Query.then (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4740:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net 
+
+          Stack = MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net
+    at Timeout._onTimeout (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\node_modules\mongodb\src\sdam\topology.ts:618:30)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net 
+
+          Stack = MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net
+    at Function.Model.$wrapCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\model.js:5012:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4658:21
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4657:10)
+    at model.Query.Query.then (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4740:15) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net 
+
+          Stack = MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.jp0xq.mongodb.net
+    at Function.Model.$wrapCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\model.js:5012:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4658:21
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4657:10)
+    at model.Query.Query.then (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4740:15) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Cast to Number failed for value "undefined" (type string) at path "login" for model "User" 
+
+          Stack = CastError: Cast to Number failed for value "undefined" (type string) at path "login" for model "User"
+    at model.Query.exec (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4641:21)
+    at model.Query.Query.then (C:\Users\egorp\projects\meetins-server\server\node_modules\mongoose\lib\query.js:4740:15) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (2)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (3)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (4)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 2 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 2 
+
+          Errors = Unable to connect to the database. Retrying (2)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 6 / 2 
+
+          Errors = Unable to connect to the database. Retrying (3)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      

@@ -26,11 +26,11 @@ let WallService = class WallService {
         this.groupsModel = groupsModel;
     }
     async getCurrentWall(request) {
-        const { userId } = this.jwtHelpService.decodeJwt(request);
-        const inithiator = await this.usersModel.findOne({ userId: userId });
+        const decodedJwt = this.jwtHelpService.decodeJwt(request);
+        const inithiator = await this.usersModel.findOne({ userId: decodedJwt === null || decodedJwt === void 0 ? void 0 : decodedJwt.userId });
         let usersPosts = [];
         let groupsPosts = [];
-        if (inithiator.isFilter) {
+        if (inithiator && inithiator.isFilter) {
             usersPosts = await this.usersModel.aggregate([
                 { $match: { "posts": { $exists: true, $not: { $size: 0 } } } },
                 { $match: { interests: { $elemMatch: { $in: inithiator.interests } } } },

@@ -55,7 +55,7 @@ export declare class UserService {
     updateUserAccount(decodedToken: any, accountData: IAccount): Promise<User>;
     updateUserProfile(decodedToken: any, accountData: IProfile): Promise<User>;
     updateUserAvatar(file: any, user: User): Promise<User>;
-    updateUserBirthDate(userEmail: string, date: Date): Promise<void>;
+    updateUserBirthDate(userEmail: string, date: Date): Promise<User>;
     addUserEvent(request: Request): Promise<User>;
     deleteUserEvent(request: Request): Promise<User>;
     updateUserInterest(request: Request): Promise<User>;
