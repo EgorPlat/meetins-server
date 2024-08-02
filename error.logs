@@ -987,3 +987,235 @@
           Context = MongooseModule
           --------------------------------------------------------
       
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'handshake' of undefined 
+
+          Stack = TypeError: Cannot read property 'handshake' of undefined
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:46:32)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Unexpected token o in JSON at position 1 
+
+          Stack = SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at AppGateway.handleEvent (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:47:26)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      

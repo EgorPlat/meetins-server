@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppGateway = void 0;
 const common_1 = require("@nestjs/common");
@@ -41,6 +44,15 @@ let AppGateway = class AppGateway {
         };
         this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
     }
+    handleEvent(client, data) {
+        const userSessionForSendingMessage = this.activeFullUsersList
+            .filter(el => el.userId === data.userId)
+            .map(el => el.socketId);
+        if (userSessionForSendingMessage) {
+            this.server.to([...userSessionForSendingMessage]).emit('accept-call', data);
+        }
+        return data;
+    }
     handleUpdateUserList() {
         this.server.emit('updateUsers', { users: this.activeFullUsersList });
     }
@@ -55,6 +67,13 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], AppGateway.prototype, "handleConnection", null);
+__decorate([
+    (0, websockets_1.SubscribeMessage)('ask-call'),
+    __param(1, (0, websockets_1.MessageBody)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Object)
+], AppGateway.prototype, "handleEvent", null);
 __decorate([
     (0, schedule_1.Cron)('5 * * * * *'),
     __metadata("design:type", Function),

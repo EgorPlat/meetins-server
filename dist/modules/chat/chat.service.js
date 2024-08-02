@@ -136,7 +136,8 @@ let ChatService = class ChatService {
                     isRead: true,
                     content: { $arrayElemAt: ["$messages.content", -1] },
                     messages: 1,
-                    userLogin: "$members.login"
+                    userLogin: "$members.login",
+                    userId: "$members.userId"
                 }
             }
         ]);
