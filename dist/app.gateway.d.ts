@@ -6,9 +6,11 @@ export declare class AppGateway implements OnGatewayConnection, OnGatewayDisconn
     server: Server;
     activeUsersList: string[];
     activeFullUsersList: any[];
+    clientsPeerId: any[];
     constructor(jwtHelpService: HelpJwtService);
     handleDisconnect(client: any): void;
     handleConnection(client: any, ...args: any[]): void;
-    handleEvent(client: any, data: any): any;
+    handleSendPeerId(data: any): any;
+    handleGetPeerIdByUserId(data: any): string;
     handleUpdateUserList(): void;
 }

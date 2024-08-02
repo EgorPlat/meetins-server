@@ -24,6 +24,7 @@ let AppGateway = class AppGateway {
         this.jwtHelpService = jwtHelpService;
         this.activeUsersList = [];
         this.activeFullUsersList = [];
+        this.clientsPeerId = [];
     }
     handleDisconnect(client) {
         var _a;
@@ -31,6 +32,7 @@ let AppGateway = class AppGateway {
         const decodeToken = this.jwtHelpService.decodeJwtFromString(accessToken);
         this.activeUsersList = this.activeUsersList.filter(el => el !== (decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.email));
         this.activeFullUsersList = this.activeFullUsersList.filter(el => el.email !== (decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.email));
+        this.clientsPeerId = this.clientsPeerId.filter(client => client.userId !== (decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.userId));
     }
     handleConnection(client, ...args) {
         var _a;
@@ -44,14 +46,14 @@ let AppGateway = class AppGateway {
         };
         this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
     }
-    handleEvent(client, data) {
-        const userSessionForSendingMessage = this.activeFullUsersList
-            .filter(el => el.userId === data.userId)
-            .map(el => el.socketId);
-        if (userSessionForSendingMessage) {
-            this.server.to([...userSessionForSendingMessage]).emit('accept-call', data);
-        }
-        return data;
+    handleSendPeerId(data) {
+        this.clientsPeerId = [...this.clientsPeerId, data];
+    }
+    handleGetPeerIdByUserId(data) {
+        var _a;
+        const { userId } = data;
+        console.log(this.clientsPeerId);
+        return (_a = this.clientsPeerId.filter(client => client.userId === userId)[0]) === null || _a === void 0 ? void 0 : _a.peerID;
     }
     handleUpdateUserList() {
         this.server.emit('updateUsers', { users: this.activeFullUsersList });
@@ -68,12 +70,19 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppGateway.prototype, "handleConnection", null);
 __decorate([
-    (0, websockets_1.SubscribeMessage)('ask-call'),
-    __param(1, (0, websockets_1.MessageBody)()),
+    (0, websockets_1.SubscribeMessage)('send-peer-id'),
+    __param(0, (0, websockets_1.MessageBody)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Object)
-], AppGateway.prototype, "handleEvent", null);
+], AppGateway.prototype, "handleSendPeerId", null);
+__decorate([
+    (0, websockets_1.SubscribeMessage)('get-peerID-for-call'),
+    __param(0, (0, websockets_1.MessageBody)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], AppGateway.prototype, "handleGetPeerIdByUserId", null);
 __decorate([
     (0, schedule_1.Cron)('5 * * * * *'),
     __metadata("design:type", Function),

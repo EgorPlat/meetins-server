@@ -1219,3 +1219,115 @@
           Context = WsExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 5 
+
+          Errors = Cannot read property 'peerID' of undefined 
+
+          Stack = TypeError: Cannot read property 'peerID' of undefined
+    at AppGateway.handleGetPeerIdByUserId (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:54:76)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-context-creator.js:43:33
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at AppGateway.<anonymous> (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\context\ws-proxy.js:11:32)
+    at WebSocketsController.pickResult (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\websockets\web-sockets-controller.js:91:24) 
+
+          Context = WsExceptionsHandler
+          --------------------------------------------------------
+      

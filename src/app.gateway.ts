@@ -1,5 +1,5 @@
 import { Injectable, UseGuards } from '@nestjs/common';
-import { OnGatewayConnection, OnGatewayDisconnect, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { MessageBody, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { HelpJwtService } from './help/token.service';
 import { Cron } from '@nestjs/schedule';
@@ -14,7 +14,8 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   public activeUsersList: string[] = [];
   public activeFullUsersList: any[] = [];
-  
+  public clientsPeerId: any[] = [];
+
   constructor(private jwtHelpService: HelpJwtService) { }
   
   handleDisconnect(client: any) {
@@ -24,6 +25,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     this.activeUsersList = this.activeUsersList.filter(el => el !== decodeToken?.email);
     this.activeFullUsersList = this.activeFullUsersList.filter(el => el.email !== decodeToken?.email);
+    this.clientsPeerId = this.clientsPeerId.filter(client => client.userId !== decodeToken?.userId);
   }
   
   @UseGuards(JwtAuthGuard)
@@ -39,6 +41,18 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
       userId: decodeToken?.userId
     };
     this.activeFullUsersList = [...this.activeFullUsersList, fullClient];
+  }
+
+  @SubscribeMessage('send-peer-id')
+  handleSendPeerId(@MessageBody() data: any): any {
+    this.clientsPeerId = [...this.clientsPeerId, data];
+  }
+
+  @SubscribeMessage('get-peerID-for-call')
+  handleGetPeerIdByUserId(@MessageBody() data: any): string {
+    const { userId } = data;
+    console.log(this.clientsPeerId);
+    return this.clientsPeerId.filter(client => client.userId === userId)[0]?.peerID;
   }
 
   @Cron('5 * * * * *')
