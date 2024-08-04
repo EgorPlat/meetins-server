@@ -51,8 +51,12 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @SubscribeMessage('get-peerID-for-call')
   handleGetPeerIdByUserId(@MessageBody() data: any): string {
     const { userId } = data;
-    console.log(this.clientsPeerId);
-    return this.clientsPeerId.filter(client => client.userId === userId)[0]?.peerID;
+    const peerID = this.clientsPeerId.filter(client => client.userId === userId)[0]?.peerID;
+    if (peerID !== undefined) {
+      return peerID;
+    } else {
+      return "";
+    }
   }
 
   @Cron('5 * * * * *')

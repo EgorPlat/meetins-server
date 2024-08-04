@@ -52,8 +52,13 @@ let AppGateway = class AppGateway {
     handleGetPeerIdByUserId(data) {
         var _a;
         const { userId } = data;
-        console.log(this.clientsPeerId);
-        return (_a = this.clientsPeerId.filter(client => client.userId === userId)[0]) === null || _a === void 0 ? void 0 : _a.peerID;
+        const peerID = (_a = this.clientsPeerId.filter(client => client.userId === userId)[0]) === null || _a === void 0 ? void 0 : _a.peerID;
+        if (peerID !== undefined) {
+            return peerID;
+        }
+        else {
+            return "";
+        }
     }
     handleUpdateUserList() {
         this.server.emit('updateUsers', { users: this.activeFullUsersList });
