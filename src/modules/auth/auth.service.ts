@@ -10,6 +10,7 @@ import { Model } from 'mongoose';
 import { MailService } from 'src/modules/mail/mail.service';
 import { AcceptUserDto } from 'src/dto/accept-user.dto';
 import { Response, Request } from 'express';
+import validate from 'deep-email-validator'
 
 @Injectable()
 export class AuthService {
@@ -77,6 +78,11 @@ export class AuthService {
     }
     async registration(userDto: CreateUserDto) {
         const condidate = await this.userService.getUserByEmail(userDto.email);
+        const emailValidator = await validate(userDto.email);
+        console.log(emailValidator)
+        if (!emailValidator.validators.smtp.valid) {
+            throw new HttpException('Данный email не валидный или не существует.', HttpStatus.BAD_REQUEST);
+        }
         if(condidate) {
             throw new HttpException('Пользователь с таким email уже есть.', HttpStatus.BAD_REQUEST);
         }
@@ -105,7 +111,7 @@ export class AuthService {
         const user = await this.unConfirmedUserModel.create(candidate);
         
         if (user) {
-            await this.mailService.sendUserRegisterConfirmationMail(user.email, user.name, user.actualCodeForConfirmation);
+            await this.mailService.sendUserRegisterConfirmationMail(user.email, user.name, user.actualCodeForConfirmation)
             throw new HttpException('Success', 201);
         } else {
             throw new HttpException('Server error', 500);

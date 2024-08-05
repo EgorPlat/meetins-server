@@ -20,6 +20,7 @@ const unConfirmedUser_schema_1 = require("../../schemas/unConfirmedUser.schema")
 const users_service_1 = require("../users/users.service");
 const mongoose_2 = require("mongoose");
 const mail_service_1 = require("../mail/mail.service");
+const deep_email_validator_1 = require("deep-email-validator");
 let AuthService = class AuthService {
     constructor(userService, jwtService, mailService, unConfirmedUserModel) {
         this.userService = userService;
@@ -80,6 +81,11 @@ let AuthService = class AuthService {
     }
     async registration(userDto) {
         const condidate = await this.userService.getUserByEmail(userDto.email);
+        const emailValidator = await (0, deep_email_validator_1.default)(userDto.email);
+        console.log(emailValidator);
+        if (!emailValidator.validators.smtp.valid) {
+            throw new common_1.HttpException('Данный email не валидный или не существует.', common_1.HttpStatus.BAD_REQUEST);
+        }
         if (condidate) {
             throw new common_1.HttpException('Пользователь с таким email уже есть.', common_1.HttpStatus.BAD_REQUEST);
         }

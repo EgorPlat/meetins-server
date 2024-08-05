@@ -1331,3 +1331,30 @@
           Context = WsExceptionsHandler
           --------------------------------------------------------
       
+          2024 / 7 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 7 / 0 
+
+          Errors = Unable to connect to the database. Retrying (1)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
+          2024 / 7 / 0 
+
+          Errors = Unable to connect to the database. Retrying (2)... 
+
+          Stack =  
+
+          Context = MongooseModule
+          --------------------------------------------------------
+      
