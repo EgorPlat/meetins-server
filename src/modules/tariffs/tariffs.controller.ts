@@ -1,4 +1,4 @@
-import { Controller, Get, Headers, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TariffsService } from './tariffs.service';
 import { Request } from 'express';

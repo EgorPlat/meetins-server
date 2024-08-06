@@ -1358,3 +1358,2876 @@
           Context = MongooseModule
           --------------------------------------------------------
       
+          2024 / 7 / 2 
+
+          Errors = Cannot read property 'setMaxListeners' of null 
+
+          Stack = TypeError: Cannot read property 'setMaxListeners' of null
+    at new AppGateway (C:\Users\egorp\projects\meetins-server\server\src\app.gateway.ts:20:17)
+    at Injector.instantiateClass (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:330:19)
+    at callback (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:48:41)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:122:24)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 5)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13
+    at async Promise.all (index 1) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppGateway at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current TariffsModule?
+- If AppGateway is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppGateway at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current TariffsModule?
+- If AppGateway is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 2)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppService at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppService is a provider, is it part of the current TariffsModule?
+- If AppService is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppService at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppService is a provider, is it part of the current TariffsModule?
+- If AppService is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 2)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppService at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppService is a provider, is it part of the current TariffsModule?
+- If AppService is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppService at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppService is a provider, is it part of the current TariffsModule?
+- If AppService is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 2)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppGateway at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current TariffsModule?
+- If AppGateway is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the TariffsService (JwtService, UserService, ?, TariffModel, TariffOpportunitiesModel). Please make sure that the argument AppGateway at index [2] is available in the TariffsModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current TariffsModule?
+- If AppGateway is exported from a separate @Module, is that module imported within TariffsModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 2)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppService (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppService (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppService (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppService (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 5)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 5)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest cannot create the ChatModule instance.
+The module at index [0] of the ChatModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule] 
+
+          Stack = Error: Nest cannot create the ChatModule instance.
+The module at index [0] of the ChatModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule]
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:54:23)
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:62:32)
+    at DependenciesScanner.scan (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:28:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:95:17
+    at Function.asyncRun (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\errors\exceptions-zone.js:22:13)
+    at NestFactoryStatic.initialize (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:94:13)
+    at NestFactoryStatic.create (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:37:9)
+    at start (C:\Users\egorp\projects\meetins-server\server\src\main.ts:13:21) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGatewayProvider context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGatewayProvider?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGatewayProvider?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGatewayProvider context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGatewayProvider?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGatewayProvider?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGatewayProvider at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGatewayProvider is a provider, is it part of the current ChatModule?
+- If AppGatewayProvider is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGatewayProvider */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppGateWayProviderModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppGateWayProviderModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppGateWayProviderModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 5)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGatewayProvider (?). Please make sure that the argument AppGateway at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current AppModule?
+- If AppGateway is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 5)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at Injector.lookupComponentInImports (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:265:17)
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:229:33)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 4)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule] 
+
+          Stack = Error: Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule]
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:54:23)
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:62:32)
+    at DependenciesScanner.scan (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:28:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:95:17
+    at Function.asyncRun (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\errors\exceptions-zone.js:22:13)
+    at NestFactoryStatic.initialize (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:94:13)
+    at NestFactoryStatic.create (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:37:9)
+    at start (C:\Users\egorp\projects\meetins-server\server\src\main.ts:13:21) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule] 
+
+          Stack = Error: Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule]
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:54:23)
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:62:32)
+    at DependenciesScanner.scan (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:28:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:95:17
+    at Function.asyncRun (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\errors\exceptions-zone.js:22:13)
+    at NestFactoryStatic.initialize (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:94:13)
+    at NestFactoryStatic.create (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:37:9)
+    at start (C:\Users\egorp\projects\meetins-server\server\src\main.ts:13:21) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule] 
+
+          Stack = Error: Nest cannot create the AppGatewayModule instance.
+The module at index [0] of the AppGatewayModule "imports" array is undefined.
+
+Potential causes:
+- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [0] is of type "undefined". Check your import statements and the type of the module.
+
+Scope [AppModule]
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:54:23)
+    at DependenciesScanner.scanForModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:62:32)
+    at DependenciesScanner.scan (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\scanner.js:28:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:95:17
+    at Function.asyncRun (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\errors\exceptions-zone.js:22:13)
+    at NestFactoryStatic.initialize (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:94:13)
+    at NestFactoryStatic.create (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\nest-factory.js:37:9)
+    at start (C:\Users\egorp\projects\meetins-server\server\src\main.ts:13:21) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGatewayModule?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the JwtAuthGuard context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current JwtAuthGuard?
+- If JwtService is exported from a separate @Module, is that module imported within JwtAuthGuard?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the HelpJwtModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current HelpJwtModule?
+- If JwtService is exported from a separate @Module, is that module imported within HelpJwtModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the HelpJwtService (?). Please make sure that the argument JwtService at index [0] is available in the HelpJwtModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current HelpJwtModule?
+- If JwtService is exported from a separate @Module, is that module imported within HelpJwtModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at Injector.lookupComponentInImports (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:265:17)
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:229:33)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtAuthGuard (?). Please make sure that the argument JwtService at index [0] is available in the AppGatewayModule context.
+
+Potential solutions:
+- If JwtService is a provider, is it part of the current AppGatewayModule?
+- If JwtService is exported from a separate @Module, is that module imported within AppGatewayModule?
+  @Module({
+    imports: [ /* the Module containing JwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at async Promise.all (index 0)
+    at Injector.loadEnhancersPerContext (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:355:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:75:9)
+    at async Promise.all (index 3) 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtService (?). Please make sure that the argument JWT_MODULE_OPTIONS at index [0] is available in the JwtService context.
+
+Potential solutions:
+- If JWT_MODULE_OPTIONS is a provider, is it part of the current JwtService?
+- If JWT_MODULE_OPTIONS is exported from a separate @Module, is that module imported within JwtService?
+  @Module({
+    imports: [ /* the Module containing JWT_MODULE_OPTIONS */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtService (?). Please make sure that the argument JWT_MODULE_OPTIONS at index [0] is available in the JwtService context.
+
+Potential solutions:
+- If JWT_MODULE_OPTIONS is a provider, is it part of the current JwtService?
+- If JWT_MODULE_OPTIONS is exported from a separate @Module, is that module imported within JwtService?
+  @Module({
+    imports: [ /* the Module containing JWT_MODULE_OPTIONS */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the JwtService (?). Please make sure that the argument JWT_MODULE_OPTIONS at index [0] is available in the JwtModule context.
+
+Potential solutions:
+- If JWT_MODULE_OPTIONS is a provider, is it part of the current JwtModule?
+- If JWT_MODULE_OPTIONS is exported from a separate @Module, is that module imported within JwtModule?
+  @Module({
+    imports: [ /* the Module containing JWT_MODULE_OPTIONS */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the JwtService (?). Please make sure that the argument JWT_MODULE_OPTIONS at index [0] is available in the JwtModule context.
+
+Potential solutions:
+- If JWT_MODULE_OPTIONS is a provider, is it part of the current JwtModule?
+- If JWT_MODULE_OPTIONS is exported from a separate @Module, is that module imported within JwtModule?
+  @Module({
+    imports: [ /* the Module containing JWT_MODULE_OPTIONS */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the SettingsController (?). Please make sure that the argument SettingsService at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If SettingsService is a provider, is it part of the current AppModule?
+- If SettingsService is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing SettingsService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the SettingsController (?). Please make sure that the argument SettingsService at index [0] is available in the AppModule context.
+
+Potential solutions:
+- If SettingsService is a provider, is it part of the current AppModule?
+- If SettingsService is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing SettingsService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadController (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:65:9)
+    at async Promise.all (index 1)
+    at InstanceLoader.createInstancesOfControllers (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:53:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:31:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 2 
+
+          Errors = Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the AppGateway (?). Please make sure that the argument HelpJwtService at index [0] is available in the AppGateway context.
+
+Potential solutions:
+- If HelpJwtService is a provider, is it part of the current AppGateway?
+- If HelpJwtService is exported from a separate @Module, is that module imported within AppGateway?
+  @Module({
+    imports: [ /* the Module containing HelpJwtService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 0)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 0)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins-server\server\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      

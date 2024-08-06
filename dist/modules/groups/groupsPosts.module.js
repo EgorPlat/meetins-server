@@ -10,7 +10,6 @@ exports.GroupsModule = void 0;
 const common_1 = require("@nestjs/common");
 const groupsPosts_controller_1 = require("./groupsPosts.controller");
 const auth_module_1 = require("../auth/auth.module");
-const app_gateway_1 = require("../../app.gateway");
 const token_module_1 = require("../../help/token.module");
 const groupsPosts_service_1 = require("./groupsPosts.service");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -20,7 +19,7 @@ let GroupsModule = class GroupsModule {
 };
 GroupsModule = __decorate([
     (0, common_1.Module)({
-        providers: [groupsPosts_service_1.GroupsService, app_gateway_1.AppGateway],
+        providers: [groupsPosts_service_1.GroupsService],
         controllers: [groupsPosts_controller_1.GroupsController],
         imports: [
             token_module_1.HelpJwtModule,

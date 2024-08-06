@@ -16,15 +16,13 @@ exports.InterestsService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const mongoose_1 = require("@nestjs/mongoose");
-const app_gateway_1 = require("../../app.gateway");
 const interests_schema_1 = require("../../schemas/interests.schema");
 const users_service_1 = require("../users/users.service");
 const mongoose_2 = require("mongoose");
 let InterestsService = class InterestsService {
-    constructor(jwtService, userService, socketServer, interestsModel) {
+    constructor(jwtService, userService, interestsModel) {
         this.jwtService = jwtService;
         this.userService = userService;
-        this.socketServer = socketServer;
         this.interestsModel = interestsModel;
     }
     async getInterests(request) {
@@ -66,10 +64,9 @@ let InterestsService = class InterestsService {
 };
 InterestsService = __decorate([
     (0, common_1.Injectable)(),
-    __param(3, (0, mongoose_1.InjectModel)(interests_schema_1.Interest.name)),
+    __param(2, (0, mongoose_1.InjectModel)(interests_schema_1.Interest.name)),
     __metadata("design:paramtypes", [jwt_1.JwtService,
         users_service_1.UserService,
-        app_gateway_1.AppGateway,
         mongoose_2.Model])
 ], InterestsService);
 exports.InterestsService = InterestsService;

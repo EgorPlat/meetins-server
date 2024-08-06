@@ -2,7 +2,6 @@ import { HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { Request } from 'express';
-import { AppGateway } from 'src/app.gateway';
 import { Interest, InterestDocument } from 'src/schemas/interests.schema';
 import { UserService } from 'src/modules/users/users.service';
 import { Model } from 'mongoose';
@@ -13,7 +12,6 @@ export class InterestsService {
     constructor(
         private jwtService: JwtService, 
         private userService: UserService,
-        private socketServer: AppGateway,
         @InjectModel(Interest.name) private interestsModel: Model<InterestDocument>
     ) {}
     

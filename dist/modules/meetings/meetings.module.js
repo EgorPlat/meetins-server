@@ -10,7 +10,6 @@ exports.MeetingsModule = void 0;
 const common_1 = require("@nestjs/common");
 const auth_module_1 = require("../auth/auth.module");
 const users_module_1 = require("../users/users.module");
-const app_gateway_1 = require("../../app.gateway");
 const token_module_1 = require("../../help/token.module");
 const meetings_service_1 = require("./meetings.service");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -21,7 +20,7 @@ let MeetingsModule = class MeetingsModule {
 };
 MeetingsModule = __decorate([
     (0, common_1.Module)({
-        providers: [meetings_service_1.MeetingsService, app_gateway_1.AppGateway],
+        providers: [meetings_service_1.MeetingsService],
         controllers: [meetings_controller_1.MeetingsController],
         imports: [
             users_module_1.UsersModule,

@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const tariffs_service_1 = require("./tariffs.service");
 const auth_module_1 = require("../auth/auth.module");
 const users_module_1 = require("../users/users.module");
-const app_gateway_1 = require("../../app.gateway");
 const token_module_1 = require("../../help/token.module");
 const tariffs_controller_1 = require("./tariffs.controller");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -21,7 +20,7 @@ let TariffsModule = class TariffsModule {
 };
 TariffsModule = __decorate([
     (0, common_1.Module)({
-        providers: [tariffs_service_1.TariffsService, app_gateway_1.AppGateway],
+        providers: [tariffs_service_1.TariffsService],
         controllers: [tariffs_controller_1.TariffsController],
         imports: [
             auth_module_1.AuthModule,

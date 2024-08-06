@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const interest_service_1 = require("./interest.service");
 const auth_module_1 = require("../auth/auth.module");
 const users_module_1 = require("../users/users.module");
-const app_gateway_1 = require("../../app.gateway");
 const token_module_1 = require("../../help/token.module");
 const interest_controller_1 = require("./interest.controller");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -20,7 +19,7 @@ let InterestsModule = class InterestsModule {
 };
 InterestsModule = __decorate([
     (0, common_1.Module)({
-        providers: [interest_service_1.InterestsService, app_gateway_1.AppGateway],
+        providers: [interest_service_1.InterestsService],
         controllers: [interest_controller_1.InterestsController],
         imports: [
             users_module_1.UsersModule,

@@ -1,10 +1,11 @@
-import { Injectable, UseGuards } from '@nestjs/common';
+import { Global, Injectable, UseGuards } from '@nestjs/common';
 import { MessageBody, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { HelpJwtService } from './help/token.service';
 import { Cron } from '@nestjs/schedule';
 import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 
+@Global()
 @Injectable()
 @WebSocketGateway({ cors: true, transports: ['websocket'] })
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
@@ -16,7 +17,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   public activeFullUsersList: any[] = [];
   public clientsPeerId: any[] = [];
 
-  constructor(private jwtHelpService: HelpJwtService) { }
+  constructor(private jwtHelpService: HelpJwtService) {}
   
   handleDisconnect(client: any) {
     const accessToken = client.handshake.headers.cookie
@@ -30,6 +31,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   
   @UseGuards(JwtAuthGuard)
   handleConnection(client: any, ...args: any[]) {
+    console.log(1)
     const accessToken = client.handshake.headers.cookie
       ?.split('; ').find((cookie: string) => cookie.startsWith('access')).split('=')[1];
     const decodeToken = this.jwtHelpService.decodeJwtFromString(accessToken);

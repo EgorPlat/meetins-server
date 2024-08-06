@@ -14,18 +14,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TariffsService = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_1 = require("@nestjs/jwt");
 const mongoose_1 = require("@nestjs/mongoose");
-const app_gateway_1 = require("../../app.gateway");
-const users_service_1 = require("../users/users.service");
 const mongoose_2 = require("mongoose");
 const tariffs_schema_1 = require("../../schemas/tariffs.schema");
 const tariffsOpportunities_schema_1 = require("../../schemas/tariffsOpportunities.schema");
 let TariffsService = class TariffsService {
-    constructor(jwtService, userService, socketServer, tariffsModel, tariffsOppotuinitiesModel) {
-        this.jwtService = jwtService;
-        this.userService = userService;
-        this.socketServer = socketServer;
+    constructor(tariffsModel, tariffsOppotuinitiesModel) {
         this.tariffsModel = tariffsModel;
         this.tariffsOppotuinitiesModel = tariffsOppotuinitiesModel;
     }
@@ -81,12 +75,9 @@ let TariffsService = class TariffsService {
 };
 TariffsService = __decorate([
     (0, common_1.Injectable)(),
-    __param(3, (0, mongoose_1.InjectModel)(tariffs_schema_1.Tariff.name)),
-    __param(4, (0, mongoose_1.InjectModel)(tariffsOpportunities_schema_1.TariffOpportunities.name)),
-    __metadata("design:paramtypes", [jwt_1.JwtService,
-        users_service_1.UserService,
-        app_gateway_1.AppGateway,
-        mongoose_2.Model,
+    __param(0, (0, mongoose_1.InjectModel)(tariffs_schema_1.Tariff.name)),
+    __param(1, (0, mongoose_1.InjectModel)(tariffsOpportunities_schema_1.TariffOpportunities.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model,
         mongoose_2.Model])
 ], TariffsService);
 exports.TariffsService = TariffsService;

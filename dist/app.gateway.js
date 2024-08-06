@@ -36,6 +36,7 @@ let AppGateway = class AppGateway {
     }
     handleConnection(client, ...args) {
         var _a;
+        console.log(1);
         const accessToken = (_a = client.handshake.headers.cookie) === null || _a === void 0 ? void 0 : _a.split('; ').find((cookie) => cookie.startsWith('access')).split('=')[1];
         const decodeToken = this.jwtHelpService.decodeJwtFromString(accessToken);
         this.activeUsersList = [...this.activeUsersList, decodeToken === null || decodeToken === void 0 ? void 0 : decodeToken.email];
@@ -95,6 +96,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppGateway.prototype, "handleUpdateUserList", null);
 AppGateway = __decorate([
+    (0, common_1.Global)(),
     (0, common_1.Injectable)(),
     (0, websockets_1.WebSocketGateway)({ cors: true, transports: ['websocket'] }),
     __metadata("design:paramtypes", [token_service_1.HelpJwtService])

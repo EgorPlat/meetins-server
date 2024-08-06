@@ -32,7 +32,6 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.dbUrl),
-    //MongooseModule.forRoot(dbUrl),
     ScheduleModule.forRoot(),
     AuthModule,
     ProfileModule,

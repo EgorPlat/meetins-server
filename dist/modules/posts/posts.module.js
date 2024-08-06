@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const posts_controller_1 = require("./posts.controller");
 const auth_module_1 = require("../auth/auth.module");
 const users_module_1 = require("../users/users.module");
-const app_gateway_1 = require("../../app.gateway");
 const token_module_1 = require("../../help/token.module");
 const posts_service_1 = require("./posts.service");
 const mongoose_1 = require("@nestjs/mongoose");
@@ -21,7 +20,7 @@ let PostsModule = class PostsModule {
 };
 PostsModule = __decorate([
     (0, common_1.Module)({
-        providers: [posts_service_1.PostsService, app_gateway_1.AppGateway],
+        providers: [posts_service_1.PostsService],
         controllers: [posts_controller_1.PostsController],
         imports: [
             users_module_1.UsersModule,

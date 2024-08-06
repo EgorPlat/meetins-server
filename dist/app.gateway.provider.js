@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.AppGatewayProvider = void 0;
 const common_1 = require("@nestjs/common");
-let AppService = class AppService {
+let AppGatewayProvider = class AppGatewayProvider {
     constructor() { }
-    ;
+    getGateway() {
+        return this.appGateway;
+    }
 };
-AppService = __decorate([
+AppGatewayProvider = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [])
-], AppService);
-exports.AppService = AppService;
-//# sourceMappingURL=app.service.js.map
+], AppGatewayProvider);
+exports.AppGatewayProvider = AppGatewayProvider;
+//# sourceMappingURL=app.gateway.provider.js.map

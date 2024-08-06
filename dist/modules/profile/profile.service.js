@@ -12,13 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProfileService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
-const app_gateway_1 = require("../../app.gateway");
 const users_service_1 = require("../users/users.service");
 let ProfileService = class ProfileService {
-    constructor(jwtService, userService, socketServer) {
+    constructor(jwtService, userService) {
         this.jwtService = jwtService;
         this.userService = userService;
-        this.socketServer = socketServer;
     }
     async getMyProfile(request) {
         const token = request.cookies['access_token'];
@@ -44,8 +42,7 @@ let ProfileService = class ProfileService {
 ProfileService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [jwt_1.JwtService,
-        users_service_1.UserService,
-        app_gateway_1.AppGateway])
+        users_service_1.UserService])
 ], ProfileService);
 exports.ProfileService = ProfileService;
 //# sourceMappingURL=profile.service.js.map

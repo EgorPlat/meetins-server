@@ -1,9 +1,6 @@
-import { HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Request } from 'express';
-import { AppGateway } from 'src/app.gateway';
-import { UserService } from 'src/modules/users/users.service';
 import { Model } from 'mongoose';
 import { Tariff, TariffsDocument } from 'src/schemas/tariffs.schema';
 import { TariffOpportunities, TariffOpportunitiesDocument } from 'src/schemas/tariffsOpportunities.schema';
@@ -12,9 +9,6 @@ import { TariffOpportunities, TariffOpportunitiesDocument } from 'src/schemas/ta
 export class TariffsService {
 
     constructor(
-        private jwtService: JwtService, 
-        private userService: UserService,
-        private socketServer: AppGateway,
         @InjectModel(Tariff.name) private tariffsModel: Model<TariffsDocument>,
         @InjectModel(TariffOpportunities.name) private tariffsOppotuinitiesModel: Model<TariffOpportunitiesDocument>
     ) {}
