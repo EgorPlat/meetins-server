@@ -131,6 +131,7 @@ export class UserService {
                 }
             }
         ]);
+
         if (usersInfo) return usersInfo.map(el => { return el.markedUserInfo });
     };
 

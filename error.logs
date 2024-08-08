@@ -4266,3 +4266,264 @@ Potential solutions:
           Context = ExceptionHandler
           --------------------------------------------------------
       
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = Could not find path "messages.0.senderId" in schema 
+
+          Stack = Error: Could not find path "messages.0.senderId" in schema
+    at _castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:71:15)
+    at castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:25:3)
+    at _castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:2156:5)
+    at model.Query._updateThunk (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:4012:3)
+    at model.Query.<anonymous> (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:4125:23)
+    at model.Query._wrappedThunk [as _updateMany] (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\query\wrapThunk.js:27:8)
+    at C:\Users\egorp\projects\meetins\node_modules\kareem\index.js:372:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = Could not find path "messages.0.senderId" in schema 
+
+          Stack = Error: Could not find path "messages.0.senderId" in schema
+    at _castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:71:15)
+    at castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\update\castArrayFilters.js:25:3)
+    at _castArrayFilters (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:2156:5)
+    at model.Query._updateThunk (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:4012:3)
+    at model.Query.<anonymous> (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\query.js:4125:23)
+    at model.Query._wrappedThunk [as _updateMany] (C:\Users\egorp\projects\meetins\node_modules\mongoose\lib\helpers\query\wrapThunk.js:27:8)
+    at C:\Users\egorp\projects\meetins\node_modules\kareem\index.js:372:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = The positional operator did not find the match needed from the query. 
+
+          Stack = MongoServerError: The positional operator did not find the match needed from the query.
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\operations\update.ts:201:44
+    at C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection_pool.ts:482:13
+    at handleOperationResult (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\sdam\server.ts:610:5)
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:765:5)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = Error: listen EADDRINUSE: address already in use :::5000 
+
+          Stack = NestApplication 
+
+          Context = undefined
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = Error: listen EADDRINUSE: address already in use :::5000 
+
+          Stack = NestApplication 
+
+          Context = undefined
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = unknown top level operator: $messages.senderId. If you have a field name that starts with a '$' symbol, consider using $getField or $setField. 
+
+          Stack = MongoServerError: unknown top level operator: $messages.senderId. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
+          2024 / 7 / 4 
+
+          Errors = Invalid $set :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField. 
+
+          Stack = MongoServerError: Invalid $set :: caused by :: FieldPath field names may not start with '$'. Consider using $getField or $setField.
+    at MessageStream.messageHandler (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\connection.ts:753:20)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:168:12)
+    at MessageStream._write (C:\Users\egorp\projects\meetins\node_modules\mongoose\node_modules\mongodb\src\cmap\message_stream.ts:65:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) 
+
+          Context = ExceptionsHandler
+          --------------------------------------------------------
+      
