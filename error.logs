@@ -4231,3 +4231,38 @@ Potential solutions:
           Context = ExceptionHandler
           --------------------------------------------------------
       
+          2024 / 7 / 4 
+
+          Errors = Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+ 
+
+          Stack = Error: Nest can't resolve dependencies of the ChatService (UserService, HelpJwtService, ChatModel, ?). Please make sure that the argument AppGateway at index [3] is available in the ChatModule context.
+
+Potential solutions:
+- If AppGateway is a provider, is it part of the current ChatModule?
+- If AppGateway is exported from a separate @Module, is that module imported within ChatModule?
+  @Module({
+    imports: [ /* the Module containing AppGateway */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:231:19)
+    at Injector.resolveComponentInstance (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:184:33)
+    at resolveParam (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:106:38)
+    at async Promise.all (index 3)
+    at Injector.resolveConstructorParams (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:121:27)
+    at Injector.loadInstance (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:52:9)
+    at Injector.loadProvider (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\injector.js:74:9)
+    at async Promise.all (index 3)
+    at InstanceLoader.createInstancesOfProviders (C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\instance-loader.js:44:9)
+    at C:\Users\egorp\projects\meetins\node_modules\@nestjs\core\injector\instance-loader.js:29:13 
+
+          Context = ExceptionHandler
+          --------------------------------------------------------
+      

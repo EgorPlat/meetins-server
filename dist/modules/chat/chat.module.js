@@ -14,14 +14,13 @@ const chat_schema_1 = require("../../schemas/chat.schema");
 const chat_controller_1 = require("./chat.controller");
 const chat_service_1 = require("./chat.service");
 const users_module_1 = require("../users/users.module");
-const app_gateway_1 = require("../../app.gateway");
 const auth_module_1 = require("../auth/auth.module");
 let ChatModule = class ChatModule {
 };
 ChatModule = __decorate([
     (0, common_1.Module)({
         controllers: [chat_controller_1.ChatController],
-        providers: [chat_service_1.ChatService, app_gateway_1.AppGateway],
+        providers: [chat_service_1.ChatService],
         imports: [
             users_module_1.UsersModule,
             token_module_1.HelpJwtModule,

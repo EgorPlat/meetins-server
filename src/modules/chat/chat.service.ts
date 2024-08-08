@@ -10,6 +10,7 @@ import { CreateChatDto } from 'src/dto/create-chat.dto';
 import { User } from 'src/schemas/user.schema';
 import { AppGateway } from 'src/app.gateway';
 import { DecodedJwt } from 'src/interfaces/decodedJwt';
+import { AppGatewayService } from 'src/appGateway/appGateway.service';
 
 @Injectable()
 export class ChatService {
@@ -18,7 +19,7 @@ export class ChatService {
         private userService: UserService,
         private helpJwtService: HelpJwtService,
         @InjectModel(Chat.name) private chatModel: Model<ChatDocument>,
-        private socketServer: AppGateway
+        private socketServer: AppGatewayService
     ) { }
 
     async getMyDialogs(userId: string) {
@@ -53,12 +54,12 @@ export class ChatService {
         );
 
         if (currentChatState) {
-            const userSessionForSendingMessage = this.socketServer.activeFullUsersList
+            const userSessionForSendingMessage = this.socketServer.getAppGateway().activeFullUsersList
             .filter(el => currentChatState.members.includes(el.userId))
             .map(el => el.socketId);
 
             if (userSessionForSendingMessage) {
-                this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
+                this.socketServer.getAppGateway().server.to([...userSessionForSendingMessage]).emit('message', message);
             }
         }
         return currentChatState.messages[currentChatState.messages.length - 1];

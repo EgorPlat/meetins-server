@@ -4,14 +4,14 @@ import { IMessage } from 'src/interfaces/chatMessage.interface';
 import { Chat, ChatDocument } from 'src/schemas/chat.schema';
 import { Model } from 'mongoose';
 import { UserService } from 'src/modules/users/users.service';
-import { AppGateway } from 'src/app.gateway';
 import { DecodedJwt } from 'src/interfaces/decodedJwt';
+import { AppGatewayService } from 'src/appGateway/appGateway.service';
 export declare class ChatService {
     private userService;
     private helpJwtService;
     private chatModel;
     private socketServer;
-    constructor(userService: UserService, helpJwtService: HelpJwtService, chatModel: Model<ChatDocument>, socketServer: AppGateway);
+    constructor(userService: UserService, helpJwtService: HelpJwtService, chatModel: Model<ChatDocument>, socketServer: AppGatewayService);
     getMyDialogs(userId: string): Promise<(Chat & import("mongoose").Document<any, any, any> & {
         _id: any;
     })[]>;

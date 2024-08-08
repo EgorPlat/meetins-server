@@ -19,7 +19,6 @@ const settings_service_1 = require("./modules/settings/settings.service");
 const settings_module_1 = require("./modules/settings/settings.module");
 const chat_module_1 = require("./modules/chat/chat.module");
 const token_module_1 = require("./help/token.module");
-const app_gateway_1 = require("./app.gateway");
 const event_module_1 = require("./modules/event/event.module");
 const posts_module_1 = require("./modules/posts/posts.module");
 const interest_module_1 = require("./modules/interests/interest.module");
@@ -32,12 +31,13 @@ const groupsPosts_module_1 = require("./modules/groups/groupsPosts.module");
 const music_module_1 = require("./modules/music/music.module");
 const wall_module_1 = require("./modules/wall/wall.module");
 const config_1 = require("@nestjs/config");
+const appGateway_module_1 = require("./appGateway/appGateway.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         controllers: [app_controller_1.AppController, settings_controller_1.SettingsController],
-        providers: [app_service_1.AppService, settings_service_1.SettingsService, app_gateway_1.AppGateway],
+        providers: [app_service_1.AppService, settings_service_1.SettingsService],
         imports: [
             token_module_1.HelpJwtModule,
             users_module_1.UsersModule,
@@ -57,7 +57,8 @@ AppModule = __decorate([
             meetings_module_1.MeetingsModule,
             groupsPosts_module_1.GroupsModule,
             music_module_1.MusicModule,
-            wall_module_1.WallModule
+            wall_module_1.WallModule,
+            appGateway_module_1.AppGatewayModule
         ],
     })
 ], AppModule);

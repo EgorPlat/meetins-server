@@ -5,11 +5,11 @@ import { Chat, ChatSchema } from 'src/schemas/chat.schema';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { UsersModule } from 'src/modules/users/users.module';
-import { AppGateway } from 'src/app.gateway';
 import { AuthModule } from '../auth/auth.module';
+
 @Module({
   controllers: [ChatController],
-  providers: [ChatService, AppGateway],
+  providers: [ChatService],
   imports: [
     UsersModule,
     HelpJwtModule,

@@ -19,7 +19,7 @@ const token_service_1 = require("../../help/token.service");
 const chat_schema_1 = require("../../schemas/chat.schema");
 const mongoose_2 = require("mongoose");
 const users_service_1 = require("../users/users.service");
-const app_gateway_1 = require("../../app.gateway");
+const appGateway_service_1 = require("../../appGateway/appGateway.service");
 let ChatService = class ChatService {
     constructor(userService, helpJwtService, chatModel, socketServer) {
         this.userService = userService;
@@ -48,11 +48,11 @@ let ChatService = class ChatService {
         };
         const currentChatState = await this.chatModel.findOneAndUpdate({ dialogId: message.dialogId }, { $push: { messages: message } }, { returnDocument: "after" });
         if (currentChatState) {
-            const userSessionForSendingMessage = this.socketServer.activeFullUsersList
+            const userSessionForSendingMessage = this.socketServer.getAppGateway().activeFullUsersList
                 .filter(el => currentChatState.members.includes(el.userId))
                 .map(el => el.socketId);
             if (userSessionForSendingMessage) {
-                this.socketServer.server.to([...userSessionForSendingMessage]).emit('message', message);
+                this.socketServer.getAppGateway().server.to([...userSessionForSendingMessage]).emit('message', message);
             }
         }
         return currentChatState.messages[currentChatState.messages.length - 1];
@@ -166,7 +166,7 @@ ChatService = __decorate([
     __metadata("design:paramtypes", [users_service_1.UserService,
         token_service_1.HelpJwtService,
         mongoose_2.Model,
-        app_gateway_1.AppGateway])
+        appGateway_service_1.AppGatewayService])
 ], ChatService);
 exports.ChatService = ChatService;
 //# sourceMappingURL=chat.service.js.map

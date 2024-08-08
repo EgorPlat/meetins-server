@@ -8,6 +8,7 @@ import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 @Global()
 @Injectable()
 @WebSocketGateway({ cors: true, transports: ['websocket'] })
+
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @WebSocketServer()

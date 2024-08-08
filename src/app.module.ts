@@ -10,7 +10,6 @@ import { SettingsService } from './modules/settings/settings.service';
 import { SettingsModule } from './modules/settings/settings.module';
 import { ChatModule } from './modules/chat/chat.module';
 import { HelpJwtModule } from './help/token.module';
-import { AppGateway } from './app.gateway';
 import { EventModule } from './modules/event/event.module';
 import { PostsModule } from './modules/posts/posts.module';
 import { InterestsModule } from "./modules/interests/interest.module";
@@ -23,10 +22,11 @@ import { GroupsModule } from "./modules/groups/groupsPosts.module";
 import { MusicModule } from "./modules/music/music.module";
 import { WallModule } from "./modules/wall/wall.module";
 import { ConfigModule } from '@nestjs/config';
+import { AppGatewayModule } from "./appGateway/appGateway.module";
 
 @Module({
   controllers: [AppController, SettingsController],
-  providers: [AppService, SettingsService, AppGateway],
+  providers: [AppService, SettingsService],
   imports: [
     HelpJwtModule,
     UsersModule,
@@ -46,7 +46,8 @@ import { ConfigModule } from '@nestjs/config';
     MeetingsModule,
     GroupsModule,
     MusicModule,
-    WallModule
+    WallModule,
+    AppGatewayModule
   ],
 })
 export class AppModule {
